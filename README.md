@@ -6,6 +6,22 @@ A cross-platform note-taking & target-tracking app for penetration testers built
 ![](https://image.ibb.co/hJPgxf/checklist-view.png)
 
 
+<h1 align="center">
+  <br>
+  <img src="https://image.ibb.co/hJPgxf/checklist-view.png" alt="SwiftnessX" width="900"></a>
+  <br>
+  SwiftnessX
+  <br>
+</h1>
+
+<div align="center">
+
+[![forthebadge](https://forthebadge.com/images/badges/made-with-javascript.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/winter-is-coming.svg)](https://forthebadge.com)
+
+</div>
+
+<p align="center">A cross-platform note-taking & target-tracking app for penetration testers built on ElectronJS.</p>
+
 
 
 ## Downloads
