@@ -44,7 +44,7 @@ To update just use `git pull` or if dependencies are updated than first install 
 
 
 ## Usage
-****
+
 It’s pretty straightforward to use SwiftnessX, I’ve created a small video on how to use Targets with checklist: https://www.youtube.com/watch?v=s227q_rTVkw
 
 For Templates and Payloads, download this file, which has data from [PayloadsAllthethings](https://github.com/swisskyrepo/PayloadsAllTheThings) and [bb-report-templates](https://github.com/gwen001/bb-reports-templates).
@@ -101,7 +101,7 @@ For Templates and Payloads, download this file, which has data from [PayloadsAll
   See [How to create a Minimal, Complete, and Verifiable example](https://stackoverflow.com/help/mcve).
   
   **Reference & Inspired from:** https://github.com/electron/electron/blob/master/docs/development/issues.md
-****
+
 
 ## Credits
 
