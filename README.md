@@ -55,10 +55,6 @@ For Templates and Payloads, download this file, which has data from [PayloadsAll
 
 - **Feature Request / Changes:** This is a very early version of SwiftnessX with a completely new flow and architecture from macOS build and its likely that some features & flow may not be perfect. We encourage you to tell us if a flow or feature is not fitting in, we will discuss with you and along with other users’ on possible way to improve or change that. 
 
-
-  Also do not hesitate on requesting a feature - we are actively working on this project
-
-
   
 - **Security:** Electron projects are often dependent upon too many 3rd party libraries and in result it has more chances of being vulnerable to security-vulnerabilities compared to native-apps.
 
