@@ -1,11 +1,3 @@
-# SwiftnessX
-A cross-platform note-taking & target-tracking app for penetration testers built on ElectronJS.
-
-
-
-![](https://image.ibb.co/hJPgxf/checklist-view.png)
-
-
 <h1 align="center">
   <br>
   <img src="https://image.ibb.co/hJPgxf/checklist-view.png" alt="SwiftnessX" width="900"></a>
