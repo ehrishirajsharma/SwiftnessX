@@ -10,9 +10,9 @@ A cross-platform note-taking & target-tracking app for penetration testers built
 
 ## Downloads
 
-**Windows:** 
-**Linux:** 
-**Download Payloads & Templates:** Contains data from [PayloadsAllthethings](https://github.com/swisskyrepo/PayloadsAllTheThings) and [bb-report-templates](https://github.com/gwen001/bb-reports-templates).
+- **Windows:** 
+- **Linux:** 
+- **Download Payloads & Templates:** Contains data from [PayloadsAllthethings](https://github.com/swisskyrepo/PayloadsAllTheThings) and [bb-report-templates](https://github.com/gwen001/bb-reports-templates).
 
 *App supports auto-updating system when new release gets available.*
 
