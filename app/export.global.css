@@ -1,0 +1,21 @@
+@font-face {
+  font-family: 'nunito-light';
+  src: url("./assets/fonts/nunito-light.ttf");
+}
+@font-face {
+  font-family: 'nunito-regular';
+  src: url("./assets/fonts/nunito-regular.ttf");
+}
+@font-face {
+  font-family: 'nunito-bold';
+  src: url("./assets/fonts/nunito-bold.ttf");
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 10px !important;
+}

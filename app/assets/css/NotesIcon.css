@@ -1,0 +1,8 @@
+.notes-list-icon {
+  float: left;
+  margin-right: 2rem;
+  height: 100%;
+  transition: .15s ease-out;
+  stroke: currentColor;
+  fill: currentColor;
+}

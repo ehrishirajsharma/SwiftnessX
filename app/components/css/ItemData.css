@@ -1,0 +1,11 @@
+.checklist-data .checklist-data-header {
+  height: 4.2rem;
+  border-bottom: 0.1rem solid rgba(0, 0, 0, 0.1);
+  padding: 1.2rem 2.5rem;
+  box-sizing: border-box;
+  font-size: 1.4rem;
+  font-family: 'nunito-regular';
+  cursor: pointer;
+  overflow: hidden;
+  color: #000;
+}

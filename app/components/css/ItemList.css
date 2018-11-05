@@ -1,0 +1,84 @@
+.item-list {
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.item-list .item-list-controls {
+  padding: 2.5rem 2rem 0 2rem;
+  width: 100%;
+  height: auto;
+  display: flex;
+  margin-bottom: 4rem;
+  box-sizing: border-box;
+}
+
+.item-list .item-list-controls #search-item-list {
+  display: flex;
+  height: 3.5rem;
+  width: 100%;
+  border-radius: .6rem;
+  color: #9B9B9B;
+  font-family: 'nunito-light';
+  background: #FFFFFF;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.1);
+  border: none;
+  padding: 1.5rem 1rem;
+  box-sizing: border-box;
+  font-size: 1.4rem;
+  align-items: center;
+  float: left;
+}
+
+.item-list .item-list-controls #search-item-list input {
+  width: 100%;
+  border-radius: .6rem;
+  color: #9B9B9B;
+  font-family: 'nunito-light';
+  border: none;
+  background: #FFFFFF;
+  font-size: 1.4rem;
+}
+
+.item-list .item-list-controls #search-item-list input:focus {
+  outline: none;
+}
+
+.item-list .item-list-controls #search-item-list svg {
+  height: 2rem;
+  transform: scaleX(-1);
+  fill: #a3a3a3;
+}
+
+.item-list .item-list-controls .new-item-list-button {
+  height: 3.5rem;
+  width: 8rem;
+  background-color: #F97072;
+  border-radius: .6rem;
+  padding: .85rem 1rem;
+  font-family: 'nunito-regular';
+  font-size: 1.3rem;
+  margin-left: 2rem;
+  box-sizing: border-box;
+  float: right;
+  cursor: pointer;
+  overflow: hidden;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.item-list .item-list-controls .new-item-list-button:hover {
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
+  transition: .15s ease-out;
+}
+
+.item-list .item-list-body {
+  max-height: calc(100vh - 182px);
+  overflow-y: auto;
+}
+
+.item-list .item-list-body ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}

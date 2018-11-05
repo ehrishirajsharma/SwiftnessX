@@ -1,0 +1,7 @@
+.swift-logo {
+  float: left;
+}
+
+.swift-logo:hover {
+  cursor: pointer;
+}

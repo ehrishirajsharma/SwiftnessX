@@ -1,0 +1,8 @@
+.header-add-icon {
+  flex-grow: 1;
+}
+
+.header-add-icon:hover g g {
+  fill: #F97072;
+  transition: .05s ease-out;
+}

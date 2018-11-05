@@ -1,0 +1,15 @@
+.container {
+  height: 100vh;
+  width: 100vw;
+}
+
+.left-panel,
+.middle-panel,
+.right-panel {
+  width: 100%;
+}
+
+.middle-panel {
+  color: white;
+  background: #F5F7FA;
+}
