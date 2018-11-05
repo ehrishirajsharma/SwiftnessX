@@ -1,10 +1,11 @@
 <h1 align="center">
   <br>
-  <img src="https://image.ibb.co/hJPgxf/checklist-view.png" alt="SwiftnessX" width="900"></a>
+  <img src="https://s15.postimg.cc/omhc6tcrv/256px_2x.png" alt="Swiftness" width="100"></a>
   <br>
   SwiftnessX
   <br>
 </h1>
+
 
 <div align="center">
 
@@ -13,6 +14,8 @@
 </div>
 
 <p align="center">A cross-platform note-taking & target-tracking app for penetration testers built on ElectronJS.</p>
+
+![swiftnessX](https://image.ibb.co/hJPgxf/checklist-view.png)
 
 
 
