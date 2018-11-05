@@ -3,7 +3,7 @@ A cross-platform note-taking & target-tracking app for penetration testers built
 
 
 
-![](https://d2mxuefqeaa7sj.cloudfront.net/s_22468EE0712254D3EA421A4DBACA2646DD071E2B892C4DFAA54AF6BB35E989C4_1541430229290_main-view.png)
+![](https://image.ibb.co/hJPgxf/checklist-view.png)
 
 
 
