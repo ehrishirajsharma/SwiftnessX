@@ -1,0 +1,21 @@
+.copy-icon {
+  margin: auto 0;
+  cursor: pointer;
+  float: right;
+  height: 1.8rem;
+  width: 1.8rem;
+  margin: 3px;
+}
+
+.copy-icon:hover g g {
+  stroke: #000;
+}
+
+.toast-body {
+  color: #808080;
+  font-size: 1.5rem;
+}
+
+.toast-progress {
+  background: #F97072;
+}

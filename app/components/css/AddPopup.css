@@ -1,0 +1,28 @@
+.add-popup {
+  width: 125px;
+  background-color: #FFFFFF;
+  color: #4A4A4A;
+  border-radius: 4px;
+  position: absolute;
+  z-index: 10;
+  top: 50%;
+  right: 10%;
+  margin-left: -80px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.15);
+  font-family: 'nunito-regular';
+  font-size: 13px;
+}
+
+.add-popup ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 10px 0 10px 0;
+}
+
+.add-popup ul li {
+  padding: 5px 15px;
+}
+
+.add-popup ul li:hover {
+  background: rgba(249, 112, 114, 0.21);
+}

@@ -1,0 +1,80 @@
+.menu-item-nav-header {
+  height: 4.2rem;
+  border-bottom: 0.1rem solid rgba(0, 0, 0, 0.1);
+  padding: 1.2rem 2.5rem;
+  box-sizing: border-box;
+  font-size: 1.4rem;
+  font-family: 'nunito-regular';
+  cursor: pointer;
+  display: flex;
+  position: relative;
+}
+
+.menu-item-nav-header span {
+  flex-grow: 20;
+}
+
+.menu-item-nav:nth-child(1) .menu-item-nav-list {
+  padding: 0 2.5rem 0 2.5rem;
+  max-height: 375px;
+  overflow: auto !important;
+}
+
+.menu-item-nav:nth-child(2) .menu-item-nav-list {
+  padding: 0 2.5rem 0 2.5rem;
+  max-height: 250px;
+  overflow: auto !important;
+}
+
+.menu-item-nav .menu-item-nav-list #search-item-list {
+  display: flex;
+  width: 100%;
+  border-radius: .6rem;
+  font-family: 'nunito-light';
+  background: #f7f8fd;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.1);
+  padding: 1.5rem 1rem;
+  box-sizing: border-box;
+  align-items: center;
+  padding: 0.7rem;
+  margin-top: 1.5rem;
+}
+
+.menu-item-nav .menu-item-nav-list #search-item-list input {
+  width: 100%;
+  border-radius: .6rem;
+  color: #6c6c6d;
+  font-family: 'nunito-light';
+  border: none;
+  background: #f7f8fd;
+  font-size: 1.3rem;
+}
+
+.menu-item-nav .menu-item-nav-list #search-item-list input:focus {
+  outline: none;
+}
+
+.menu-item-nav .menu-item-nav-list #search-item-list svg {
+  height: 1.7rem;
+  transform: scaleX(-1);
+  fill: #a3a3a3;
+}
+
+.menu-item-nav .collapsed {
+  max-height: 0;
+}
+
+.menu-item-nav .icon-up {
+  transform: rotate(0deg);
+}
+
+.menu-item-nav .icon-down {
+  transform: rotate(180deg);
+}
+
+.menu-item-nav .menu-item-nav-list ul {
+  padding: 0;
+  font-family: 'nunito-regular';
+  font-size: 1.4rem;
+  color: #9B9B9B;
+}

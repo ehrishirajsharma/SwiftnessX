@@ -1,0 +1,14 @@
+.header-icon {
+  float: left;
+  margin-right: 1rem;
+  height: 100%;
+  transition: .15s ease-out;
+}
+
+.icon-up {
+  transform: rotate(0deg);
+}
+
+.icon-down {
+  transform: rotate(180deg);
+}

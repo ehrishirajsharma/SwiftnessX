@@ -1,0 +1,9 @@
+.title:hover {
+  color: #F97072;
+  cursor: pointer;
+  transition: .15s ease-out;
+}
+
+.title.active {
+  color: #F97072;
+}

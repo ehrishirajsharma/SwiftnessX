@@ -1,0 +1,68 @@
+@font-face {
+  font-family: 'nunito-light';
+  src: url("./assets/fonts/nunito-light.ttf");
+}
+@font-face {
+  font-family: 'nunito-regular';
+  src: url("./assets/fonts/nunito-regular.ttf");
+}
+@font-face {
+  font-family: 'nunito-bold';
+  src: url("./assets/fonts/nunito-bold.ttf");
+}
+@font-face {
+  font-family: 'open-sans';
+  src: url("./assets/fonts/OpenSans-Regular.ttf");
+}
+@font-face {
+  font-family: 'open-sans';
+  src: url("./assets/fonts/OpenSans-Italic.ttf");
+  font-style: italic;
+}
+@font-face {
+  font-family: 'open-sans';
+  src: url("./assets/fonts/OpenSans-Bold.ttf");
+  font-weight: bold;
+}
+@font-face {
+  font-family: 'open-sans';
+  src: url("./assets/fonts/OpenSans-BoldItalic.ttf");
+  font-weight: bold;
+  font-style: italic;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+div:focus,
+span:focus {
+  outline: none;
+}
+
+html {
+  font-size: 10px !important;
+}
+
+.quill .ql-container.ql-snow {
+  border: none;
+}
+
+/* Set content font-families */
+
+.ql-font-inconsolata {
+  font-family: "Inconsolata";
+}
+
+.ql-font-roboto {
+  font-family: "Roboto";
+}
+
+.ql-font-mirza {
+  font-family: "Mirza";
+}
+
+.ql-font-arial {
+  font-family: "Arial";
+}

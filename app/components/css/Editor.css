@@ -1,0 +1,34 @@
+.checklist-data-body {
+  padding: 16px 9px;
+}
+
+.editor {
+  max-height: calc(100vh - 42px - 7.5rem);
+  min-height: 100px;
+  overflow-y: auto;
+}
+
+.checklist-data-body .toolbar,
+.editor .editing-area {
+  border: none;
+}
+
+.toolbar .font span[data-label="Sans Serif"]::before {
+  font-family: "Sans Serif";
+}
+
+.toolbar .font span[data-label="Inconsolata"]::before {
+  font-family: "Inconsolata";
+}
+
+.toolbar .font span[data-label="Roboto"]::before {
+  font-family: "Roboto";
+}
+
+.toolbar .font span[data-label="Mirza"]::before {
+  font-family: "Mirza";
+}
+
+.toolbar .font span[data-label="Arial"]::before {
+  font-family: "Arial";
+}

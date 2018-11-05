@@ -1,0 +1,115 @@
+.draggable-list .list {
+  font-family: 'nunito-regular';
+  font-size: 1.4rem;
+  color: #4A4A4A;
+  padding: 1.5rem 2rem 1.5rem 2rem;
+  cursor: pointer;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.draggable-list .list.selected {
+  color: #000000;
+  background-color: #FFFFFF;
+}
+
+.draggable-list .list div {
+  float: left;
+  position: relative;
+  padding-left: 3rem;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  height: .1rem;
+}
+
+.draggable-list .list div input {
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  cursor: pointer;
+  height: 2rem;
+  width: 2rem;
+}
+
+.draggable-list .list div input:hover ~ .checkmark {
+  background-color: rgba(249, 112, 114, 0.25);
+}
+
+.draggable-list .list div input:hover ~ .checkmark:after {
+  content: "";
+  position: absolute;
+  display: block;
+  left: 7px;
+  top: 3px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-radius: 1px;
+  border-width: 0 2px 2px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.draggable-list .list div input:hover:checked ~ .checkmark {
+  background-color: #F97072;
+}
+
+.draggable-list .list div input:checked ~ .checkmark {
+  background-color: #F97072;
+}
+
+.draggable-list .list div input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.draggable-list .list div .checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 2rem;
+  width: 2rem;
+  margin-top: -.2rem;
+  border-radius: 50%;
+  border: .1rem solid #F97072;
+  transition: .15s ease-out;
+}
+
+.draggable-list .list div .checkmark:hover:after {
+  content: "";
+  position: absolute;
+  display: block;
+  left: 7px;
+  top: 3px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-radius: 1px;
+  border-width: 0 2px 2px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.draggable-list .list div .checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+  left: 7px;
+  top: 3px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-radius: 1px;
+  border-width: 0 2px 2px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+

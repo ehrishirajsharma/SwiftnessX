@@ -1,0 +1,29 @@
+.menu-item-nav-header {
+  height: 4.2rem;
+  border-bottom: 0.1rem solid rgba(0, 0, 0, 0.1);
+  padding: 1.2rem 2.5rem;
+  box-sizing: border-box;
+  font-size: 1.4rem;
+  font-family: 'nunito-regular';
+  cursor: pointer;
+  display: flex;
+  position: relative;
+}
+
+.menu-item-nav-header span {
+  flex-grow: 20;
+}
+
+.menu-item-nav-header:hover {
+  color: #F97072;
+  transition: .15s ease-out;
+}
+
+.menu-item-nav-header:hover:hover svg g g {
+  stroke: #F97072;
+  transition: .15s ease-out;
+}
+
+.menu-item-nav-header.selected {
+  color: #F97072;
+}

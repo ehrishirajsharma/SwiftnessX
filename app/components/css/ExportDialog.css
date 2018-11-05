@@ -1,0 +1,328 @@
+.dialog-wrapper {
+  -webkit-app-region: drag;
+  height: 94vh;
+  width: 90vw;
+  padding: 3vh 5vw;
+  background-color: #F5F5F5;
+}
+
+.dialog-box,
+button {
+  -webkit-app-region: no-drag;
+}
+
+.dialog-box {
+  height: 94%;
+  width: 100%;
+}
+
+.dialog-box .dialog-box-section {
+  margin-right: 3%;
+  width: 23%;
+  float: left;
+  height: 90%;
+}
+
+.dialog-box .dialog-box-section:last-child {
+  margin-right: 0;
+  width: 22%;
+}
+
+.dialog-box .dialog-box-section .dialog-box-section-title {
+  font-family: 'nunito-bold';
+  font-size: 12px;
+  color: #9B9B9B;
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+.dialog-box .dialog-box-section .dialog-items {
+  background-color: #FFFFFF;
+  border-radius: 4px;
+  width: 100%;
+  height: 90%;
+  font-family: 'nunito-regular';
+  color: #000000;
+  font-size: 14px;
+  padding: 20px;
+  box-sizing: border-box;
+  overflow: auto;
+}
+
+.dialog-box .dialog-box-section .dialog-items ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.dialog-box .dialog-box-section .dialog-items ul li {
+  margin-bottom: 20px;
+}
+
+.dialog-box .dialog-box-section .dialog-items ul li div {
+  float: left;
+  position: relative;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  height: .1rem;
+}
+
+.dialog-box .dialog-box-section .dialog-items ul li > p {
+  padding: 0 3rem;
+  width: max-content;
+}
+
+.dialog-box .dialog-box-section .dialog-items ul li div input {
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  cursor: pointer;
+  height: 2rem;
+  width: 2rem;
+}
+
+.dialog-box .dialog-box-section .dialog-items ul li div input:hover ~ .checkmark {
+  background-color: rgba(249, 112, 114, 0.25);
+}
+
+.dialog-box .dialog-box-section .dialog-items ul li div input:hover ~ .checkmark:after {
+  content: "";
+  position: absolute;
+  display: block;
+  left: 6px;
+  top: 2px;
+  width: 4px;
+  height: 8px;
+  border: solid white;
+  border-radius: 1px;
+  border-width: 0 2px 2px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.dialog-box .dialog-box-section .dialog-items ul li div input:hover:checked ~ .checkmark {
+  background-color: #F97072;
+}
+
+.dialog-box .dialog-box-section .dialog-items ul li div input:checked ~ .checkmark {
+  background-color: #F97072;
+}
+
+.dialog-box .dialog-box-section .dialog-items ul li div input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.dialog-box .dialog-box-section .dialog-items ul li div .checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 17px;
+  width: 17px;
+  margin-top: -.2rem;
+  border-radius: 4px;
+  border: 1px solid #CFCBCB;
+  transition: .15s ease-out;
+  background-color: #F7F9FC;
+}
+
+.dialog-box .dialog-box-section .dialog-items ul li div .checkmark:hover:after {
+  content: "";
+  position: absolute;
+  display: block;
+  left: 6px;
+  top: 2px;
+  width: 4px;
+  height: 8px;
+  border: solid white;
+  border-radius: 1px;
+  border-width: 0 2px 2px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.dialog-box .dialog-box-section .dialog-items ul li div .checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+  left: 6px;
+  top: 2px;
+  width: 4px;
+  height: 8px;
+  border: solid white;
+  border-radius: 1px;
+  border-width: 0 2px 2px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.dialog-wrapper .dialog-box-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.dialog-wrapper .dialog-box-button-export,
+.dialog-wrapper .dialog-box-button-import {
+  border-radius: 6px;
+  border: none;
+  background-color: #F97072;
+  height: 35px;
+  width: 70px;
+  color: #FFFFFF;
+  font-family: 'nunito-regular';
+  font-size: 14px;
+  float: right;
+}
+
+.dialog-wrapper .dialog-box-button-export {
+  margin-left: 20px;
+}
+
+.dialog-wrapper .dialog-box-button-export:hover,
+.dialog-wrapper .dialog-box-button-import:hover {
+  cursor: pointer;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
+  transition: .15s ease-out;
+}
+
+.dialog-wrapper .dialog-box-button-export:focus,
+.dialog-wrapper .dialog-box-button-import:focus {
+  outline: none;
+}
+
+.dialog-wrapper .dialog-box-button-cancel {
+  border-radius: 6px;
+  border: none;
+  background-color: #4A4A4A;
+  height: 35px;
+  width: 70px;
+  color: #FFFFFF;
+  font-family: 'nunito-regular';
+  font-size: 14px;
+  float: right;
+}
+
+.dialog-wrapper .dialog-box-button-cancel:hover {
+  cursor: pointer;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
+  transition: .15s ease-out;
+}
+
+.dialog-wrapper .dialog-box-button-cancel:focus {
+  outline: none;
+}
+
+.select-all-wrapper {
+  padding-left: 20px;
+  padding-top: 20px;
+  color: #1989FA;
+  font-family: 'nunito-regular';
+  font-size: 14px;
+}
+
+.select-all-wrapper .select-all-checkbox {
+  float: left;
+  position: relative;
+  padding-left: 3rem;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  height: .1rem;
+}
+
+.select-all-wrapper .select-all-checkbox input {
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  cursor: pointer;
+  height: 2rem;
+  width: 2rem;
+}
+
+.select-all-wrapper .select-all-checkbox input:hover ~ .checkmark {
+  background-color: rgba(249, 112, 114, 0.25);
+}
+
+.select-all-wrapper .select-all-checkbox input:hover ~ .checkmark:after {
+  content: "";
+  position: absolute;
+  display: block;
+  left: 6px;
+  top: 2px;
+  width: 4px;
+  height: 8px;
+  border: solid white;
+  border-radius: 1px;
+  border-width: 0 2px 2px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.select-all-wrapper .select-all-checkbox input:hover:checked ~ .checkmark {
+  background-color: #F97072;
+}
+
+.select-all-wrapper .select-all-checkbox input:checked ~ .checkmark {
+  background-color: #F97072;
+}
+
+.select-all-wrapper .select-all-checkbox input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.select-all-wrapper .select-all-checkbox .checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 17px;
+  width: 17px;
+  margin-top: -.2rem;
+  border-radius: 4px;
+  border: 1px solid #CFCBCB;
+  transition: .15s ease-out;
+  background-color: #F7F9FC;
+}
+
+.select-all-wrapper .select-all-checkbox .checkmark:hover:after {
+  content: "";
+  position: absolute;
+  display: block;
+  left: 6px;
+  top: 2px;
+  width: 4px;
+  height: 8px;
+  border: solid white;
+  border-radius: 1px;
+  border-width: 0 2px 2px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.select-all-wrapper .select-all-checkbox .checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+  left: 6px;
+  top: 2px;
+  width: 4px;
+  height: 8px;
+  border: solid white;
+  border-radius: 1px;
+  border-width: 0 2px 2px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}

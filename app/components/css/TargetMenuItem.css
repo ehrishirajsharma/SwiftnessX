@@ -1,0 +1,35 @@
+.list-item {
+  margin-bottom: 2rem;
+  list-style-type: none;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.list-item:hover {
+  color: #4A4A4A;
+  transition: .15s ease-out;
+}
+
+.list-item:hover:before {
+  color: #EC1075;
+  transition: .15s ease-out;
+}
+
+.list-item:before {
+  font-family: FontAwesome;
+  content: '\f111';
+  font-size: .9rem;
+  margin-right: 1.5rem;
+  vertical-align: 7%;
+}
+
+.list-item.expanded:before {
+  color: #EC1075;
+}
+
+.list-item span:hover {
+  cursor: pointer;
+}
+
+

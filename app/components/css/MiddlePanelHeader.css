@@ -1,0 +1,25 @@
+.middle-panel-data-header {
+  height: 4.2rem;
+  font-size: 1.4rem;
+  font-family: 'nunito-regular';
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.middle-panel-data-header .checklist-list-header,
+.middle-panel-data-header .notes-list-header {
+  box-sizing: border-box;
+  padding: 1.2rem 0 1.2rem 2.5rem;
+  width: 50%;
+  height: 100%;
+  float: left;
+  color: rgba(0, 0, 0, 0.5);
+  border-bottom: 0.1rem solid rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.middle-panel-data-header .checklist-list-header.selected,
+.middle-panel-data-header .notes-list-header.selected {
+  color: #F97072;
+  border-bottom: .1rem solid #f97072;
+}
