@@ -21,20 +21,18 @@
 
 ## Downloads
 
-- **Windows:** 
-- **Linux:** 
-- **Download Payloads & Templates:** Contains data from [PayloadsAllthethings](https://github.com/swisskyrepo/PayloadsAllTheThings) and [bb-report-templates](https://github.com/gwen001/bb-reports-templates).
+- **Windows:** [Download](https://github.com/ehrishirajsharma/SwiftnessX/releases/download/v0.1.0/swiftness-setup-0.1.0.exe)
+- **Linux:** [Download](https://github.com/ehrishirajsharma/SwiftnessX/releases/download/v0.1.0/swiftness-0.1.0-x86_64.AppImage)
+
+Check [Releases](https://github.com/ehrishirajsharma/SwiftnessX/releases) for support on different Operating Systems. 
 
 *App supports auto-updating system when new release gets available.*
-
-**Portable Version:** The portable application allows installing the software on a portable device such as a USB - when you want to work upon different device. The current storage schema gives you an ability to use the same target’s data on multiple devices (with import/export) without creating same target with multiple instances. 
-
 
 ## Installation
 
 The current version is specially designed for Windows users therefore, installation process is pretty straightforward - just use the installer and it will be installed under the applications section.
 
-For Linux users (it's a bit complex and we will try to fix it very soon), you will need to give permission to the app ; just `chmod +x swiftness-0.1.0.AppImage` for installer file and then open it (in first attempt, it will try to install) and then it will be ready to use. (Make sure you're extracting the app in a dedicated folder)
+For Linux users (it's a bit complex and we will try to fix it very soon), you will need to give permission to the app; just `chmod +x swiftness-0.1.0.AppImage` for installer file and then open it (in first attempt, it will try to install) and then it will be ready to use. (Make sure you're extracting the app in a dedicated folder)
 
 If you want to use the portable version, extract the folder and give same permission to Swiftness executable file and utilise in the same manner.
 
@@ -62,6 +60,8 @@ For Templates and Payloads, download this file, which has data from [PayloadsAll
 
 
 :seedling: **Feature Request / Changes:** This is a very early version of SwiftnessX with a completely new flow and architecture from macOS build and it's likely that some features & flow may not be perfect. We encourage you to tell us if a flow or feature is not fitting in, we will discuss with you and along with other users’ on possible way to improve or change that. 
+
+----
 
 :rotating_light: **Security:** Electron projects are often dependent upon too many 3rd party libraries and in result it has more chances of being vulnerable to security-vulnerabilities compared to native-apps.
 
@@ -91,6 +91,8 @@ To report a security-vulnerability within the app, please send us an email direc
 
 
 If issues are derived from a 3rd-party module, also report to the person or team maintaining the module. 
+
+----
   
 :bug: **Bugs:**
 
@@ -102,6 +104,8 @@ The two most important pieces of information needed to evaluate the report are a
 See [How to create a Minimal, Complete, and Verifiable example](https://stackoverflow.com/help/mcve).
   
 **Reference & Inspired from:** https://github.com/electron/electron/blob/master/docs/development/issues.md
+
+----
 
 
 ## Credits
