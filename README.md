@@ -61,16 +61,15 @@ For Templates and Payloads, download this file, which has data from [PayloadsAll
 ## Discuss
 
 
-- **Feature Request / Changes:** This is a very early version of SwiftnessX with a completely new flow and architecture from macOS build and it's likely that some features & flow may not be perfect. We encourage you to tell us if a flow or feature is not fitting in, we will discuss with you and along with other users’ on possible way to improve or change that. 
+**Feature Request / Changes:** This is a very early version of SwiftnessX with a completely new flow and architecture from macOS build and it's likely that some features & flow may not be perfect. We encourage you to tell us if a flow or feature is not fitting in, we will discuss with you and along with other users’ on possible way to improve or change that. 
 
-  
-- **Security:** Electron projects are often dependent upon too many 3rd party libraries and in result it has more chances of being vulnerable to security-vulnerabilities compared to native-apps.
-
-
-  We tried our best to not make app’s modules too dependent upon the 3rd party packages however, we still recommend you to understand the basics of ElectronJS and let us know if you observe any security vulnerabilities.
+**Security:** Electron projects are often dependent upon too many 3rd party libraries and in result it has more chances of being vulnerable to security-vulnerabilities compared to native-apps.
 
 
-  To understand the basics of Electron Security & NodeJS Packages:
+We tried our best to not make app’s modules too dependent upon the 3rd party packages however, we still recommend you to understand the basics of ElectronJS and let us know if you observe any security vulnerabilities.
+
+
+To understand the basics of Electron Security & NodeJS Packages:
 
 
   - https://electronjs.org/docs/tutorial/security
@@ -78,33 +77,31 @@ For Templates and Payloads, download this file, which has data from [PayloadsAll
   - https://www.youtube.com/watch?v=QSMbk2nLTBk
 
 
-  You can find the packages under package.json, check them:
+You can find the packages under package.json, check them:
 
 
   - You can check how packages are integrated and can manually check the process by debugging the app in dev-environment. (explained above)
   - Use Chromium Developer Tools to check each functionality and their dependent JS files.
 
 
-  Directly ask us on Issues Section or Email (security@swiftness.org) to understand how a specific package is integrated. 
+Directly ask us on Issues Section or Email (security@swiftness.org) to understand how a specific package is integrated. 
 
 
-  To report a security-vulnerability within the app, please send us an email directly to security@swiftness.org
+To report a security-vulnerability within the app, please send us an email directly to security@swiftness.org
 
 
-  If issues are derived from a 3rd-party module, also report to the person or team maintaining the module. 
+If issues are derived from a 3rd-party module, also report to the person or team maintaining the module. 
   
-- **Bugs:**
+**Bugs:**
+
+When opening a new issue in the `ehrishirajsharma/SwifnessX` issue tracker, users will be presented with a template that should be filled in.
 
 
-  When opening a new issue in the `ehrishirajsharma/SwifnessX` issue tracker, users will be presented with a template that should be filled in.
+The two most important pieces of information needed to evaluate the report are a description of the bug and a simple test case to recreate it. It easier to fix a bug if it can be reproduced.
 
-
-  The two most important pieces of information needed to evaluate the report are a description of the bug and a simple test case to recreate it. It easier to fix a bug if it can be reproduced.
-
-
-  See [How to create a Minimal, Complete, and Verifiable example](https://stackoverflow.com/help/mcve).
+See [How to create a Minimal, Complete, and Verifiable example](https://stackoverflow.com/help/mcve).
   
-  **Reference & Inspired from:** https://github.com/electron/electron/blob/master/docs/development/issues.md
+**Reference & Inspired from:** https://github.com/electron/electron/blob/master/docs/development/issues.md
 
 
 ## Credits
