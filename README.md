@@ -61,9 +61,9 @@ For Templates and Payloads, download this file, which has data from [PayloadsAll
 ## Discuss
 
 
-**Feature Request / Changes:** This is a very early version of SwiftnessX with a completely new flow and architecture from macOS build and it's likely that some features & flow may not be perfect. We encourage you to tell us if a flow or feature is not fitting in, we will discuss with you and along with other users’ on possible way to improve or change that. 
+:seedling: **Feature Request / Changes:** This is a very early version of SwiftnessX with a completely new flow and architecture from macOS build and it's likely that some features & flow may not be perfect. We encourage you to tell us if a flow or feature is not fitting in, we will discuss with you and along with other users’ on possible way to improve or change that. 
 
-**Security:** Electron projects are often dependent upon too many 3rd party libraries and in result it has more chances of being vulnerable to security-vulnerabilities compared to native-apps.
+:rotating_light: **Security:** Electron projects are often dependent upon too many 3rd party libraries and in result it has more chances of being vulnerable to security-vulnerabilities compared to native-apps.
 
 
 We tried our best to not make app’s modules too dependent upon the 3rd party packages however, we still recommend you to understand the basics of ElectronJS and let us know if you observe any security vulnerabilities.
@@ -92,7 +92,7 @@ To report a security-vulnerability within the app, please send us an email direc
 
 If issues are derived from a 3rd-party module, also report to the person or team maintaining the module. 
   
-**Bugs:**
+:bug: **Bugs:**
 
 When opening a new issue in the `ehrishirajsharma/SwifnessX` issue tracker, users will be presented with a template that should be filled in.
 
@@ -111,4 +111,3 @@ Special thanks to the below contributors - It would not be possible without thei
 
 - Tomas Baskys
 - Pankaj Prajapat
-
