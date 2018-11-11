@@ -28,6 +28,10 @@ Check [Releases](https://github.com/ehrishirajsharma/SwiftnessX/releases) for su
 
 *App supports auto-updating system when new release gets available.*
 
+Check our [upcoming](https://github.com/ehrishirajsharma/SwiftnessX/wiki/Upcomings) releases and and we also need security-folks interested in contributing to checklist-libraries ([get in touch here](https://goo.gl/forms/YoM31FUQ0at3b51i2)). 
+
+It’s pretty straightforward to use SwiftnessX, I’ve created a small video on how to use Targets with checklist: https://www.youtube.com/watch?v=s227q_rTVkw
+
 ## Installation
 
 The current version is specially designed for Windows users therefore, installation process is pretty straightforward - just use the installer and it will be installed under the applications section.
@@ -41,19 +45,12 @@ If you want to use the portable version, extract the folder and give same permis
 
 
 1. First install [Node.JS](https://nodejs.org/en/download/) on your system
-2. now run `npm install electron -g`
+2. now run `sudo npm install electron -g --unsafe-perm=true --allow-root`
 3. Download or Clone this repository
-4. Within its folder run `npm install` to install dependencies
+4. Within its folder run `sudo npm install --unsafe-perm=true --allow-root` to install dependencies
 5. And to run use `npm run dev`
 
 To update just use `git pull` or if dependencies are updated than first install them by `npm install`
-
-
-## Usage
-
-It’s pretty straightforward to use SwiftnessX, I’ve created a small video on how to use Targets with checklist: https://www.youtube.com/watch?v=s227q_rTVkw
-
-For Templates and Payloads, download this file, which has data from [PayloadsAllthethings](https://github.com/swisskyrepo/PayloadsAllTheThings) and [bb-report-templates](https://github.com/gwen001/bb-reports-templates).
 
 
 ## Discuss
