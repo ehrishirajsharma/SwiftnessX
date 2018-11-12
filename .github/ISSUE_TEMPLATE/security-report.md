@@ -1,5 +1,5 @@
 ---
-name: Security reprot
+name: Security report
 about: Do not report security vulnerabilities here, please send us an email at security@swiftness.org
 
 ---
