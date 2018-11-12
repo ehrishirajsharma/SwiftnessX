@@ -28,7 +28,7 @@ Check [Releases](https://github.com/ehrishirajsharma/SwiftnessX/releases) for su
 
 *App supports auto-updating system when new release gets available.*
 
-Check our [upcoming](https://github.com/ehrishirajsharma/SwiftnessX/wiki/Upcomings) releases and and we also need security-folks interested in contributing to checklist-libraries ([get in touch here](https://goo.gl/forms/YoM31FUQ0at3b51i2)). 
+Check our [upcoming](https://github.com/ehrishirajsharma/SwiftnessX/wiki/Upcomings) releases and we also need security-folks interested in contributing to checklist-libraries ([get in touch here](https://goo.gl/forms/YoM31FUQ0at3b51i2)). 
 
 It’s pretty straightforward to use SwiftnessX, I’ve created a small video on how to use Targets with checklist: https://www.youtube.com/watch?v=s227q_rTVkw
 
