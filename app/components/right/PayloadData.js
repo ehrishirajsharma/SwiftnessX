@@ -28,7 +28,9 @@ class PayloadData extends React.PureComponent<Props> {
   state = {
     title: '',
     description: '',
-    content: ''
+    content: '',
+    disabled: true,
+    value: ''
   };
 
   removePayloadMessage = id => {
@@ -86,6 +88,40 @@ class PayloadData extends React.PureComponent<Props> {
     this.clearInputValues();
   };
 
+  renameItem = event => {
+    if (this.state.disabled) {
+      const { target } = event;
+
+      this.setState({ disabled: false, value: this.props.payloadData.title });
+
+      setTimeout(() => {
+        target.focus();
+        if (
+          typeof window.getSelection !== 'undefined' &&
+          typeof document.createRange !== 'undefined'
+        ) {
+          const range = document.createRange();
+          range.selectNodeContents(target);
+          range.collapse(false);
+
+          const sel = window.getSelection();
+          sel.removeAllRanges();
+          sel.addRange(range);
+        }
+      }, 0);
+    }
+  };
+
+  onBlur = () => {
+    if (this.props.payloadData.title) {
+      this.setState({ value: this.props.payloadData.title });
+    } else {
+      this.props.renameItem(this.props.payloadData.id, this.state.value);
+    }
+
+    this.setState({ disabled: true });
+  };
+
   clearInputValues = () => {
     this.setState({ title: '', description: '', content: '' });
   };
@@ -116,6 +152,9 @@ class PayloadData extends React.PureComponent<Props> {
         <div className={styles.payloadDataHeader}>
           <ContentEditable
             id={payloadData.id}
+            disabled={this.state.disabled}
+            onClick={this.renameItem}
+            onBlur={this.onBlur}
             onChange={this.handleChange}
             tagName="span"
             html={payloadData.title}
