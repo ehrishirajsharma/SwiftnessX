@@ -56,8 +56,7 @@
     ],
     "publish": [
       {
-        "provider": "s3",
-        "bucket": "swiftness"
+        "provider": "github"
       }
     ],
     "dmg": {
@@ -93,16 +92,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ehrishirajsharma/swiftness-electron.git"
+    "url": "https://github.com/ehrishirajsharma/SwiftnessX.git"
   },
   "author": {
-    "name": "C. T. Lin",
+    "name": "Rishiraj Sharma",
     "email": "chentsulin@gmail.com",
-    "url": "https://github.com/chentsulin"
+    "url": "https://github.com/ehrishirajsharma"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/chentsulin/electron-react-boilerplate/issues"
+    "url": "https://github.com/ehrishirajsharma/SwiftnessX/issues"
   },
   "keywords": [
     "electron",
@@ -115,7 +114,7 @@
     "hot",
     "reload"
   ],
-  "homepage": "https://github.com/chentsulin/electron-react-boilerplate#readme",
+  "homepage": "https://github.com/ehrishirajsharma/SwiftnessX#readme",
   "jest": {
     "moduleNameMapper": {
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/internals/mocks/fileMock.js",
