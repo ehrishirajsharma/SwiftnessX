@@ -6,7 +6,8 @@ type Props = {
   +html: string,
   +className: string | undefined,
   disabled?: boolean,
-  onClick?: () => void
+  onClick?: () => void,
+  onBlur?: () => void
 };
 
 export default class ContentEditableExpanded extends React.Component<Props> {
@@ -18,6 +19,7 @@ export default class ContentEditableExpanded extends React.Component<Props> {
 
   onKeyPress = event => {
     if (event.charCode === 13) {
+      this.props.onBlur();
       event.target.blur();
       event.preventDefault();
 
@@ -46,5 +48,6 @@ export default class ContentEditableExpanded extends React.Component<Props> {
 
 ContentEditableExpanded.defaultProps = {
   disabled: false,
-  onClick: () => {}
+  onClick: () => {},
+  onBlur: () => {}
 };

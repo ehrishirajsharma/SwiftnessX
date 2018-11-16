@@ -38,7 +38,8 @@ type Props = {
 
 class Item extends React.PureComponent<Props> {
   state = {
-    disabled: true
+    disabled: true,
+    value: ''
   };
 
   componentDidMount = () => {
@@ -53,6 +54,16 @@ class Item extends React.PureComponent<Props> {
   };
 
   handleClickOutside = () => {
+    this.handleBlur();
+  };
+
+  handleBlur = () => {
+    if (this.props.item.title) {
+      this.setState({ value: this.props.item.title });
+    } else {
+      this.props.renameItem(this.props.item.id, this.state.value);
+    }
+
     this.setState({ disabled: true });
   };
 
@@ -109,7 +120,7 @@ class Item extends React.PureComponent<Props> {
   };
 
   renameItem = target => {
-    this.setState({ disabled: false });
+    this.setState({ disabled: false, value: this.props.item.title });
 
     setTimeout(() => {
       target.focus();
@@ -169,6 +180,7 @@ class Item extends React.PureComponent<Props> {
                 disabled={this.state.disabled}
                 tagName="span"
                 html={item.title}
+                onBlur={this.handleBlur}
                 onChange={e => this.props.renameItem(item.id, e.target.value)}
               />
             </li>

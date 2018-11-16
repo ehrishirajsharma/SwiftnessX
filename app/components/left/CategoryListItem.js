@@ -23,7 +23,8 @@ export default class CategoryListItem extends React.Component<Props> {
   props: Props;
 
   state = {
-    disabled: true
+    disabled: true,
+    value: ''
   };
 
   componentDidMount = () => {
@@ -40,6 +41,7 @@ export default class CategoryListItem extends React.Component<Props> {
   shouldComponentUpdate = (nextProps, nextState) =>
     this.props.id !== nextProps.id ||
     this.props.active !== nextProps.active ||
+    this.props.title !== nextProps.title ||
     this.state !== nextState;
 
   handleRightClick = target => {
@@ -99,11 +101,17 @@ export default class CategoryListItem extends React.Component<Props> {
   };
 
   onBlur = () => {
+    if (this.props.title) {
+      this.setState({ value: this.props.title });
+    } else {
+      this.props.renameItem(this.state.value);
+    }
+
     this.setState({ disabled: true });
   };
 
   renameItem = target => {
-    this.setState({ disabled: false });
+    this.setState({ disabled: false, value: this.props.title });
 
     setTimeout(() => {
       target.focus();

@@ -19,14 +19,15 @@ export default class ItemData extends React.PureComponent<Props> {
   props: Props;
 
   state = {
-    disabled: true
+    disabled: true,
+    value: ''
   };
 
   renameItem = event => {
     if (this.state.disabled) {
       const { target } = event;
 
-      this.setState({ disabled: false });
+      this.setState({ disabled: false, value: this.props.item.title });
 
       setTimeout(() => {
         target.focus();
@@ -47,6 +48,12 @@ export default class ItemData extends React.PureComponent<Props> {
   };
 
   onBlur = () => {
+    if (this.props.item.title) {
+      this.setState({ value: this.props.item.title });
+    } else {
+      this.props.editTitle(this.props.item.id, this.state.value);
+    }
+
     this.setState({ disabled: true });
   };
 
