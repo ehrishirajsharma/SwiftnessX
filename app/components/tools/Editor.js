@@ -26,10 +26,13 @@ type Props = {
 
 const CustomToolbar = () => (
   <div id="toolbar" className={styles.toolbar}>
-    <select className={className('ql-font', styles.font)} defaultValue="">
-      <option value="">Sans Serif</option>
-      <option value="verdana">Verdana</option>
+    <select
+      className={className('ql-font', styles.font)}
+      defaultValue="open-sans"
+    >
       <option value="open-sans">Open Sans</option>
+      <option value="sans-serif">Sans Serif</option>
+      <option value="verdana">Verdana</option>
       <option value="inconsolata">Inconsolata</option>
       <option value="roboto">Roboto</option>
       <option value="mirza">Mirza</option>
@@ -89,6 +92,7 @@ class Editor extends React.Component<Props> {
     const CodeBlock = GetCodeBlock();
 
     FontStyle.whitelist = [
+      'sans-serif',
       'verdana',
       'open-sans',
       'inconsolata',
