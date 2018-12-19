@@ -49,6 +49,10 @@ html {
   border: none;
 }
 
+.ql-editor {
+  font-family: "open-sans";
+}
+
 /* Set content font-families */
 
 .ql-font-inconsolata {
