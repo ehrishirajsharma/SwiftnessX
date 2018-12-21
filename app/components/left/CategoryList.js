@@ -1,7 +1,19 @@
 // @flow
 import React from 'react';
+import { Droppable, Draggable } from 'react-beautiful-dnd';
 import styles from '../css/CategoryList.css';
 import CategoryListItem from './CategoryListItem';
+
+const getItemStyle = (isSelected, isDragging, draggableStyle) => {
+  if (isDragging) {
+    return {
+      background: '#E0E0E0',
+      ...draggableStyle
+    };
+  }
+
+  return draggableStyle;
+};
 
 type Props = {
   +onClick: (id: string) => void,
@@ -40,25 +52,54 @@ export default class CategoryList extends React.Component<Props> {
 
     return (
       <div className={styles.sublistNav}>
-        {folders.map(folder => (
-          <div key={folder.id}>
-            <CategoryListItem
-              id={`${targetId}-${folder.id}`}
-              title={folder.title}
-              isNew={folder.isNew}
-              active={this.props.activeFolderId === folder.id}
-              onClick={() => this.props.onClick(folder.id)}
-              addItem={() => addFolder(targetId)}
-              saveItem={() => saveFolder(targetId, folder.id)}
-              renameItem={title => editFolderTitle(targetId, folder.id, title)}
-              removeItem={() => removeFolder(targetId, folder.id)}
-              doNotShowDeleteConfirmation={
-                this.props.doNotShowDeleteConfirmation
-              }
-              showDeleteConfirmation={this.props.showDeleteConfirmation}
-            />
-          </div>
-        ))}
+        <Droppable droppableId={targetId} type={targetId}>
+          {provided => (
+            <div ref={provided.innerRef} {...provided.droppableProps}>
+              {folders.map((folder, index) => (
+                <Draggable
+                  key={folder.id}
+                  draggableId={folder.id}
+                  index={index}
+                >
+                  {(providedDrag, snapshotDrag) => (
+                    <div
+                      key={folder.id}
+                      ref={providedDrag.innerRef}
+                      {...providedDrag.draggableProps}
+                      style={getItemStyle(
+                        false,
+                        snapshotDrag.isDragging,
+                        providedDrag.draggableProps.style
+                      )}
+                    >
+                      <CategoryListItem
+                        {...providedDrag.dragHandleProps}
+                        id={`${targetId}-${folder.id}`}
+                        title={folder.title}
+                        isNew={folder.isNew}
+                        index={index}
+                        active={this.props.activeFolderId === folder.id}
+                        onClick={() => this.props.onClick(folder.id)}
+                        addItem={() => addFolder(targetId)}
+                        saveItem={() => saveFolder(targetId, folder.id)}
+                        renameItem={title =>
+                          editFolderTitle(targetId, folder.id, title)
+                        }
+                        removeItem={() => removeFolder(targetId, folder.id)}
+                        doNotShowDeleteConfirmation={
+                          this.props.doNotShowDeleteConfirmation
+                        }
+                        showDeleteConfirmation={
+                          this.props.showDeleteConfirmation
+                        }
+                      />
+                    </div>
+                  )}
+                </Draggable>
+              ))}
+            </div>
+          )}
+        </Droppable>
       </div>
     );
   }

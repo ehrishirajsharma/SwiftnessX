@@ -7,7 +7,9 @@ import {
   SAVE_LIBRARY_FOLDER,
   SAVE_LIBRARY_ITEM,
   EDIT_LIBRARY_TITLE,
+  EDIT_LIBRARY_ORDER,
   EDIT_LIBRARY_FOLDER_TITLE,
+  EDIT_LIBRARY_FOLDER_ORDER,
   EDIT_LIBRARY_ITEM_TITLE,
   EDIT_LIBRARY_ITEM_CONTENT,
   EDIT_LIBRARY_ITEM_ORDER,
@@ -68,6 +70,13 @@ export default function libraries(
         ...state.slice(index + 1, state.length)
       ];
     }
+    case EDIT_LIBRARY_ORDER: {
+      const result = [...state];
+      const [item] = result.splice(action.payload.fromIndex, 1);
+      result.splice(action.payload.toIndex, 0, item);
+
+      return result;
+    }
     case IMPORT_LIBRARIES: {
       return state.concat(action.payload.libraries);
     }
@@ -78,6 +87,7 @@ export default function libraries(
     case SAVE_LIBRARY_ITEM:
     case EDIT_LIBRARY_TITLE:
     case EDIT_LIBRARY_FOLDER_TITLE:
+    case EDIT_LIBRARY_FOLDER_ORDER:
     case EDIT_LIBRARY_ITEM_TITLE:
     case EDIT_LIBRARY_ITEM_CONTENT:
     case EDIT_LIBRARY_ITEM_ORDER:
@@ -114,6 +124,16 @@ function editLibrary(state = {}, action) {
       return {
         ...state,
         title: action.payload.title
+      };
+    }
+    case EDIT_LIBRARY_FOLDER_ORDER: {
+      const newFoldersOrder = [...state.folders];
+      const [folder] = newFoldersOrder.splice(action.payload.fromIndex, 1);
+      newFoldersOrder.splice(action.payload.toIndex, 0, folder);
+
+      return {
+        ...state,
+        folders: newFoldersOrder
       };
     }
     case REMOVE_LIBRARY_FOLDER: {

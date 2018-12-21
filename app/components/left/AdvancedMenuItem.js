@@ -1,6 +1,7 @@
 // @flow
 import React from 'react';
 import SmoothCollapse from 'react-smooth-collapse';
+import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 import styles from '../css/AdvancedMenuItem.css';
 import SearchIcon from '../../assets/icons/Search';
 import { targetType } from '../../reducers/targets';
@@ -21,7 +22,9 @@ type Props = {
   +removeFolder: (id: string, folderId: string) => void,
   +doNotShowDeleteConfirmation: () => void,
   +editTitle: (id: string, title: string) => void,
+  +editOrder: (fromIndex: number, toIndex: number) => void,
   +editFolderTitle: (id: string, folderId: string, title: string) => void,
+  +editFolderOrder: (id: string, fromIndex: number, toIndex: number) => void,
   +title: string,
   +sublist: targetType[],
   popup?: boolean,
@@ -113,6 +116,21 @@ export default class AdvancedMenuItem extends React.PureComponent<Props> {
     }
   };
 
+  onDragEnd = result => {
+    if (!result.destination) {
+      return;
+    }
+    if (result.type === 'DEFAULT') {
+      this.props.editOrder(result.source.index, result.destination.index);
+    } else {
+      this.props.editFolderOrder(
+        result.type,
+        result.source.index,
+        result.destination.index
+      );
+    }
+  };
+
   render() {
     const {
       removeParent,
@@ -127,27 +145,38 @@ export default class AdvancedMenuItem extends React.PureComponent<Props> {
 
     const sublistList = (
       <ul>
-        {this.applyFilter(sublist).map(item => (
-          <TargetMenuItem
-            key={item.id}
-            item={item}
-            menu={menu}
-            expanded={this.state.expandedList === item.id}
-            setActiveList={() => this.setActiveList(item.id)}
-            onCategoryClick={folderId =>
-              this.handleCategoryClick(item, folderId)
-            }
-            removeParent={removeParent}
-            doNotShowDeleteConfirmation={this.props.doNotShowDeleteConfirmation}
-            addFolder={addFolder}
-            saveParent={this.props.saveParent}
-            saveFolder={this.props.saveFolder}
-            removeFolder={removeFolder}
-            editTitle={this.props.editTitle}
-            editFolderTitle={this.props.editFolderTitle}
-            showDeleteConfirmation={this.props.showDeleteConfirmation}
-          />
-        ))}
+        <DragDropContext onDragEnd={this.onDragEnd}>
+          <Droppable droppableId="droppable">
+            {provided => (
+              <div ref={provided.innerRef} {...provided.droppableProps}>
+                {this.applyFilter(sublist).map((item, index) => (
+                  <TargetMenuItem
+                    key={item.id}
+                    item={item}
+                    menu={menu}
+                    expanded={this.state.expandedList === item.id}
+                    index={index}
+                    setActiveList={() => this.setActiveList(item.id)}
+                    onCategoryClick={folderId =>
+                      this.handleCategoryClick(item, folderId)
+                    }
+                    removeParent={removeParent}
+                    doNotShowDeleteConfirmation={
+                      this.props.doNotShowDeleteConfirmation
+                    }
+                    addFolder={addFolder}
+                    saveParent={this.props.saveParent}
+                    saveFolder={this.props.saveFolder}
+                    removeFolder={removeFolder}
+                    editTitle={this.props.editTitle}
+                    editFolderTitle={this.props.editFolderTitle}
+                    showDeleteConfirmation={this.props.showDeleteConfirmation}
+                  />
+                ))}
+              </div>
+            )}
+          </Droppable>
+        </DragDropContext>
       </ul>
     );
 

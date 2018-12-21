@@ -16,7 +16,8 @@ type Props = {
   +id: string,
   +title: string,
   isNew?: boolean,
-  +showDeleteConfirmation: boolean
+  +showDeleteConfirmation: boolean,
+  +index: number
 };
 
 export default class CategoryListItem extends React.Component<Props> {
@@ -131,10 +132,24 @@ export default class CategoryListItem extends React.Component<Props> {
   };
 
   render() {
-    const { onClick, renameItem, id, title } = this.props;
+    const {
+      onClick,
+      renameItem,
+      id,
+      title,
+      isNew,
+      doNotShowDeleteConfirmation,
+      showDeleteConfirmation,
+      removeItem,
+      saveItem,
+      addItem,
+      active,
+      ...other
+    } = this.props;
 
     return (
       <ContentEditable
+        {...other}
         className={className(styles.title, {
           [`${styles.active}`]: this.props.active
         })}

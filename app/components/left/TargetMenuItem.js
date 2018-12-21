@@ -1,11 +1,23 @@
 // @flow
 import React from 'react';
 import SmoothCollapse from 'react-smooth-collapse';
+import { Draggable } from 'react-beautiful-dnd';
 import className from 'classnames';
 import styles from '../css/TargetMenuItem.css';
 import { targetType } from '../../reducers/targets';
 import CategoryList from './CategoryList';
 import CategoryListItem from './CategoryListItem';
+
+const getItemStyle = (isSelected, isDragging, draggableStyle) => {
+  if (isDragging) {
+    return {
+      background: '#E0E0E0',
+      ...draggableStyle
+    };
+  }
+
+  return draggableStyle;
+};
 
 type Props = {
   +saveParent: (id: string) => void,
@@ -24,7 +36,8 @@ type Props = {
     id: string | undefined,
     folderId: string | undefined
   },
-  +showDeleteConfirmation: boolean
+  +showDeleteConfirmation: boolean,
+  +index: number
 };
 
 export default class TargetMenuItem extends React.Component<Props> {
@@ -55,45 +68,65 @@ export default class TargetMenuItem extends React.Component<Props> {
       editTitle,
       editFolderTitle,
       item,
-      removeParent
+      removeParent,
+      index
     } = this.props;
 
     return (
-      <li
-        className={className(styles.listItem, {
-          [`${styles.expanded}`]:
-            this.props.expanded || this.props.menu.id === item.id
-        })}
-        role="menuitem"
-      >
-        <CategoryListItem
-          id={item.id}
-          title={item.title}
-          isNew={item.isNew}
-          active={this.props.menu.id === item.id}
-          onClick={this.handleListItemClick}
-          addItem={() => addFolder(item.id)}
-          saveItem={() => saveParent(item.id)}
-          renameItem={title => editTitle(item.id, title)}
-          removeItem={() => removeParent(item.id)}
-          doNotShowDeleteConfirmation={this.props.doNotShowDeleteConfirmation}
-          showDeleteConfirmation={this.props.showDeleteConfirmation}
-        />
-        <SmoothCollapse expanded={this.props.expanded}>
-          <CategoryList
-            activeFolderId={this.props.menu.folderId}
-            onClick={onCategoryClick}
-            addFolder={addFolder}
-            saveFolder={saveFolder}
-            editFolderTitle={editFolderTitle}
-            removeFolder={removeFolder}
-            doNotShowDeleteConfirmation={this.props.doNotShowDeleteConfirmation}
-            targetId={item.id}
-            folders={item.folders}
-            showDeleteConfirmation={this.props.showDeleteConfirmation}
-          />
-        </SmoothCollapse>
-      </li>
+      <Draggable key={item.id} draggableId={item.id} index={index}>
+        {(providedDrag, snapshotDrag) => (
+          <li
+            className={className(styles.listItem, {
+              [`${styles.expanded}`]:
+                this.props.expanded || this.props.menu.id === item.id
+            })}
+            key={item.id}
+            role="menuitem"
+            tabIndex={0}
+            ref={providedDrag.innerRef}
+            {...providedDrag.draggableProps}
+            style={getItemStyle(
+              false,
+              snapshotDrag.isDragging,
+              providedDrag.draggableProps.style
+            )}
+          >
+            <CategoryListItem
+              {...providedDrag.dragHandleProps}
+              id={item.id}
+              title={item.title}
+              isNew={item.isNew}
+              active={this.props.menu.id === item.id}
+              index={this.props.index}
+              onClick={this.handleListItemClick}
+              addItem={() => addFolder(item.id)}
+              saveItem={() => saveParent(item.id)}
+              renameItem={title => editTitle(item.id, title)}
+              removeItem={() => removeParent(item.id)}
+              doNotShowDeleteConfirmation={
+                this.props.doNotShowDeleteConfirmation
+              }
+              showDeleteConfirmation={this.props.showDeleteConfirmation}
+            />
+            <SmoothCollapse expanded={this.props.expanded}>
+              <CategoryList
+                activeFolderId={this.props.menu.folderId}
+                onClick={onCategoryClick}
+                addFolder={addFolder}
+                saveFolder={saveFolder}
+                editFolderTitle={editFolderTitle}
+                removeFolder={removeFolder}
+                doNotShowDeleteConfirmation={
+                  this.props.doNotShowDeleteConfirmation
+                }
+                targetId={item.id}
+                folders={item.folders}
+                showDeleteConfirmation={this.props.showDeleteConfirmation}
+              />
+            </SmoothCollapse>
+          </li>
+        )}
+      </Draggable>
     );
   }
 }

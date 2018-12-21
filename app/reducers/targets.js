@@ -9,7 +9,9 @@ import {
   SAVE_TARGET_CHECKITEM,
   SAVE_TARGET_NOTE,
   EDIT_TARGET_TITLE,
+  EDIT_TARGET_ORDER,
   EDIT_TARGET_FOLDER_TITLE,
+  EDIT_TARGET_FOLDER_ORDER,
   EDIT_TARGET_CHECKITEM_TITLE,
   EDIT_TARGET_CHECKITEM_CONTENT,
   EDIT_TARGET_CHECKITEM_ORDER,
@@ -98,6 +100,13 @@ export default function targets(state: targetType[] = [], action: actionType) {
         ...state.slice(index + 1, state.length)
       ];
     }
+    case EDIT_TARGET_ORDER: {
+      const result = [...state];
+      const [item] = result.splice(action.payload.fromIndex, 1);
+      result.splice(action.payload.toIndex, 0, item);
+
+      return result;
+    }
     case IMPORT_TARGETS: {
       return state.concat(action.payload.targets);
     }
@@ -110,6 +119,7 @@ export default function targets(state: targetType[] = [], action: actionType) {
     case SAVE_TARGET_NOTE:
     case EDIT_TARGET_TITLE:
     case EDIT_TARGET_FOLDER_TITLE:
+    case EDIT_TARGET_FOLDER_ORDER:
     case EDIT_TARGET_CHECKITEM_TITLE:
     case EDIT_TARGET_CHECKITEM_CONTENT:
     case EDIT_TARGET_CHECKITEM_ORDER:
@@ -152,6 +162,16 @@ function editTarget(state = {}, action) {
       return {
         ...state,
         title: action.payload.title
+      };
+    }
+    case EDIT_TARGET_FOLDER_ORDER: {
+      const newFoldersOrder = [...state.folders];
+      const [folder] = newFoldersOrder.splice(action.payload.fromIndex, 1);
+      newFoldersOrder.splice(action.payload.toIndex, 0, folder);
+
+      return {
+        ...state,
+        folders: newFoldersOrder
       };
     }
     case REMOVE_TARGET_FOLDER: {

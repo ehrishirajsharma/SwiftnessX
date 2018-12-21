@@ -20,7 +20,9 @@ import {
   saveTarget,
   saveTargetFolder,
   editTargetTitle,
+  editTargetOrder,
   editTargetFolderTitle,
+  editTargetFolderOrder,
   removeTarget,
   removeTargetFolder
 } from '../actions/targets';
@@ -30,7 +32,9 @@ import {
   saveLibrary,
   saveLibraryFolder,
   editLibraryTitle,
+  editLibraryOrder,
   editLibraryFolderTitle,
+  editLibraryFolderOrder,
   removeLibrary,
   removeLibraryFolder
 } from '../actions/libraries';
@@ -73,12 +77,24 @@ type Props = {
   +saveLibraryFolder: (id: string, folderId: string) => void,
 
   +editTargetTitle: (id: string, title: string) => void,
+  +editTargetOrder: (fromIndex: number, toIndex: number) => void,
   +editTargetFolderTitle: (id: string, folderId: string, title: string) => void,
+  +editTargetFolderOrder: (
+    id: string,
+    fromIndex: number,
+    toIndex: number
+  ) => void,
   +editLibraryTitle: (id: string, title: string) => void,
+  +editLibraryOrder: (fromIndex: number, toIndex: number) => void,
   +editLibraryFolderTitle: (
     id: string,
     folderId: string,
     title: string
+  ) => void,
+  +editLibraryFolderOrder: (
+    id: string,
+    fromIndex: number,
+    toIndex: number
   ) => void,
 
   +removeTarget: (id: string) => void,
@@ -174,7 +190,9 @@ class LeftPanelContainer extends React.PureComponent<Props> {
           saveParent={this.props.saveTarget}
           saveFolder={this.props.saveTargetFolder}
           editTitle={this.props.editTargetTitle}
+          editOrder={this.props.editTargetOrder}
           editFolderTitle={this.props.editTargetFolderTitle}
+          editFolderOrder={this.props.editTargetFolderOrder}
           title="Targets"
           sublist={targets}
           popup
@@ -193,7 +211,9 @@ class LeftPanelContainer extends React.PureComponent<Props> {
           saveParent={this.props.saveLibrary}
           saveFolder={this.props.saveLibraryFolder}
           editTitle={this.props.editLibraryTitle}
+          editOrder={this.props.editLibraryOrder}
           editFolderTitle={this.props.editLibraryFolderTitle}
+          editFolderOrder={this.props.editLibraryFolderOrder}
           title="Libraries"
           sublist={libraries}
           menu={uiState.menu}
@@ -259,9 +279,13 @@ function mapDispatchToProps(dispatch) {
       saveLibraryFolder,
 
       editTargetTitle,
+      editTargetOrder,
       editTargetFolderTitle,
+      editTargetFolderOrder,
       editLibraryTitle,
+      editLibraryOrder,
       editLibraryFolderTitle,
+      editLibraryFolderOrder,
 
       removeTarget,
       removeLibrary,
