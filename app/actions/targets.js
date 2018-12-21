@@ -14,7 +14,10 @@ export const SAVE_TARGET_CHECKITEM = 'SAVE_TARGET_CHECKITEM';
 export const SAVE_TARGET_NOTE = 'SAVE_TARGET_NOTE';
 
 export const EDIT_TARGET_TITLE = 'EDIT_TARGET_TITLE';
+export const EDIT_TARGET_ORDER = 'EDIT_TARGET_ORDER';
+
 export const EDIT_TARGET_FOLDER_TITLE = 'EDIT_TARGET_FOLDER_TITLE';
+export const EDIT_TARGET_FOLDER_ORDER = 'EDIT_TARGET_FOLDER_ORDER';
 
 export const EDIT_TARGET_CHECKITEM_TITLE = 'EDIT_TARGET_CHECKITEM_TITLE';
 export const EDIT_TARGET_CHECKITEM_CONTENT = 'EDIT_TARGET_CHECKITEM_CONTENT';
@@ -130,6 +133,16 @@ export function editTargetTitle(id: string, title: string) {
   };
 }
 
+export function editTargetOrder(fromIndex: number, toIndex: number) {
+  return {
+    type: EDIT_TARGET_ORDER,
+    payload: {
+      fromIndex,
+      toIndex
+    }
+  };
+}
+
 export function editTargetFolderTitle(
   id: string,
   folderId: string,
@@ -141,6 +154,21 @@ export function editTargetFolderTitle(
       id,
       folderId,
       title
+    }
+  };
+}
+
+export function editTargetFolderOrder(
+  id: string,
+  fromIndex: number,
+  toIndex: number
+) {
+  return {
+    type: EDIT_TARGET_FOLDER_ORDER,
+    payload: {
+      id,
+      fromIndex,
+      toIndex
     }
   };
 }

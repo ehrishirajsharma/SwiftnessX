@@ -11,7 +11,10 @@ export const SAVE_LIBRARY_FOLDER = 'SAVE_LIBRARY_FOLDER';
 export const SAVE_LIBRARY_ITEM = 'SAVE_LIBRARY_ITEM';
 
 export const EDIT_LIBRARY_TITLE = 'EDIT_LIBRARY_TITLE';
+export const EDIT_LIBRARY_ORDER = 'EDIT_LIBRARY_ORDER';
+
 export const EDIT_LIBRARY_FOLDER_TITLE = 'EDIT_LIBRARY_FOLDER_TITLE';
+export const EDIT_LIBRARY_FOLDER_ORDER = 'EDIT_LIBRARY_FOLDER_TITLE';
 
 export const EDIT_LIBRARY_ITEM_TITLE = 'EDIT_LIBRARY_ITEM_TITLE';
 export const EDIT_LIBRARY_ITEM_CONTENT = 'EDIT_LIBRARY_ITEM_CONTENT';
@@ -94,6 +97,16 @@ export function editLibraryTitle(id: string, title: string) {
   };
 }
 
+export function editLibraryOrder(fromIndex: number, toIndex: number) {
+  return {
+    type: EDIT_LIBRARY_ORDER,
+    payload: {
+      fromIndex,
+      toIndex
+    }
+  };
+}
+
 export function editLibraryFolderTitle(
   id: string,
   folderId: string,
@@ -105,6 +118,21 @@ export function editLibraryFolderTitle(
       id,
       folderId,
       title
+    }
+  };
+}
+
+export function editLibraryFolderOrder(
+  id: string,
+  fromIndex: number,
+  toIndex: number
+) {
+  return {
+    type: EDIT_LIBRARY_FOLDER_ORDER,
+    payload: {
+      id,
+      fromIndex,
+      toIndex
     }
   };
 }
