@@ -217,6 +217,7 @@
     "font-awesome": "^4.7.0",
     "history": "^4.7.2",
     "jquery": "^3.3.1",
+    "quill-image-resize-module": "^3.0.0",
     "react": "^16.4.0",
     "react-beautiful-dnd": "^9.0.0",
     "react-contenteditable": "^2.1.0",

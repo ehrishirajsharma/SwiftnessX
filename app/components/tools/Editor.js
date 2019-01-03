@@ -1,7 +1,8 @@
 // @flow
 import { shell } from 'electron';
 import React from 'react';
-import ReactQuill from 'react-quill';
+import ReactQuill, { Quill } from 'react-quill';
+import ImageResize from 'quill-image-resize-module';
 import className from 'classnames';
 import onClickOutside from 'react-onclickoutside';
 import $ from 'jquery';
@@ -15,6 +16,7 @@ import ImageIcon from '../../assets/quill/image.png';
 import VideoIcon from '../../assets/quill/video.png';
 import ListOrderedIcon from '../../assets/quill/list_ordered.png';
 import LinkIcon from '../../assets/quill/link.png';
+import Video from './quill-video-resize';
 
 type Props = {
   +editContent: (content: string) => void,
@@ -56,7 +58,7 @@ const CustomToolbar = () => (
 );
 
 const GetCodeBlock = () => {
-  const CodeBlock = ReactQuill.Quill.import('formats/code-block');
+  const CodeBlock = Quill.import('formats/code-block');
 
   class InlineStyleCodeBlock extends CodeBlock {
     static create() {
@@ -82,13 +84,14 @@ const GetCodeBlock = () => {
 class Editor extends React.Component<Props> {
   props: Props;
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
-    this.reactQuill = React.createRef();
+    this.quill = null;
+    this.reactQuill = null;
 
-    const FontStyle = ReactQuill.Quill.import('attributors/style/font');
-    const SizeStyle = ReactQuill.Quill.import('attributors/style/size');
+    const FontStyle = Quill.import('attributors/style/font');
+    const SizeStyle = Quill.import('attributors/style/size');
     const CodeBlock = GetCodeBlock();
 
     FontStyle.whitelist = [
@@ -101,11 +104,14 @@ class Editor extends React.Component<Props> {
       'arial'
     ];
 
-    ReactQuill.Quill.register(FontStyle, true);
-    ReactQuill.Quill.register(SizeStyle, true);
-    ReactQuill.Quill.register(CodeBlock, true);
+    Quill.register('modules/ImageResize', ImageResize);
+    Quill.register({ 'formats/video': Video });
 
-    const icons = ReactQuill.Quill.import('ui/icons');
+    Quill.register(FontStyle, true);
+    Quill.register(SizeStyle, true);
+    Quill.register(CodeBlock, true);
+
+    const icons = Quill.import('ui/icons');
 
     icons.bold = `<img src=${BoldIcon}>`;
     icons.italic = `<img src=${ItalicIcon}>`;
@@ -134,9 +140,20 @@ class Editor extends React.Component<Props> {
   }
 
   componentDidMount() {
-    const editor = this.reactQuill.current.getEditor();
-    editor.history.clear();
+    this.attachQuillRefs();
   }
+
+  componentDidUpdate() {
+    this.attachQuillRefs();
+  }
+
+  attachQuillRefs = () => {
+    if (typeof this.reactQuill.getEditor !== 'function') return;
+
+    this.quill = this.reactQuill.getEditor();
+    this.quill.root.addEventListener('click', this.handleClick, false);
+    this.quill.root.quill = this.quill;
+  };
 
   handleClickOutside = e => {
     if (this.props.item.content !== this.state.content) {
@@ -186,7 +203,9 @@ class Editor extends React.Component<Props> {
       >
         <CustomToolbar />
         <ReactQuill
-          ref={this.reactQuill}
+          ref={el => {
+            this.reactQuill = el;
+          }}
           className={styles.editor}
           id="editor"
           theme="snow"
@@ -209,6 +228,9 @@ class Editor extends React.Component<Props> {
  */
 Editor.modules = {
   toolbar: '#toolbar',
+  imageResize: {
+    displaySize: true
+  },
   clipboard: {
     matchVisual: true
   }
@@ -217,18 +239,28 @@ Editor.modules = {
  * Quill editor formats
  * See https://quilljs.com/docs/formats/
  */
+
 Editor.formats = [
   'header',
-  'font',
-  'size',
   'bold',
   'italic',
   'underline',
+  'strike',
+  'blockquote',
+  'background',
   'code-block',
   'list',
+  'bullet',
+  'indent',
+  'align',
+  'size',
+  'color',
+  'font',
   'link',
   'image',
-  'video'
+  'video',
+  'width',
+  'height'
 ];
 
 export default onClickOutside(Editor);

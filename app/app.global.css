@@ -70,3 +70,90 @@ html {
 .ql-font-arial {
   font-family: "Arial";
 }
+
+.ql-editor .td-video {
+  display: block;
+  max-width: 100%;
+}
+
+
+
+
+
+
+.ql-editor .td-video .td-quill-video-wrapper {
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  cursor: pointer;
+  background-color: rgba(0,0,0,0);
+  -webkit-transition: background-color 1s ease;
+  -moz-transition: background-color 1s ease;
+  -o-transition: background-color 1s ease;
+  transition: background-color 1s ease;
+}
+.ql-editor .td-video .td-quill-video-wrapper:hover {
+  background-color: rgba(0,0,0,0.4);
+  box-sizing: border-box;
+  border: 1px dashed #444;
+}
+.ql-editor .td-video .td-quill-video-wrapper.active {
+  background-color: rgba(0,0,0,0.4);
+  box-sizing: border-box;
+  border: 1px dashed #444;
+}
+.ql-editor .td-video .td-quill-video-wrapper {
+  position: relative;
+  display: inline-block;
+  margin: auto;
+}
+.ql-editor .td-video .td-quill-video-editing {
+  padding: 1px;
+  min-width: 300px;
+  min-height: 150px;
+  max-width: 100%;
+}
+.ql-editor .td-video .td-quill-video-toolbar-wrapper {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+}
+.ql-editor .td-video .td-quill-video-toolbar-wrapper .td-quill-video-toolbar {
+  position: relative;
+  top: -15px;
+  width: auto;
+  display: inline-block;
+  padding: 5px 0px;
+}
+.ql-editor .td-video .td-quill-video-toolbar .td-quill-video-align-action {
+  padding: 0 5px;
+  background-color: #fff;
+  cursor: pointer;
+  color: #3b3e43;
+  border-top: 1px solid #dbdbdb;
+  border-bottom: 1px solid #dbdbdb;
+}
+.ql-editor .td-video .td-quill-video-toolbar .td-quill-video-left {
+  border-left: 1px solid #dbdbdb;
+}
+.ql-editor .td-video .td-quill-video-toolbar .td-quill-video-right {
+  border-right: 1px solid #dbdbdb;
+}
+.ql-editor .td-video .td-quill-video-toolbar .td-quill-video-center {
+  border-left: 1px solid #dbdbdb;
+  border-right: 1px solid #dbdbdb;
+}
+.ql-editor .td-video .td-quill-video-toolbar .td-quill-video-align-action:hover {
+  color: #0FCED1;
+}
+.ql-editor .td-video .td-quill-resize-nub {
+  position: absolute;
+  height: 12px;
+  width: 12px;
+  background-color: #fff;
+  border: 1px solid rgb(119, 119, 119);
+  box-sizing: border-box;
+  cursor: nesw-resize;
+}
