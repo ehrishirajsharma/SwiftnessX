@@ -12,6 +12,8 @@ export const OPEN_PAYLOAD_DATA = 'OPEN_PAYLOAD_DATA';
 export const CLOSE_LIST = 'CLOSE_LIST';
 export const CLOSE_ITEM_DATA = 'CLOSE_ITEM_DATA';
 
+export const SEARCH = 'SEARCH';
+
 export function openTarget(id: string, folderId: string) {
   return {
     type: OPEN_TARGET,
@@ -98,5 +100,14 @@ export function closeList() {
 export function closeItemData() {
   return {
     type: CLOSE_ITEM_DATA
+  };
+}
+
+export function search(query: string) {
+  return {
+    type: SEARCH,
+    payload: {
+      query
+    }
   };
 }

@@ -12,7 +12,8 @@ type Props = {
     +id: string,
     +title: string,
     +content: string
-  }
+  },
+  +search: string
 };
 
 export default class ItemData extends React.PureComponent<Props> {
@@ -58,7 +59,7 @@ export default class ItemData extends React.PureComponent<Props> {
   };
 
   render() {
-    const { editTitle, editContent, item } = this.props;
+    const { editTitle, editContent, item, search } = this.props;
 
     return (
       <div className={styles.checklistData}>
@@ -78,6 +79,7 @@ export default class ItemData extends React.PureComponent<Props> {
           key={item.id}
           editContent={content => editContent(item.id, content)}
           item={item}
+          search={search}
         />
       </div>
     );

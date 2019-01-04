@@ -181,6 +181,7 @@ class RightPanel extends React.PureComponent<Props> {
               editTitle={this.editTargetCheckitemTitle}
               editContent={this.editTargetCheckitemContent}
               item={this.getActiveChecklistData()}
+              search={uiState.search}
             />
           )}
         {uiState.menu.type === 'target' &&
@@ -189,6 +190,7 @@ class RightPanel extends React.PureComponent<Props> {
               editTitle={this.editTargetNoteTitle}
               editContent={this.editTargetNoteContent}
               item={this.getActiveNoteData()}
+              search={uiState.search}
             />
           )}
 
@@ -198,6 +200,7 @@ class RightPanel extends React.PureComponent<Props> {
               editTitle={this.editLibraryItemTitle}
               editContent={this.editLibraryItemContent}
               item={this.getActiveLibraryData()}
+              search={uiState.search}
             />
           )}
         {uiState.menu.type === 'template' &&
@@ -206,6 +209,7 @@ class RightPanel extends React.PureComponent<Props> {
               editTitle={this.props.editTemplateItemTitle}
               editContent={this.props.editTemplateItemContent}
               item={templates.find(t => t.id === uiState.main.id)}
+              search={uiState.search}
             />
           )}
         {uiState.menu.type === 'payload' &&

@@ -13,7 +13,8 @@ import {
   openLibraryData,
   openTemplateData,
   openPayloadData,
-  closeItemData
+  closeItemData,
+  search
 } from '../actions/uiState';
 import {
   addTargetCheckitem,
@@ -60,6 +61,7 @@ type Props = {
   openTemplateData: (id: string) => void,
   openPayloadData: (id: string) => void,
   closeItemData: () => void,
+  search: (query: string) => void,
 
   addTargetCheckitem: (id: string, folderId: string) => void,
   addTargetNote: (id: string, folderId: string) => void,
@@ -326,6 +328,7 @@ class MiddlePanelContainer extends React.PureComponent<Props> {
           <TargetList
             openChecklistData={this.props.openChecklistData}
             openNoteData={this.props.openNoteData}
+            search={this.props.search}
             addCheckitem={this.addTargetCheckitem}
             addNote={this.addTargetNote}
             saveCheckitem={this.saveTargetCheckitem}
@@ -351,6 +354,7 @@ class MiddlePanelContainer extends React.PureComponent<Props> {
         {type === 'library' && (
           <ItemList
             openItemData={this.props.openLibraryData}
+            search={this.props.search}
             addItem={this.addLibraryItem}
             saveItem={this.saveLibraryItem}
             renameItem={(itemId, title) =>
@@ -367,6 +371,7 @@ class MiddlePanelContainer extends React.PureComponent<Props> {
         {type === 'template' && (
           <ItemList
             openItemData={this.props.openTemplateData}
+            search={this.props.search}
             addItem={this.props.addTemplateItem}
             saveItem={this.props.saveTemplateItem}
             renameItem={this.props.editTemplateItemTitle}
@@ -381,6 +386,7 @@ class MiddlePanelContainer extends React.PureComponent<Props> {
         {type === 'payload' && (
           <ItemList
             openItemData={this.props.openPayloadData}
+            search={this.props.search}
             addItem={this.props.addPayloadItem}
             saveItem={this.props.savePayloadItem}
             renameItem={this.props.editPayloadItemTitle}
@@ -417,6 +423,7 @@ function mapDispatchToProps(dispatch) {
       openTemplateData,
       openPayloadData,
       closeItemData,
+      search,
 
       addTargetCheckitem,
       addTargetNote,

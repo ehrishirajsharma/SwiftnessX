@@ -10,7 +10,8 @@ import {
   OPEN_TEMPLATE_DATA,
   OPEN_PAYLOAD_DATA,
   CLOSE_LIST,
-  CLOSE_ITEM_DATA
+  CLOSE_ITEM_DATA,
+  SEARCH
 } from '../actions/uiState';
 
 type menuType = {
@@ -26,7 +27,8 @@ type mainType = {
 
 export type uiStateType = {
   +menu: menuType,
-  +main: mainType
+  +main: mainType,
+  +search: string
 };
 
 type actionType = {
@@ -41,7 +43,8 @@ export default function uiState(
     },
     main: {
       type: 'undefined'
-    }
+    },
+    search: ''
   },
   action: actionType
 ) {
@@ -53,6 +56,7 @@ export default function uiState(
         action.payload.folderId !== state.menu.folderId
       ) {
         return {
+          ...state,
           menu: menu(state.menu, action),
           main: { type: 'undefined' }
         };
@@ -63,6 +67,7 @@ export default function uiState(
     case OPEN_TEMPLATE: {
       if (state.menu.type !== 'template') {
         return {
+          ...state,
           menu: menu(state.menu, action),
           main: { type: 'undefined' }
         };
@@ -73,6 +78,7 @@ export default function uiState(
     case OPEN_PAYLOAD: {
       if (state.menu.type !== 'payload') {
         return {
+          ...state,
           menu: menu(state.menu, action),
           main: { type: 'undefined' }
         };
@@ -87,7 +93,7 @@ export default function uiState(
     case OPEN_PAYLOAD_DATA: {
       if (action.payload.id !== state.main.id) {
         return {
-          menu: state.menu,
+          ...state,
           main: main(state.main, action)
         };
       }
@@ -101,8 +107,13 @@ export default function uiState(
       };
     case CLOSE_ITEM_DATA:
       return {
-        menu: state.menu,
+        ...state,
         main: { type: 'undefined' }
+      };
+    case SEARCH:
+      return {
+        ...state,
+        search: action.payload.query
       };
     default:
       return state;
