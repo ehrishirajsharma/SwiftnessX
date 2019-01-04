@@ -8,6 +8,7 @@ import InnerItemList from './InnerItemList';
 
 type Props = {
   +openItemData: (id: string) => void,
+  +search: (query: string) => void,
   +addItem: () => void,
   +saveItem: (id: string) => void,
   +renameItem: (id: string, title: string) => void,
@@ -42,6 +43,8 @@ class ItemList extends React.PureComponent<Props> {
 
   onFilterChange = e => {
     this.setState({ filter: e.target.value.toLowerCase() });
+
+    this.props.search(e.target.value.toLowerCase());
   };
 
   applyFilter = items => {

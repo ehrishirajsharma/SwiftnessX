@@ -7,6 +7,7 @@ import ItemList from './ItemList';
 type Props = {
   +openChecklistData: (id: string) => void,
   +openNoteData: (id: string) => void,
+  search: (query: string) => void,
   +addCheckitem: () => void,
   +addNote: () => void,
   +saveCheckitem: (id: string) => void,
@@ -73,6 +74,7 @@ class TargetList extends React.PureComponent<Props> {
         {showChecklist && (
           <ItemList
             openItemData={openChecklistData}
+            search={this.props.search}
             addItem={addCheckitem}
             saveItem={saveCheckitem}
             renameItem={renameCheckitem}

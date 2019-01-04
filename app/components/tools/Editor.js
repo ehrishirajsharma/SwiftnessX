@@ -23,7 +23,8 @@ type Props = {
   +item: {
     +id: string,
     +content: string
-  }
+  },
+  +search: string
 };
 
 const CustomToolbar = () => (
@@ -125,14 +126,19 @@ class Editor extends React.Component<Props> {
 
   state = {
     id: '',
-    content: ''
+    content: '',
+    prevSearch: ''
   };
 
   static getDerivedStateFromProps(nextProps, prevState) {
-    if (nextProps.item.id !== prevState.id) {
+    if (
+      nextProps.item.id !== prevState.id ||
+      nextProps.search !== prevState.prevSearch
+    ) {
       return {
         id: nextProps.item.id,
-        content: nextProps.item.content
+        content: nextProps.item.content,
+        prevSearch: nextProps.search
       };
     }
 
@@ -141,18 +147,42 @@ class Editor extends React.Component<Props> {
 
   componentDidMount() {
     this.attachQuillRefs();
+    this.applySearch();
   }
 
   componentDidUpdate() {
-    this.attachQuillRefs();
+    this.applySearch();
   }
 
   attachQuillRefs = () => {
     if (typeof this.reactQuill.getEditor !== 'function') return;
 
     this.quill = this.reactQuill.getEditor();
+    this.quill = this.reactQuill.getEditor();
     this.quill.root.addEventListener('click', this.handleClick, false);
     this.quill.root.quill = this.quill;
+  };
+
+  applySearch = () => {
+    const { search } = this.props;
+    const text = this.quill.getText();
+
+    let index = 0;
+
+    if (search.length > 0) {
+      while (true) {
+        index = text.indexOf(search, index);
+
+        if (index !== -1) {
+          this.quill.formatText(index, search.length, {
+            background: '#ff0000'
+          });
+          index += 1;
+        } else {
+          break;
+        }
+      }
+    }
   };
 
   handleClickOutside = e => {
