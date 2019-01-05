@@ -51,6 +51,10 @@ const CustomToolbar = () => (
     <button className="ql-bold" />
     <button className="ql-italic" />
     <button className="ql-underline" />
+    <select className="ql-background" defaultValue="">
+      <option value="" />
+      <option value="yellow" />
+    </select>
     <button className="ql-code-block" />
     <button className="ql-image" />
     <button className="ql-video" />
@@ -92,6 +96,7 @@ class Editor extends React.Component<Props> {
     this.quill = null;
     this.reactQuill = null;
 
+    const BackgroundStyle = Quill.import('attributors/class/background');
     const FontStyle = Quill.import('attributors/style/font');
     const SizeStyle = Quill.import('attributors/style/size');
     const CodeBlock = GetCodeBlock();
@@ -109,6 +114,7 @@ class Editor extends React.Component<Props> {
     Quill.register('modules/ImageResize', ImageResize);
     Quill.register({ 'formats/video': Video });
 
+    Quill.register(BackgroundStyle, true);
     Quill.register(FontStyle, true);
     Quill.register(SizeStyle, true);
     Quill.register(CodeBlock, true);
@@ -176,7 +182,7 @@ class Editor extends React.Component<Props> {
 
         if (index !== -1) {
           this.quill.formatText(index, search.length, {
-            background: '#ff0000'
+            background: 'find'
           });
           index += 1;
         } else {

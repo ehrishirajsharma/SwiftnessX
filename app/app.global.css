@@ -79,7 +79,13 @@ html {
 
 
 
+.ql-snow .ql-color-picker .ql-picker-options {
+  width: 52px;
+}
 
+.ql-editor .ql-bg-find {
+  background-color: #FFD8D9;
+}
 
 .ql-editor .td-video .td-quill-video-wrapper {
   position: absolute;
