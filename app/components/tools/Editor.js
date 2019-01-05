@@ -1,6 +1,7 @@
 // @flow
 import { shell } from 'electron';
 import React from 'react';
+import './highlight';
 import ReactQuill, { Quill } from 'react-quill';
 import ImageResize from 'quill-image-resize-module';
 import className from 'classnames';
@@ -258,6 +259,7 @@ class Editor extends React.Component<Props> {
  */
 Editor.modules = {
   toolbar: '#toolbar',
+  syntax: true,
   imageResize: {
     displaySize: true
   },
