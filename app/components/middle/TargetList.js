@@ -5,7 +5,7 @@ import MiddlePanelHeader from './MiddlePanelHeader';
 import ItemList from './ItemList';
 
 type Props = {
-  +openChecklistData: (id: string) => void,
+  +openChecklistData: (id?: string) => void,
   +openNoteData: (id: string) => void,
   search: (query: string) => void,
   +addCheckitem: () => void,
@@ -38,10 +38,22 @@ class TargetList extends React.PureComponent<Props> {
 
   showChecklist = () => {
     this.setState({ showChecklist: true, showNotes: false });
+
+    if (this.props.checklist.length > 0) {
+      this.props.openChecklistData(this.props.checklist[0].id);
+    } else {
+      this.props.openChecklistData();
+    }
   };
 
   showNotes = () => {
     this.setState({ showChecklist: false, showNotes: true });
+
+    if (this.props.notes.length > 0) {
+      this.props.openNoteData(this.props.notes[0].id);
+    } else {
+      this.props.openNoteData();
+    }
   };
 
   render() {

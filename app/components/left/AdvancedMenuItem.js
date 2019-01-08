@@ -111,7 +111,9 @@ export default class AdvancedMenuItem extends React.PureComponent<Props> {
       this.props.openItem(item.id, folder.id);
 
       if (folder.checklist.length > 0) {
-        this.props.openItemData(folder.checklist[0].id);
+        this.props.openItemData(folder.checklist[0].id, true);
+      } else {
+        this.props.openItemData(undefined, true);
       }
     }
   };
@@ -208,6 +210,7 @@ export default class AdvancedMenuItem extends React.PureComponent<Props> {
           {searchable && (
             <div id={styles.searchItemList}>
               <input
+                className="mousetrap target-search"
                 onChange={this.onFilterChange}
                 type="text"
                 placeholder="Search Targets Here"

@@ -28,7 +28,8 @@ type mainType = {
 export type uiStateType = {
   +menu: menuType,
   +main: mainType,
-  +search: string
+  +search: string,
+  +active: string
 };
 
 type actionType = {
@@ -44,7 +45,8 @@ export default function uiState(
     main: {
       type: 'undefined'
     },
-    search: ''
+    search: '',
+    active: ''
   },
   action: actionType
 ) {
@@ -58,7 +60,8 @@ export default function uiState(
         return {
           ...state,
           menu: menu(state.menu, action),
-          main: { type: 'undefined' }
+          main: { type: 'undefined' },
+          active: 'menu'
         };
       }
 
@@ -69,7 +72,8 @@ export default function uiState(
         return {
           ...state,
           menu: menu(state.menu, action),
-          main: { type: 'undefined' }
+          main: { type: 'undefined' },
+          active: 'menu'
         };
       }
 
@@ -80,7 +84,8 @@ export default function uiState(
         return {
           ...state,
           menu: menu(state.menu, action),
-          main: { type: 'undefined' }
+          main: { type: 'undefined' },
+          active: 'menu'
         };
       }
 
@@ -91,24 +96,24 @@ export default function uiState(
     case OPEN_LIBRARY_DATA:
     case OPEN_TEMPLATE_DATA:
     case OPEN_PAYLOAD_DATA: {
-      if (action.payload.id !== state.main.id) {
-        return {
-          ...state,
-          main: main(state.main, action)
-        };
-      }
-
-      return state;
+      return {
+        ...state,
+        main: main(state.main, action),
+        active: action.payload.auto ? state.active : 'list'
+      };
     }
     case CLOSE_LIST:
       return {
+        ...state,
         menu: { type: 'undefined' },
-        main: { type: 'undefined' }
+        main: { type: 'undefined' },
+        active: 'menu'
       };
     case CLOSE_ITEM_DATA:
       return {
         ...state,
-        main: { type: 'undefined' }
+        main: { type: 'undefined' },
+        active: 'list'
       };
     case SEARCH:
       return {

@@ -176,6 +176,7 @@ class RightPanel extends React.PureComponent<Props> {
     return (
       <div>
         {uiState.menu.type === 'target' &&
+          uiState.main.id &&
           uiState.main.type === 'checklistData' && (
             <ItemData
               editTitle={this.editTargetCheckitemTitle}
@@ -185,6 +186,7 @@ class RightPanel extends React.PureComponent<Props> {
             />
           )}
         {uiState.menu.type === 'target' &&
+          uiState.main.id &&
           uiState.main.type === 'noteData' && (
             <ItemData
               editTitle={this.editTargetNoteTitle}
@@ -195,6 +197,7 @@ class RightPanel extends React.PureComponent<Props> {
           )}
 
         {uiState.menu.type === 'library' &&
+          uiState.main.id &&
           uiState.main.type === 'libraryData' && (
             <ItemData
               editTitle={this.editLibraryItemTitle}
@@ -204,6 +207,7 @@ class RightPanel extends React.PureComponent<Props> {
             />
           )}
         {uiState.menu.type === 'template' &&
+          uiState.main.id &&
           uiState.main.type === 'templateData' && (
             <ItemData
               editTitle={this.props.editTemplateItemTitle}
@@ -213,6 +217,7 @@ class RightPanel extends React.PureComponent<Props> {
             />
           )}
         {uiState.menu.type === 'payload' &&
+          uiState.main.id &&
           uiState.main.type === 'payloadData' && (
             <PayloadData
               addItemData={this.props.addPayloadItemData}
