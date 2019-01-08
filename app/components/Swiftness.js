@@ -7,6 +7,7 @@ import styles from './css/Swiftness.css';
 import LeftPanelContainer from '../containers/LeftPanelContainer';
 import MiddlePanelContainer from '../containers/MiddlePanelContainer';
 import RightPanelContainer from '../containers/RightPanelContainer';
+import ShortcutsContainer from '../containers/ShortcutsContainer';
 
 export default class Swiftness extends React.PureComponent {
   render() {
@@ -30,6 +31,7 @@ export default class Swiftness extends React.PureComponent {
           </div>
         </PanelGroup>
         <ToastContainer />
+        <ShortcutsContainer />
       </div>
     );
   }

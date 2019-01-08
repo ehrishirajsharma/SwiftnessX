@@ -114,6 +114,7 @@ class ItemList extends React.PureComponent<Props> {
         <div className={styles.itemListControls}>
           <div id={styles.searchItemList}>
             <input
+              className="mousetrap list-search"
               onChange={this.onFilterChange}
               type="text"
               placeholder="Search"

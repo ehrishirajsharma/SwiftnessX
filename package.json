@@ -218,6 +218,7 @@
     "highlight.js": "^9.13.1",
     "history": "^4.7.2",
     "jquery": "^3.3.1",
+    "mousetrap": "^1.6.2",
     "quill-image-resize-module": "^3.0.0",
     "react": "^16.4.0",
     "react-beautiful-dnd": "^9.0.0",

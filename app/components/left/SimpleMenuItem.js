@@ -5,7 +5,7 @@ import styles from '../css/SimpleMenuItem.css';
 
 type Props = {
   +openItem: () => void,
-  +openItemData: (id: string) => void,
+  +openItemData: (id?: string) => void,
   +items: {
     +id: string
   }[],
@@ -21,6 +21,8 @@ const SimpleMenuItem = MenuItemIcon => (props: Props) => {
 
     if (items.length > 0) {
       openItemData(items[0].id);
+    } else {
+      openItemData();
     }
   };
 

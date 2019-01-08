@@ -55,11 +55,11 @@ import TargetList from '../components/middle/TargetList';
 import ItemList from '../components/middle/ItemList';
 
 type Props = {
-  openChecklistData: (id: string) => void,
-  openNoteData: (id: string) => void,
-  openLibraryData: (id: string) => void,
-  openTemplateData: (id: string) => void,
-  openPayloadData: (id: string) => void,
+  openChecklistData: (id?: string) => void,
+  openNoteData: (id?: string) => void,
+  openLibraryData: (id?: string) => void,
+  openTemplateData: (id?: string) => void,
+  openPayloadData: (id?: string) => void,
   closeItemData: () => void,
   search: (query: string) => void,
 

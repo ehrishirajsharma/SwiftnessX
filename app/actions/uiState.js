@@ -46,16 +46,17 @@ export function openPayload() {
   };
 }
 
-export function openChecklistData(id: string) {
+export function openChecklistData(id?: string, auto?: boolean = false) {
   return {
     type: OPEN_CHECKLIST_DATA,
     payload: {
-      id
+      id,
+      auto
     }
   };
 }
 
-export function openNoteData(id: string) {
+export function openNoteData(id?: string) {
   return {
     type: OPEN_NOTE_DATA,
     payload: {
@@ -64,16 +65,17 @@ export function openNoteData(id: string) {
   };
 }
 
-export function openLibraryData(id: string) {
+export function openLibraryData(id?: string, auto?: boolean = false) {
   return {
     type: OPEN_LIBRARY_DATA,
     payload: {
-      id
+      id,
+      auto
     }
   };
 }
 
-export function openTemplateData(id: string) {
+export function openTemplateData(id?: string) {
   return {
     type: OPEN_TEMPLATE_DATA,
     payload: {
@@ -82,7 +84,7 @@ export function openTemplateData(id: string) {
   };
 }
 
-export function openPayloadData(id: string) {
+export function openPayloadData(id?: string) {
   return {
     type: OPEN_PAYLOAD_DATA,
     payload: {
