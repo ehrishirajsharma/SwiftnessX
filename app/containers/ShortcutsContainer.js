@@ -35,6 +35,8 @@ class ShortcutsContainer extends React.PureComponent<Props> {
   constructor(props) {
     super(props);
 
+    Mousetrap.prototype.stopCallback = () => false;
+
     Mousetrap.bind(['command+f', 'ctrl+f'], () => {
       const { active } = this.props.uiState;
 
@@ -74,7 +76,11 @@ class ShortcutsContainer extends React.PureComponent<Props> {
     });
 
     Mousetrap.bind(['command+k', 'ctrl+k'], () => {
-      document.getElementsByClassName('ql-link')[0].click();
+      document.querySelector('.ql-link').click();
+    });
+
+    Mousetrap.bind(['command+m', 'ctrl+l'], () => {
+      document.querySelector('.ql-list[value="check"]').click();
     });
   }
 
