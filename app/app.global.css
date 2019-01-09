@@ -76,6 +76,32 @@ html {
   max-width: 100%;
 }
 
+.ql-editor ul[data-checked] {
+  background-color: #F8F8F8;
+}
+
+.ql-editor ul[data-checked="true"] {
+  font-style: italic;
+  color: #8a8a8a;
+}
+
+.ql-editor ul[data-checked] li{
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.ql-editor ul[data-checked] li::before{
+  margin-right: 1.2rem;
+}
+
+.ql-editor ul[data-checked="false"] li::before {
+  content: url("./assets/quill/unchecked.svg");
+}
+
+.ql-editor ul[data-checked="true"] li::before {
+  content: url("./assets/quill/checked.svg");
+}
+
 
 
 

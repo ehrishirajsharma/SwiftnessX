@@ -59,6 +59,7 @@ const CustomToolbar = () => (
     <button className="ql-image" />
     <button className="ql-video" />
     <button className="ql-list" value="ordered" />
+    <button className="ql-list" value="check" />
     <button className="ql-link" />
   </div>
 );
@@ -289,6 +290,7 @@ Editor.formats = [
   'code-block',
   'list',
   'bullet',
+  'check',
   'indent',
   'align',
   'size',

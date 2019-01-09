@@ -1,0 +1,16 @@
+<svg width="20" height="18" xmlns="http://www.w3.org/2000/svg">
+ <g>
+  <title>background</title>
+  <rect x="-1" y="-1" width="4.85714" height="4.57142" id="canvas_background" fill="none"/>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <g id="Symbols" fill="none" fill-rule="evenodd">
+   <g id="Unchecked">
+    <rect id="path-1" width="20" height="18" rx="4" fill="#FFFFFF" fill-rule="evenodd"/>
+    <rect stroke="#D6D6D6" x="0.5" y="0.5" width="19" height="17" rx="4" id="svg_1"/>
+    <path id="svg_3" fill="#363636" d="m15.57973,2.64993l-7.59051,7.85991l-3.55547,-3.40503l-2.49811,2.52507l6.05358,5.93078l10.08929,-10.38634l-2.49878,-2.52439z" stroke="null"/>
+   </g>
+  </g>
+ </g>
+</svg>

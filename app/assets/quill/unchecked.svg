@@ -1,0 +1,15 @@
+<svg width="20" height="18" xmlns="http://www.w3.org/2000/svg">
+ <g>
+  <title>background</title>
+  <rect fill="none" id="canvas_background" height="7.37311" width="7.97012" y="-1" x="-1"/>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <g fill-rule="evenodd" fill="none" id="Symbols">
+   <g id="Unchecked">
+    <rect fill-rule="evenodd" fill="#FFFFFF" rx="4" height="18" width="20" id="path-1"/>
+    <rect id="svg_1" rx="4" height="17" width="19" y="0.5" x="0.5" stroke="#D6D6D6"/>
+   </g>
+  </g>
+ </g>
+</svg>
