@@ -210,7 +210,7 @@ export default class AdvancedMenuItem extends React.PureComponent<Props> {
           {searchable && (
             <div id={styles.searchItemList}>
               <input
-                className="mousetrap target-search"
+                className="target-search"
                 onChange={this.onFilterChange}
                 type="text"
                 placeholder="Search Targets Here"
