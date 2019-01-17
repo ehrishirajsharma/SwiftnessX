@@ -3,7 +3,7 @@ import { shell } from 'electron';
 import React from 'react';
 import './highlight';
 import ReactQuill, { Quill } from 'react-quill';
-import ImageResize from 'quill-image-resize-module';
+import ImageResize from 'quill-image-resize-module-react';
 import className from 'classnames';
 import onClickOutside from 'react-onclickoutside';
 import $ from 'jquery';
@@ -112,7 +112,7 @@ class Editor extends React.Component<Props> {
       'arial'
     ];
 
-    Quill.register('modules/ImageResize', ImageResize);
+    Quill.register('modules/imageResize', ImageResize);
     Quill.register({ 'formats/video': Video });
 
     Quill.register(BackgroundStyle, true);

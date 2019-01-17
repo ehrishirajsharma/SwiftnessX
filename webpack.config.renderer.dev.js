@@ -278,7 +278,8 @@ export default merge.smart(baseConfig, {
     }),
 
     new webpack.ProvidePlugin({
-      'window.Quill': 'quill'
+      'window.Quill': 'quill',
+      Quill: 'quill/dist/quill.js'
     })
   ],
 
