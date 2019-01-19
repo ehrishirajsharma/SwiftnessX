@@ -3,6 +3,7 @@ import React from 'react';
 import { checklistType, noteType } from '../../reducers/targets';
 import MiddlePanelHeader from './MiddlePanelHeader';
 import ItemList from './ItemList';
+import ProgressBar from '../ProgressBar';
 
 type Props = {
   +openChecklistData: (id?: string) => void,
@@ -84,21 +85,29 @@ class TargetList extends React.PureComponent<Props> {
           showNotes={this.showNotes}
         />
         {showChecklist && (
-          <ItemList
-            openItemData={openChecklistData}
-            search={this.props.search}
-            addItem={addCheckitem}
-            saveItem={saveCheckitem}
-            renameItem={renameCheckitem}
-            checkboxState={checkitemCheckbox}
-            removeItem={removeCheckitem}
-            doNotShowDeleteConfirmation={this.props.doNotShowDeleteConfirmation}
-            reorderItem={reorderCheckitem}
-            items={checklist}
-            checkbox
-            main={main}
-            showDeleteConfirmation={this.props.showDeleteConfirmation}
-          />
+          <div>
+            <ItemList
+              openItemData={openChecklistData}
+              search={this.props.search}
+              addItem={addCheckitem}
+              saveItem={saveCheckitem}
+              renameItem={renameCheckitem}
+              checkboxState={checkitemCheckbox}
+              removeItem={removeCheckitem}
+              doNotShowDeleteConfirmation={
+                this.props.doNotShowDeleteConfirmation
+              }
+              reorderItem={reorderCheckitem}
+              items={checklist}
+              checkbox
+              main={main}
+              showDeleteConfirmation={this.props.showDeleteConfirmation}
+            />
+            <ProgressBar
+              value={checklist.filter(item => item.done).length}
+              max={checklist.length}
+            />
+          </div>
         )}
         {showNotes && (
           <ItemList
