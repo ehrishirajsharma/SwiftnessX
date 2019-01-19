@@ -1,0 +1,41 @@
+.progress-bar-container {
+  display: flex;
+  align-items: center;
+  color: #4A4A4A;
+  padding: 18px;
+  box-sizing: border-box;
+  position: absolute;
+  bottom: 0;
+  background-color: #ffffff;
+  width: 100%;
+  font-family: nunito-light;
+  font-size: 1.3rem;
+}
+
+.progress-bar-container:hover {
+  cursor: pointer;
+}
+.progress-bar-container .progress-bar-visual {
+  height: 9px;
+  width: 100%;
+  border-radius: 0.5rem;
+  background-color: #ebebeb;
+}
+
+.progress-bar-container .progress-bar-value {
+  height: 100%;
+  border-radius: 0.5rem;
+  transition: .5s ease-out;
+}
+
+.progress-bar-container > *:last-child {
+  margin-left: 18px;
+}
+
+.progress-bar-container .max {
+  color: #515151;
+}
+
+.progress-bar-container .value {
+  color: #adadad;
+}
