@@ -29,6 +29,7 @@ type Props = {
   +doNotShowDeleteConfirmation: () => void,
   +editTitle: (id: string, title: string) => void,
   +editFolderTitle: (id: string, folderId: string, title: string) => void,
+  +editFolderColor: (id: string, folderId: string, color: string) => void,
   +setActiveList: () => void,
   +expanded: boolean,
   +item: targetType,
@@ -67,6 +68,7 @@ export default class TargetMenuItem extends React.Component<Props> {
       removeFolder,
       editTitle,
       editFolderTitle,
+      editFolderColor,
       item,
       removeParent,
       index
@@ -76,7 +78,7 @@ export default class TargetMenuItem extends React.Component<Props> {
       <Draggable key={item.id} draggableId={item.id} index={index}>
         {(providedDrag, snapshotDrag) => (
           <li
-            className={className(styles.listItem, {
+            className={className(styles.listItem, styles[item.color], {
               [`${styles.expanded}`]:
                 this.props.expanded || this.props.menu.id === item.id
             })}
@@ -123,9 +125,10 @@ export default class TargetMenuItem extends React.Component<Props> {
                   this.props.doNotShowDeleteConfirmation
                 }
                 targetId={item.id}
+                color={item.color}
                 folders={item.folders}
                 showDeleteConfirmation={this.props.showDeleteConfirmation}
-                colorable
+                editFolderColor={editFolderColor}
               />
             </SmoothCollapse>
           </li>

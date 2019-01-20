@@ -8,6 +8,7 @@ import {
   SAVE_LIBRARY_ITEM,
   EDIT_LIBRARY_TITLE,
   EDIT_LIBRARY_ORDER,
+  EDIT_LIBRARY_COLOR,
   EDIT_LIBRARY_FOLDER_TITLE,
   EDIT_LIBRARY_FOLDER_ORDER,
   EDIT_LIBRARY_ITEM_TITLE,
@@ -35,6 +36,7 @@ export type libraryType = {
     +checklist: checklistType[],
     +isNew?: boolean
   }[],
+  +color?: string,
   +isNew?: boolean
 };
 
@@ -86,6 +88,7 @@ export default function libraries(
     case SAVE_LIBRARY_FOLDER:
     case SAVE_LIBRARY_ITEM:
     case EDIT_LIBRARY_TITLE:
+    case EDIT_LIBRARY_COLOR:
     case EDIT_LIBRARY_FOLDER_TITLE:
     case EDIT_LIBRARY_FOLDER_ORDER:
     case EDIT_LIBRARY_ITEM_TITLE:
@@ -124,6 +127,12 @@ function editLibrary(state = {}, action) {
       return {
         ...state,
         title: action.payload.title
+      };
+    }
+    case EDIT_LIBRARY_COLOR: {
+      return {
+        ...state,
+        color: action.payload.color
       };
     }
     case EDIT_LIBRARY_FOLDER_ORDER: {

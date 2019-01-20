@@ -1,6 +1,7 @@
 // @flow
 import React from 'react';
 import { Droppable, Draggable } from 'react-beautiful-dnd';
+import classnames from 'classnames';
 import ColorPicker from '../ColorPicker';
 import styles from '../css/CategoryList.css';
 import CategoryListItem from './CategoryListItem';
@@ -21,17 +22,22 @@ type Props = {
   +addFolder: (id: string) => void,
   +saveFolder: (id: string, folderId: string) => void,
   +editFolderTitle: (id: string, folderId: string, title: string) => void,
+  editFolderColor?: (
+    id: string,
+    folderId: string,
+    color: string
+  ) => void | undefined,
   +removeFolder: (id: string, folderId: string) => void,
   +doNotShowDeleteConfirmation: () => void,
   +targetId: string,
+  +color: string,
   +activeFolderId: string | undefined,
   +folders: {
     +id: string,
     +title: string,
     +isNew?: boolean
   }[],
-  +showDeleteConfirmation: boolean,
-  colorable?: boolean
+  +showDeleteConfirmation: boolean
 };
 
 export default class CategoryList extends React.Component<Props> {
@@ -47,14 +53,15 @@ export default class CategoryList extends React.Component<Props> {
       addFolder,
       saveFolder,
       editFolderTitle,
+      editFolderColor,
       removeFolder,
       targetId,
-      folders,
-      colorable
+      color,
+      folders
     } = this.props;
 
     return (
-      <div className={styles.sublistNav}>
+      <div className={classnames(styles.sublistNav, styles[color])}>
         <Droppable droppableId={targetId} type={targetId}>
           {provided => (
             <ul ref={provided.innerRef} {...provided.droppableProps}>
@@ -97,7 +104,14 @@ export default class CategoryList extends React.Component<Props> {
                           this.props.showDeleteConfirmation
                         }
                       />
-                      {colorable && <ColorPicker />}
+                      {editFolderColor && (
+                        <ColorPicker
+                          editColor={selectedColor =>
+                            editFolderColor(targetId, folder.id, selectedColor)
+                          }
+                          color={folder.color}
+                        />
+                      )}
                     </li>
                   )}
                 </Draggable>
@@ -111,5 +125,5 @@ export default class CategoryList extends React.Component<Props> {
 }
 
 CategoryList.defaultProps = {
-  colorable: false
+  editFolderColor: undefined
 };

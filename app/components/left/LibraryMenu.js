@@ -21,10 +21,11 @@ type Props = {
   +doNotShowDeleteConfirmation: () => void,
   +editTitle: (id: string, title: string) => void,
   +editOrder: (fromIndex: number, toIndex: number) => void,
+  +editColor: (id: string, color: string) => void,
   +editFolderTitle: (id: string, folderId: string, title: string) => void,
   +editFolderOrder: (id: string, fromIndex: number, toIndex: number) => void,
   +title: string,
-  +sublist: targetType[],
+  +sublist: libraryType[],
   +menu: {
     id: string | undefined,
     folderId: string | undefined
@@ -95,6 +96,7 @@ export default class LibraryMenu extends React.PureComponent<Props> {
   render() {
     const {
       removeParent,
+      editColor,
       addFolder,
       removeFolder,
       title,
@@ -131,7 +133,12 @@ export default class LibraryMenu extends React.PureComponent<Props> {
                       editFolderTitle={this.props.editFolderTitle}
                       showDeleteConfirmation={this.props.showDeleteConfirmation}
                     />
-                    <ColorPicker />
+                    <ColorPicker
+                      editColor={selectedColor =>
+                        editColor(item.id, selectedColor)
+                      }
+                      color={item.color}
+                    />
                   </div>
                 ))}
               </div>

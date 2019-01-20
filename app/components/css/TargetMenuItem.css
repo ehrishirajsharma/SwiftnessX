@@ -10,11 +10,6 @@
   transition: .15s ease-out;
 }
 
-.list-item:hover:before {
-  color: #EC1075;
-  transition: .15s ease-out;
-}
-
 .list-item:before {
   font-family: FontAwesome;
   content: '\f111';
@@ -23,8 +18,38 @@
   vertical-align: 7%;
 }
 
+.list-item:hover:before {
+  transition: .15s ease-out;
+}
+
+.list-item:hover:before,
 .list-item.expanded:before {
   color: #EC1075;
+}
+
+.list-item.light-red:hover:before,
+.list-item.light-red.expanded:before {
+  color: #FF8989;
+}
+
+.list-item.light-yellow:hover:before,
+.list-item.light-yellow.expanded:before {
+  color: #FFD591;
+}
+
+.list-item.dark-red:hover:before,
+.list-item.dark-red.expanded:before {
+  color: #EC1074;
+}
+
+.list-item.light-green:hover:before,
+.list-item.light-green.expanded:before {
+  color: #86E723;
+}
+
+.list-item.dark-yellow:hover:before,
+.list-item.dark-yellow.expanded:before {
+  color: #F5A623;
 }
 
 .list-item span:hover {

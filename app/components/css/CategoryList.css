@@ -1,8 +1,14 @@
 .sublist-nav {
   margin: 0.5rem 0 0.5rem 2.3rem;
-  border-left: .1rem solid #EC1075;
+  border-left: .1rem solid #CECAC9;
   padding-left: 1.5rem;
 }
+
+.sublist-nav.light-red {border-color: #FF8989;}
+.sublist-nav.light-yellow {border-color: #FFD591;}
+.sublist-nav.dark-red {border-color: #EC1074;}
+.sublist-nav.light-green {border-color: #86E723;}
+.sublist-nav.dark-yellow {border-color: #F5A623;}
 
 .sublist-nav > ul{
   padding: 0;
