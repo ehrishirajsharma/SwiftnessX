@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
 import className from 'classnames';
-import styles from '../css/SimpleMenuItem.css';
+import styles from '../css/SimpleMenu.css';
 
 type Props = {
   +openItem: () => void,
@@ -13,7 +13,7 @@ type Props = {
   +isSelected: boolean
 };
 
-const SimpleMenuItem = MenuItemIcon => (props: Props) => {
+const SimpleMenu = MenuItemIcon => (props: Props) => {
   const { openItem, openItemData, items, title, isSelected } = props;
 
   const handleClick = () => {
@@ -42,4 +42,4 @@ const SimpleMenuItem = MenuItemIcon => (props: Props) => {
   );
 };
 
-export default SimpleMenuItem;
+export default SimpleMenu;

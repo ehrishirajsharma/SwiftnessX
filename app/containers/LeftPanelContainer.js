@@ -45,8 +45,9 @@ import { targetType } from '../reducers/targets';
 import { libraryType } from '../reducers/libraries';
 import { templateType } from '../reducers/templates';
 import { payloadType } from '../reducers/payloads';
-import AdvancedMenuItem from '../components/left/AdvancedMenuItem';
-import SimpleMenuItem from '../components/left/SimpleMenuItem';
+import TargetMenu from '../components/left/TargetMenu';
+import LibraryMenu from '../components/left/LibraryMenu';
+import SimpleMenu from '../components/left/SimpleMenu';
 import TemplateIcon from '../assets/icons/TemplateIcon';
 import PayloadIcon from '../assets/icons/PayloadIcon';
 import SwiftnessIcon from '../assets/icons/SwiftnessIcon';
@@ -174,12 +175,12 @@ class LeftPanelContainer extends React.PureComponent<Props> {
   render() {
     const { uiState, targets, libraries, templates, payloads } = this.props;
 
-    const TemplatesMenu = SimpleMenuItem(TemplateIcon);
-    const PayloadsMenu = SimpleMenuItem(PayloadIcon);
+    const TemplatesMenu = SimpleMenu(TemplateIcon);
+    const PayloadsMenu = SimpleMenu(PayloadIcon);
 
     return (
       <div>
-        <AdvancedMenuItem
+        <TargetMenu
           openItem={this.props.openTarget}
           openItemData={this.props.openChecklistData}
           removeParent={this.handleRemoveTarget}
@@ -195,12 +196,10 @@ class LeftPanelContainer extends React.PureComponent<Props> {
           editFolderOrder={this.props.editTargetFolderOrder}
           title="Targets"
           sublist={targets}
-          popup
           menu={uiState.menu}
           showDeleteConfirmation={this.props.messages.showDeleteConfirmation}
-          searchable
         />
-        <AdvancedMenuItem
+        <LibraryMenu
           openItem={this.props.openLibrary}
           openItemData={this.props.openLibraryData}
           removeParent={this.handleRemoveLibrary}

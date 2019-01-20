@@ -15,7 +15,7 @@ export default class Swiftness extends React.PureComponent {
       <div className={styles.container}>
         <PanelGroup
           panelWidths={[
-            { size: 246, minSize: 218, resize: 'dynamic' },
+            { size: 246, minSize: 246, resize: 'dynamic' },
             { size: 346, minSize: 230, resize: 'dynamic' },
             { size: 512, minSize: 512, resize: 'dynamic' }
           ]}

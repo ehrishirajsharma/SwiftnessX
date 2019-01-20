@@ -3,7 +3,7 @@ import React from 'react';
 import SmoothCollapse from 'react-smooth-collapse';
 import { Draggable } from 'react-beautiful-dnd';
 import className from 'classnames';
-import styles from '../css/TargetMenuItem.css';
+import styles from '../css/LibraryMenuItem.css';
 import { targetType } from '../../reducers/targets';
 import CategoryList from './CategoryList';
 import CategoryListItem from './CategoryListItem';
@@ -40,7 +40,7 @@ type Props = {
   +index: number
 };
 
-export default class TargetMenuItem extends React.Component<Props> {
+export default class LibraryMenuItem extends React.Component<Props> {
   props: Props;
 
   shouldComponentUpdate = nextProps =>
@@ -108,10 +108,7 @@ export default class TargetMenuItem extends React.Component<Props> {
               }
               showDeleteConfirmation={this.props.showDeleteConfirmation}
             />
-            <SmoothCollapse
-              expanded={this.props.expanded}
-              allowOverflowWhenOpen
-            >
+            <SmoothCollapse expanded={this.props.expanded}>
               <CategoryList
                 activeFolderId={this.props.menu.folderId}
                 onClick={onCategoryClick}
@@ -125,7 +122,6 @@ export default class TargetMenuItem extends React.Component<Props> {
                 targetId={item.id}
                 folders={item.folders}
                 showDeleteConfirmation={this.props.showDeleteConfirmation}
-                colorable
               />
             </SmoothCollapse>
           </li>
