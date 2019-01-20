@@ -25,6 +25,7 @@ type Props = {
   +editOrder: (fromIndex: number, toIndex: number) => void,
   +editFolderTitle: (id: string, folderId: string, title: string) => void,
   +editFolderOrder: (id: string, fromIndex: number, toIndex: number) => void,
+  +editFolderColor: (id: string, folderId: string, color: string) => void,
   +title: string,
   +sublist: targetType[],
   +menu: {
@@ -162,6 +163,7 @@ export default class TargetMenu extends React.PureComponent<Props> {
                     removeFolder={removeFolder}
                     editTitle={this.props.editTitle}
                     editFolderTitle={this.props.editFolderTitle}
+                    editFolderColor={this.props.editFolderColor}
                     showDeleteConfirmation={this.props.showDeleteConfirmation}
                   />
                 ))}

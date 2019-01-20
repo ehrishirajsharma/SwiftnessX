@@ -18,6 +18,7 @@ export const EDIT_TARGET_ORDER = 'EDIT_TARGET_ORDER';
 
 export const EDIT_TARGET_FOLDER_TITLE = 'EDIT_TARGET_FOLDER_TITLE';
 export const EDIT_TARGET_FOLDER_ORDER = 'EDIT_TARGET_FOLDER_ORDER';
+export const EDIT_TARGET_FOLDER_COLOR = 'EDIT_TARGET_FOLDER_COLOR';
 
 export const EDIT_TARGET_CHECKITEM_TITLE = 'EDIT_TARGET_CHECKITEM_TITLE';
 export const EDIT_TARGET_CHECKITEM_CONTENT = 'EDIT_TARGET_CHECKITEM_CONTENT';
@@ -169,6 +170,21 @@ export function editTargetFolderOrder(
       id,
       fromIndex,
       toIndex
+    }
+  };
+}
+
+export function editTargetFolderColor(
+  id: string,
+  folderId: string,
+  color: string
+) {
+  return {
+    type: EDIT_TARGET_FOLDER_COLOR,
+    payload: {
+      id,
+      folderId,
+      color
     }
   };
 }

@@ -12,6 +12,7 @@ import {
   EDIT_TARGET_ORDER,
   EDIT_TARGET_FOLDER_TITLE,
   EDIT_TARGET_FOLDER_ORDER,
+  EDIT_TARGET_FOLDER_COLOR,
   EDIT_TARGET_CHECKITEM_TITLE,
   EDIT_TARGET_CHECKITEM_CONTENT,
   EDIT_TARGET_CHECKITEM_ORDER,
@@ -47,10 +48,12 @@ export type targetType = {
   +folders: {
     +id: string,
     +title: string,
+    +color?: string,
     +checklist: checklistType[],
     +notes?: noteType[],
     +isNew?: boolean
   }[],
+  +color?: string,
   +isNew?: boolean
 };
 
@@ -66,12 +69,14 @@ export default function targets(state: targetType[] = [], action: actionType) {
         const newTargetFolders = action.payload.library.folders.map(folder => {
           const newFolder = folder;
           newFolder.notes = [];
+          newFolder.color = action.payload.library.color;
           return newFolder;
         });
 
         return state.concat({
           id: action.payload.id,
           title: action.payload.library.title,
+          color: action.payload.library.color,
           folders: newTargetFolders,
           isNew: true
         });
@@ -120,6 +125,7 @@ export default function targets(state: targetType[] = [], action: actionType) {
     case EDIT_TARGET_TITLE:
     case EDIT_TARGET_FOLDER_TITLE:
     case EDIT_TARGET_FOLDER_ORDER:
+    case EDIT_TARGET_FOLDER_COLOR:
     case EDIT_TARGET_CHECKITEM_TITLE:
     case EDIT_TARGET_CHECKITEM_CONTENT:
     case EDIT_TARGET_CHECKITEM_ORDER:
@@ -193,6 +199,7 @@ function editTarget(state = {}, action) {
     case SAVE_TARGET_CHECKITEM:
     case SAVE_TARGET_NOTE:
     case EDIT_TARGET_FOLDER_TITLE:
+    case EDIT_TARGET_FOLDER_COLOR:
     case EDIT_TARGET_CHECKITEM_TITLE:
     case EDIT_TARGET_CHECKITEM_CONTENT:
     case EDIT_TARGET_CHECKITEM_ORDER:
@@ -247,6 +254,12 @@ function editTargetFolder(state = {}, action) {
       return {
         ...state,
         title: action.payload.title
+      };
+    }
+    case EDIT_TARGET_FOLDER_COLOR: {
+      return {
+        ...state,
+        color: action.payload.color
       };
     }
     case REMOVE_TARGET_CHECKITEM: {

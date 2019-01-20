@@ -23,6 +23,7 @@ import {
   editTargetOrder,
   editTargetFolderTitle,
   editTargetFolderOrder,
+  editTargetFolderColor,
   removeTarget,
   removeTargetFolder
 } from '../actions/targets';
@@ -33,6 +34,7 @@ import {
   saveLibraryFolder,
   editLibraryTitle,
   editLibraryOrder,
+  editLibraryColor,
   editLibraryFolderTitle,
   editLibraryFolderOrder,
   removeLibrary,
@@ -85,8 +87,10 @@ type Props = {
     fromIndex: number,
     toIndex: number
   ) => void,
+  +editTargetFolderColor: (id: string, folderId: string, color: string) => void,
   +editLibraryTitle: (id: string, title: string) => void,
   +editLibraryOrder: (fromIndex: number, toIndex: number) => void,
+  +editLibraryColor: (id: string, color: string) => void,
   +editLibraryFolderTitle: (
     id: string,
     folderId: string,
@@ -194,6 +198,7 @@ class LeftPanelContainer extends React.PureComponent<Props> {
           editOrder={this.props.editTargetOrder}
           editFolderTitle={this.props.editTargetFolderTitle}
           editFolderOrder={this.props.editTargetFolderOrder}
+          editFolderColor={this.props.editTargetFolderColor}
           title="Targets"
           sublist={targets}
           menu={uiState.menu}
@@ -211,6 +216,7 @@ class LeftPanelContainer extends React.PureComponent<Props> {
           saveFolder={this.props.saveLibraryFolder}
           editTitle={this.props.editLibraryTitle}
           editOrder={this.props.editLibraryOrder}
+          editColor={this.props.editLibraryColor}
           editFolderTitle={this.props.editLibraryFolderTitle}
           editFolderOrder={this.props.editLibraryFolderOrder}
           title="Libraries"
@@ -281,8 +287,10 @@ function mapDispatchToProps(dispatch) {
       editTargetOrder,
       editTargetFolderTitle,
       editTargetFolderOrder,
+      editTargetFolderColor,
       editLibraryTitle,
       editLibraryOrder,
+      editLibraryColor,
       editLibraryFolderTitle,
       editLibraryFolderOrder,
 

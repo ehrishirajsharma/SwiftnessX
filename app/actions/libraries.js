@@ -12,6 +12,7 @@ export const SAVE_LIBRARY_ITEM = 'SAVE_LIBRARY_ITEM';
 
 export const EDIT_LIBRARY_TITLE = 'EDIT_LIBRARY_TITLE';
 export const EDIT_LIBRARY_ORDER = 'EDIT_LIBRARY_ORDER';
+export const EDIT_LIBRARY_COLOR = 'EDIT_LIBRARY_COLOR';
 
 export const EDIT_LIBRARY_FOLDER_TITLE = 'EDIT_LIBRARY_FOLDER_TITLE';
 export const EDIT_LIBRARY_FOLDER_ORDER = 'EDIT_LIBRARY_FOLDER_ORDER';
@@ -103,6 +104,16 @@ export function editLibraryOrder(fromIndex: number, toIndex: number) {
     payload: {
       fromIndex,
       toIndex
+    }
+  };
+}
+
+export function editLibraryColor(id: string, color: string) {
+  return {
+    type: EDIT_LIBRARY_COLOR,
+    payload: {
+      id,
+      color
     }
   };
 }
