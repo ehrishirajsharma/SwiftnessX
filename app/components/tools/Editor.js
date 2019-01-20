@@ -202,7 +202,7 @@ class Editor extends React.Component<Props> {
         const element = e.path.find(
           item =>
             item.className &&
-            item.className.includes('SimpleMenuItem__menu-item-nav-header')
+            item.className.includes('SimpleMenu__menu-item-nav-header')
         );
 
         if (element) {

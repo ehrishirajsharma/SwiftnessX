@@ -1,6 +1,7 @@
 // @flow
 import React from 'react';
 import { Droppable, Draggable } from 'react-beautiful-dnd';
+import ColorPicker from '../ColorPicker';
 import styles from '../css/CategoryList.css';
 import CategoryListItem from './CategoryListItem';
 
@@ -29,7 +30,8 @@ type Props = {
     +title: string,
     +isNew?: boolean
   }[],
-  +showDeleteConfirmation: boolean
+  +showDeleteConfirmation: boolean,
+  colorable?: boolean
 };
 
 export default class CategoryList extends React.Component<Props> {
@@ -47,14 +49,15 @@ export default class CategoryList extends React.Component<Props> {
       editFolderTitle,
       removeFolder,
       targetId,
-      folders
+      folders,
+      colorable
     } = this.props;
 
     return (
       <div className={styles.sublistNav}>
         <Droppable droppableId={targetId} type={targetId}>
           {provided => (
-            <div ref={provided.innerRef} {...provided.droppableProps}>
+            <ul ref={provided.innerRef} {...provided.droppableProps}>
               {folders.map((folder, index) => (
                 <Draggable
                   key={folder.id}
@@ -62,7 +65,8 @@ export default class CategoryList extends React.Component<Props> {
                   index={index}
                 >
                   {(providedDrag, snapshotDrag) => (
-                    <div
+                    <li
+                      className={styles.sublistItem}
                       key={folder.id}
                       ref={providedDrag.innerRef}
                       {...providedDrag.draggableProps}
@@ -93,14 +97,19 @@ export default class CategoryList extends React.Component<Props> {
                           this.props.showDeleteConfirmation
                         }
                       />
-                    </div>
+                      {colorable && <ColorPicker />}
+                    </li>
                   )}
                 </Draggable>
               ))}
-            </div>
+            </ul>
           )}
         </Droppable>
       </div>
     );
   }
 }
+
+CategoryList.defaultProps = {
+  colorable: false
+};

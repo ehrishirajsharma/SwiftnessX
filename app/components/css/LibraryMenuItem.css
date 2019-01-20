@@ -1,0 +1,18 @@
+.list-item {
+  margin-bottom: 2rem;
+  list-style-type: none;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.list-item:hover {
+  color: #4A4A4A;
+  transition: .15s ease-out;
+}
+
+.list-item span:hover {
+  cursor: pointer;
+}
+
+

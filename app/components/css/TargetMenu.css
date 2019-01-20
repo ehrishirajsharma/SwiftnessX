@@ -15,20 +15,18 @@
 }
 
 .menu-item-nav:nth-child(1) .menu-item-nav-list {
-  padding: 0 2.5rem 0 2.5rem;
   max-height: 375px;
   overflow: auto !important;
 }
 
 .menu-item-nav:nth-child(2) .menu-item-nav-list {
-  padding: 0 2.5rem 0 2.5rem;
   max-height: 250px;
   overflow: auto !important;
 }
 
 .menu-item-nav .menu-item-nav-list #search-item-list {
   display: flex;
-  width: 100%;
+  width: calc(100% - 28px);
   border-radius: .6rem;
   font-family: 'nunito-light';
   background: #f7f8fd;
@@ -72,9 +70,19 @@
   transform: rotate(180deg);
 }
 
+.menu-item-nav .menu-item-nav-list > div > ul {
+  padding: 0 2.5rem;
+}
+
 .menu-item-nav .menu-item-nav-list ul {
-  padding: 0;
   font-family: 'nunito-regular';
   font-size: 1.4rem;
   color: #9B9B9B;
+}
+
+.header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 0 2.5rem;
 }

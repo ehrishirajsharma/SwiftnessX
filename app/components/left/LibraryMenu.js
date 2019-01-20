@@ -2,13 +2,11 @@
 import React from 'react';
 import SmoothCollapse from 'react-smooth-collapse';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
-import styles from '../css/AdvancedMenuItem.css';
-import SearchIcon from '../../assets/icons/Search';
-import { targetType } from '../../reducers/targets';
-import TargetMenuItem from './TargetMenuItem';
+import styles from '../css/LibraryMenu.css';
+import LibraryMenuItem from './LibraryMenuItem';
+import ColorPicker from '../ColorPicker';
 import ArrowUpIcon from '../../assets/icons/ArrowUpIcon';
 import AddIcon from '../../assets/icons/AddIcon';
-import AddPopup from '../AddPopup';
 import { libraryType } from '../../reducers/libraries';
 
 type Props = {
@@ -27,41 +25,19 @@ type Props = {
   +editFolderOrder: (id: string, fromIndex: number, toIndex: number) => void,
   +title: string,
   +sublist: targetType[],
-  popup?: boolean,
   +menu: {
     id: string | undefined,
     folderId: string | undefined
   },
-  +showDeleteConfirmation: boolean,
-  searchable?: boolean
+  +showDeleteConfirmation: boolean
 };
 
-export default class AdvancedMenuItem extends React.PureComponent<Props> {
+export default class LibraryMenu extends React.PureComponent<Props> {
   props: Props;
 
   state = {
-    popupOpen: false,
     sublistExpanded: true,
-    expandedList: undefined,
-    filter: ''
-  };
-
-  onFilterChange = e => {
-    this.setState({ filter: e.target.value.toLowerCase() });
-  };
-
-  applyFilter = items => {
-    const { filter } = this.state;
-
-    if (filter !== '') {
-      return items.filter(
-        item =>
-          item.title.toLowerCase().includes(filter) ||
-          item.folders.some(f => f.title.toLowerCase().includes(filter))
-      );
-    }
-
-    return items;
+    expandedList: undefined
   };
 
   setActiveList = id => {
@@ -71,27 +47,10 @@ export default class AdvancedMenuItem extends React.PureComponent<Props> {
   };
 
   handleAddClick = e => {
-    if (this.props.popup) {
-      this.setState(prevState => ({ popupOpen: !prevState.popupOpen }));
-    } else {
-      this.props.onAddClick();
-      this.setState({ sublistExpanded: true });
-    }
-
-    e.stopPropagation();
-  };
-
-  handleAddFromPopup = (e, library?: libraryType) => {
-    e.stopPropagation();
-
-    this.handleClosePopup();
-
-    this.props.onAddClick(library);
+    this.props.onAddClick();
     this.setState({ sublistExpanded: true });
-  };
 
-  handleClosePopup = () => {
-    this.setState({ popupOpen: false });
+    e.stopPropagation();
   };
 
   handleKeyPress = evt => {
@@ -140,9 +99,7 @@ export default class AdvancedMenuItem extends React.PureComponent<Props> {
       removeFolder,
       title,
       sublist,
-      popup,
-      menu,
-      searchable
+      menu
     } = this.props;
 
     const sublistList = (
@@ -151,29 +108,31 @@ export default class AdvancedMenuItem extends React.PureComponent<Props> {
           <Droppable droppableId="droppable">
             {provided => (
               <div ref={provided.innerRef} {...provided.droppableProps}>
-                {this.applyFilter(sublist).map((item, index) => (
-                  <TargetMenuItem
-                    key={item.id}
-                    item={item}
-                    menu={menu}
-                    expanded={this.state.expandedList === item.id}
-                    index={index}
-                    setActiveList={() => this.setActiveList(item.id)}
-                    onCategoryClick={folderId =>
-                      this.handleCategoryClick(item, folderId)
-                    }
-                    removeParent={removeParent}
-                    doNotShowDeleteConfirmation={
-                      this.props.doNotShowDeleteConfirmation
-                    }
-                    addFolder={addFolder}
-                    saveParent={this.props.saveParent}
-                    saveFolder={this.props.saveFolder}
-                    removeFolder={removeFolder}
-                    editTitle={this.props.editTitle}
-                    editFolderTitle={this.props.editFolderTitle}
-                    showDeleteConfirmation={this.props.showDeleteConfirmation}
-                  />
+                {sublist.map((item, index) => (
+                  <div key={item.id} className={styles.menuItem}>
+                    <LibraryMenuItem
+                      item={item}
+                      menu={menu}
+                      expanded={this.state.expandedList === item.id}
+                      index={index}
+                      setActiveList={() => this.setActiveList(item.id)}
+                      onCategoryClick={folderId =>
+                        this.handleCategoryClick(item, folderId)
+                      }
+                      removeParent={removeParent}
+                      doNotShowDeleteConfirmation={
+                        this.props.doNotShowDeleteConfirmation
+                      }
+                      addFolder={addFolder}
+                      saveParent={this.props.saveParent}
+                      saveFolder={this.props.saveFolder}
+                      removeFolder={removeFolder}
+                      editTitle={this.props.editTitle}
+                      editFolderTitle={this.props.editFolderTitle}
+                      showDeleteConfirmation={this.props.showDeleteConfirmation}
+                    />
+                    <ColorPicker />
+                  </div>
                 ))}
               </div>
             )}
@@ -194,38 +153,15 @@ export default class AdvancedMenuItem extends React.PureComponent<Props> {
           <ArrowUpIcon up={this.state.sublistExpanded} />
           <span>{title}</span>
           <AddIcon onClick={this.handleAddClick} />
-          {popup &&
-            this.state.popupOpen && (
-              <AddPopup
-                onClick={this.handleAddFromPopup}
-                onClose={this.handleClosePopup}
-              />
-            )}
         </div>
 
         <SmoothCollapse
           expanded={this.state.sublistExpanded}
           className={styles.menuItemNavList}
         >
-          {searchable && (
-            <div id={styles.searchItemList}>
-              <input
-                className="target-search"
-                onChange={this.onFilterChange}
-                type="text"
-                placeholder="Search Targets Here"
-              />
-              <SearchIcon />
-            </div>
-          )}
           {sublistList}
         </SmoothCollapse>
       </div>
     );
   }
 }
-
-AdvancedMenuItem.defaultProps = {
-  popup: false,
-  searchable: false
-};
