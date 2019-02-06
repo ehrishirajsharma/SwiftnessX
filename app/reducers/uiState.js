@@ -11,13 +11,15 @@ import {
   OPEN_PAYLOAD_DATA,
   CLOSE_LIST,
   CLOSE_ITEM_DATA,
-  SEARCH
+  SEARCH,
+  TOGGLE_MENU_COLOR
 } from '../actions/uiState';
 
 type menuType = {
   +type: string,
   +id?: string,
-  +folderId?: string
+  +folderId?: string,
+  +colors?: string[]
 };
 
 type mainType = {
@@ -91,6 +93,12 @@ export default function uiState(
 
       return state;
     }
+    case TOGGLE_MENU_COLOR: {
+      return {
+        ...state,
+        menu: menu(state.menu, action)
+      };
+    }
     case OPEN_CHECKLIST_DATA:
     case OPEN_NOTE_DATA:
     case OPEN_LIBRARY_DATA:
@@ -147,6 +155,30 @@ function menu(state: menuType = {}, action: actionType) {
       return {
         type: 'payload'
       };
+    case TOGGLE_MENU_COLOR: {
+      if (state.colors) {
+        return {
+          ...state,
+          colors: state.colors.includes(action.payload.color)
+            ? [
+                ...state.colors.slice(
+                  0,
+                  state.colors.findIndex(p => p === action.payload.color)
+                ),
+                ...state.colors.slice(
+                  state.colors.findIndex(p => p === action.payload.color) + 1,
+                  state.colors.length
+                )
+              ]
+            : [...state.colors, action.payload.color]
+        };
+      }
+
+      return {
+        ...state,
+        colors: [action.payload.color]
+      };
+    }
     default:
       return state;
   }

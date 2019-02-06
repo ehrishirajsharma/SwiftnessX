@@ -12,7 +12,8 @@ import {
   openChecklistData,
   openLibraryData,
   openTemplateData,
-  openPayloadData
+  openPayloadData,
+  toggleMenuColor
 } from '../actions/uiState';
 import {
   addTarget,
@@ -68,6 +69,8 @@ type Props = {
   +openLibraryData: (itemId: string) => void,
   +openTemplateData: (itemId: string) => void,
   +openPayloadData: (itemId: string) => void,
+
+  +toggleMenuColor: (color: string) => void,
 
   +addTarget: (library?: libraryType) => void,
   +addLibrary: () => void,
@@ -203,6 +206,7 @@ class LeftPanelContainer extends React.PureComponent<Props> {
           sublist={targets}
           menu={uiState.menu}
           showDeleteConfirmation={this.props.messages.showDeleteConfirmation}
+          toggleMenuColor={this.props.toggleMenuColor}
         />
         <LibraryMenu
           openItem={this.props.openLibrary}
@@ -267,6 +271,7 @@ function mapDispatchToProps(dispatch) {
       openTemplate,
       openPayload,
       closeList,
+      toggleMenuColor,
 
       openChecklistData,
       openLibraryData,

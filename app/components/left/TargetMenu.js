@@ -9,7 +9,7 @@ import TargetMenuItem from './TargetMenuItem';
 import ArrowUpIcon from '../../assets/icons/ArrowUpIcon';
 import AddIcon from '../../assets/icons/AddIcon';
 import AddPopup from '../AddPopup';
-import ColorPicker from '../ColorPicker';
+import ColorFilter from '../ColorFilter';
 
 type Props = {
   +saveParent: (id: string) => void,
@@ -26,11 +26,13 @@ type Props = {
   +editFolderTitle: (id: string, folderId: string, title: string) => void,
   +editFolderOrder: (id: string, fromIndex: number, toIndex: number) => void,
   +editFolderColor: (id: string, folderId: string, color: string) => void,
+  +toggleMenuColor: (color: string) => void,
   +title: string,
   +sublist: targetType[],
   +menu: {
     id: string | undefined,
-    folderId: string | undefined
+    folderId: string | undefined,
+    colors: string[] | undefined
   },
   +showDeleteConfirmation: boolean
 };
@@ -208,7 +210,10 @@ export default class TargetMenu extends React.PureComponent<Props> {
               />
               <SearchIcon />
             </div>
-            <ColorPicker />
+            <ColorFilter
+              toggleColor={this.props.toggleMenuColor}
+              colors={menu.colors}
+            />
           </div>
           {sublistList}
         </SmoothCollapse>
