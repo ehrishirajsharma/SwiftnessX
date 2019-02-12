@@ -37,7 +37,9 @@ body {
 }
 
 div:focus,
-span:focus {
+span:focus,
+li:focus,
+p:focus {
   outline: none;
 }
 
