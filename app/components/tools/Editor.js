@@ -224,7 +224,7 @@ Editor.modules = {
     modules: ['Resize', 'DisplaySize']
   },
   clipboard: {
-    matchVisual: true
+    matchVisual: false
   }
 };
 /*
