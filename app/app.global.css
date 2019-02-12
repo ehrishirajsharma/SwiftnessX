@@ -193,6 +193,7 @@ html {
 .ql-editor .td-video .td-quill-video-toolbar .td-quill-video-align-action:hover {
   color: #0FCED1;
 }
+
 .ql-editor .td-video .td-quill-resize-nub {
   position: absolute;
   height: 12px;
@@ -201,4 +202,23 @@ html {
   border: 1px solid rgb(119, 119, 119);
   box-sizing: border-box;
   cursor: nesw-resize;
+}
+
+.ql-toolbar.ql-snow .ql-picker.ql-table .ql-picker-label {
+  padding: 3px 3px;
+}
+
+.ql-toolbar.ql-snow .ql-picker.ql-table .ql-picker-label::before {
+  content: url('./assets/quill/insert_table.svg');
+  background: url();
+}
+
+.ql-toolbar.ql-snow .ql-picker-options {
+  font-size: 12px;
+}
+
+.ql-picker.ql-table .ql-picker-item {
+  line-height: 20px;
+  background-color: #e8e8e8;
+  border: none;
 }

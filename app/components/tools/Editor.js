@@ -3,10 +3,9 @@ import { shell } from 'electron';
 import React from 'react';
 import './highlight';
 import ReactQuill, { Quill } from 'react-quill';
+import QuillTable from 'quill-table';
 import ImageResize from 'quill-image-resize-module-react';
-import className from 'classnames';
 import onClickOutside from 'react-onclickoutside';
-import $ from 'jquery';
 import 'react-quill/dist/quill.snow.css';
 import styles from '../css/Editor.css';
 import BoldIcon from '../../assets/quill/bold.png';
@@ -17,7 +16,10 @@ import ImageIcon from '../../assets/quill/image.png';
 import VideoIcon from '../../assets/quill/video.png';
 import ListOrderedIcon from '../../assets/quill/list_ordered.png';
 import LinkIcon from '../../assets/quill/link.png';
+import AddRowIcon from '../../assets/quill/add_row.svg';
+import AddColumnIcon from '../../assets/quill/add_column.svg';
 import Video from './quill-video-resize';
+import CustomToolbar from './CustomToolbar';
 
 type Props = {
   +editContent: (content: string) => void,
@@ -26,66 +28,6 @@ type Props = {
     +content: string
   },
   +search: string
-};
-
-const CustomToolbar = () => (
-  <div id="toolbar" className={styles.toolbar}>
-    <select
-      className={className('ql-font', styles.font)}
-      defaultValue="open-sans"
-    >
-      <option value="open-sans">Open Sans</option>
-      <option value="sans-serif">Sans Serif</option>
-      <option value="verdana">Verdana</option>
-      <option value="inconsolata">Inconsolata</option>
-      <option value="roboto">Roboto</option>
-      <option value="mirza">Mirza</option>
-      <option value="arial">Arial</option>
-    </select>
-    <select className="ql-size" defaultValue="13px">
-      <option value="10px">Small</option>
-      <option value="13px">Normal</option>
-      <option value="18px">Large</option>
-      <option value="32px">Huge</option>
-    </select>
-    <button className="ql-bold" />
-    <button className="ql-italic" />
-    <button className="ql-underline" />
-    <select className="ql-background" defaultValue="">
-      <option value="" />
-      <option value="yellow" />
-    </select>
-    <button className="ql-code-block" />
-    <button className="ql-image" />
-    <button className="ql-video" />
-    <button className="ql-list" value="ordered" />
-    <button className="ql-list" value="check" />
-    <button className="ql-link" />
-  </div>
-);
-
-const GetCodeBlock = () => {
-  const CodeBlock = Quill.import('formats/code-block');
-
-  class InlineStyleCodeBlock extends CodeBlock {
-    static create() {
-      const node = super.create();
-      $(node).attr(
-        'style',
-        'background-color: #23241f; color: #f8f8f2;' +
-          ' margin: 5px 0px; padding: 5px 10px;' +
-          ' border-radius: 3px; overflow: visible; white-space: pre-wrap;' +
-          ' counter-reset: list-1 list-2 list-3 list-4 list-5 list-6 list-7;'
-      );
-
-      return node;
-    }
-  }
-
-  InlineStyleCodeBlock.blotName = 'code-block';
-  InlineStyleCodeBlock.tagName = 'pre';
-
-  return InlineStyleCodeBlock;
 };
 
 class Editor extends React.Component<Props> {
@@ -100,7 +42,6 @@ class Editor extends React.Component<Props> {
     const BackgroundStyle = Quill.import('attributors/class/background');
     const FontStyle = Quill.import('attributors/style/font');
     const SizeStyle = Quill.import('attributors/style/size');
-    const CodeBlock = GetCodeBlock();
 
     FontStyle.whitelist = [
       'sans-serif',
@@ -114,13 +55,18 @@ class Editor extends React.Component<Props> {
 
     SizeStyle.whitelist = ['10px', '13px', '18px', '32px'];
 
+    Quill.register(QuillTable.TableCell);
+    Quill.register(QuillTable.TableRow);
+    Quill.register(QuillTable.Table);
+    Quill.register(QuillTable.Contain);
+    Quill.register('modules/table', QuillTable.TableModule);
+
     Quill.register('modules/imageResize', ImageResize);
     Quill.register({ 'formats/video': Video });
 
     Quill.register(BackgroundStyle, true);
     Quill.register(FontStyle, true);
     Quill.register(SizeStyle, true);
-    Quill.register(CodeBlock, true);
 
     const icons = Quill.import('ui/icons');
 
@@ -132,6 +78,11 @@ class Editor extends React.Component<Props> {
     icons.video = `<img src=${VideoIcon}>`;
     icons.list.ordered = `<img src=${ListOrderedIcon}>`;
     icons.link = `<img src=${LinkIcon}>`;
+
+    icons.table = {
+      'append-row': `<img src=${AddRowIcon}>`,
+      'append-col': `<img src=${AddColumnIcon}>`
+    };
   }
 
   state = {
@@ -167,7 +118,6 @@ class Editor extends React.Component<Props> {
   attachQuillRefs = () => {
     if (typeof this.reactQuill.getEditor !== 'function') return;
 
-    this.quill = this.reactQuill.getEditor();
     this.quill = this.reactQuill.getEditor();
     this.quill.root.addEventListener('click', this.handleClick, false);
     this.quill.root.quill = this.quill;
@@ -269,8 +219,9 @@ class Editor extends React.Component<Props> {
 Editor.modules = {
   toolbar: '#toolbar',
   syntax: true,
+  table: true,
   imageResize: {
-    displaySize: true
+    modules: ['Resize', 'DisplaySize']
   },
   clipboard: {
     matchVisual: true
@@ -302,7 +253,12 @@ Editor.formats = [
   'image',
   'video',
   'width',
-  'height'
+  'height',
+
+  'table',
+  'contain',
+  'tr',
+  'td'
 ];
 
 export default onClickOutside(Editor);

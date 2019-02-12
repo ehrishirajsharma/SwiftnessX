@@ -1,0 +1,93 @@
+// @flow
+import React from 'react';
+import className from 'classnames';
+import styles from '../css/Editor.css';
+
+const CustomToolbar = () => (
+  <div id="toolbar" className={styles.toolbar}>
+    <select className={className('ql-font', styles.font)} defaultValue="">
+      <option value="open-sans">Open Sans</option>
+      <option value="sans-serif">Sans Serif</option>
+      <option value="verdana">Verdana</option>
+      <option value="inconsolata">Inconsolata</option>
+      <option value="roboto">Roboto</option>
+      <option value="mirza">Mirza</option>
+      <option value="arial">Arial</option>
+    </select>
+    <select className="ql-size" defaultValue="">
+      <option value="10px">Small</option>
+      <option value="13px">Normal</option>
+      <option value="18px">Large</option>
+      <option value="32px">Huge</option>
+    </select>
+    <button className="ql-bold" />
+    <button className="ql-italic" />
+    <button className="ql-underline" />
+    <select className="ql-background" defaultValue="">
+      <option value="" />
+      <option value="yellow" />
+    </select>
+    <button className="ql-code-block" />
+    <button className="ql-image" />
+    <button className="ql-video" />
+    <button className="ql-list" value="ordered" />
+    <button className="ql-list" value="check" />
+    <button className="ql-link" />
+    <select className="ql-table" defaultValue="">
+      <option value="newtable_1_1">1x1</option>
+      <option value="newtable_1_2">1x2</option>
+      <option value="newtable_1_3">1x3</option>
+      <option value="newtable_1_4">1x4</option>
+      <option value="newtable_1_5">1x5</option>
+      <option value="newtable_2_1">2x1</option>
+      <option value="newtable_2_2">2x2</option>
+      <option value="newtable_2_3">2x3</option>
+      <option value="newtable_2_4">2x4</option>
+      <option value="newtable_2_5">2x5</option>
+      <option value="newtable_3_1">3x1</option>
+      <option value="newtable_3_2">3x2</option>
+      <option value="newtable_3_3">3x3</option>
+      <option value="newtable_3_4">3x4</option>
+      <option value="newtable_3_5">3x5</option>
+      <option value="newtable_4_1">4x1</option>
+      <option value="newtable_4_2">4x2</option>
+      <option value="newtable_4_3">4x3</option>
+      <option value="newtable_4_4">4x4</option>
+      <option value="newtable_4_5">4x5</option>
+      <option value="newtable_5_1">5x1</option>
+      <option value="newtable_5_2">5x2</option>
+      <option value="newtable_5_3">5x3</option>
+      <option value="newtable_5_4">5x4</option>
+      <option value="newtable_5_5">5x5</option>
+      <option value="newtable_6_1">6x1</option>
+      <option value="newtable_6_2">6x2</option>
+      <option value="newtable_6_3">6x3</option>
+      <option value="newtable_6_4">6x4</option>
+      <option value="newtable_6_5">6x5</option>
+      <option value="newtable_7_1">7x1</option>
+      <option value="newtable_7_2">7x2</option>
+      <option value="newtable_7_3">7x3</option>
+      <option value="newtable_7_4">7x4</option>
+      <option value="newtable_7_5">7x5</option>
+      <option value="newtable_8_1">8x1</option>
+      <option value="newtable_8_2">8x2</option>
+      <option value="newtable_8_3">8x3</option>
+      <option value="newtable_8_4">8x4</option>
+      <option value="newtable_8_5">8x5</option>
+      <option value="newtable_9_1">9x1</option>
+      <option value="newtable_9_2">9x2</option>
+      <option value="newtable_9_3">9x3</option>
+      <option value="newtable_9_4">9x4</option>
+      <option value="newtable_9_5">9x5</option>
+      <option value="newtable_10_1">10x1</option>
+      <option value="newtable_10_2">10x2</option>
+      <option value="newtable_10_3">10x3</option>
+      <option value="newtable_10_4">10x4</option>
+      <option value="newtable_10_5">10x5</option>
+    </select>
+    <button className="ql-table" value="append-row" />
+    <button className="ql-table" value="append-col" />
+  </div>
+);
+
+export default CustomToolbar;
