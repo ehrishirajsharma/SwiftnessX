@@ -42,9 +42,9 @@ const CustomToolbar = () => (
       <option value="mirza">Mirza</option>
       <option value="arial">Arial</option>
     </select>
-    <select className="ql-size" defaultValue="">
+    <select className="ql-size" defaultValue="13px">
       <option value="10px">Small</option>
-      <option value="">Normal</option>
+      <option value="13px">Normal</option>
       <option value="18px">Large</option>
       <option value="32px">Huge</option>
     </select>
@@ -111,6 +111,8 @@ class Editor extends React.Component<Props> {
       'mirza',
       'arial'
     ];
+
+    SizeStyle.whitelist = ['10px', '13px', '18px', '32px'];
 
     Quill.register('modules/imageResize', ImageResize);
     Quill.register({ 'formats/video': Video });
