@@ -30,7 +30,7 @@ type Props = {
   +removeFolder: (id: string, folderId: string) => void,
   +doNotShowDeleteConfirmation: () => void,
   +targetId: string,
-  +color: string,
+  +color: string | undefined,
   +activeFolderId: string | undefined,
   +folders: {
     +id: string,

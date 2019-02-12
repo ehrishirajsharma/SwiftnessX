@@ -6,7 +6,7 @@ import styles from './css/ColorFilter.css';
 
 type Props = {
   +toggleColor: (color: string) => void,
-  +colors: string[]
+  colors?: string[]
 };
 
 class ColorFilter extends React.PureComponent<Props> {
@@ -27,7 +27,6 @@ class ColorFilter extends React.PureComponent<Props> {
 
   toggleColor = (color: string) => {
     this.props.toggleColor(color);
-    this.setState({ open: false });
   };
 
   render() {
@@ -102,5 +101,9 @@ class ColorFilter extends React.PureComponent<Props> {
     );
   }
 }
+
+ColorFilter.defaultProps = {
+  colors: []
+};
 
 export default onClickOutside(ColorFilter);

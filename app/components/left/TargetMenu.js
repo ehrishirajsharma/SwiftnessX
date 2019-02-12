@@ -51,7 +51,7 @@ export default class TargetMenu extends React.PureComponent<Props> {
     this.setState({ filter: e.target.value.toLowerCase() });
   };
 
-  applyFilter = items => {
+  applySearchFilter = items => {
     const { filter } = this.state;
 
     if (filter !== '') {
@@ -60,6 +60,16 @@ export default class TargetMenu extends React.PureComponent<Props> {
           item.title.toLowerCase().includes(filter) ||
           item.folders.some(f => f.title.toLowerCase().includes(filter))
       );
+    }
+
+    return items;
+  };
+
+  applyColorFilter = items => {
+    const { colors } = this.props.menu;
+
+    if (colors !== undefined && colors.length !== 0) {
+      return items.filter(item => colors.includes(item.color));
     }
 
     return items;
@@ -144,31 +154,33 @@ export default class TargetMenu extends React.PureComponent<Props> {
           <Droppable droppableId="droppable">
             {provided => (
               <div ref={provided.innerRef} {...provided.droppableProps}>
-                {this.applyFilter(sublist).map((item, index) => (
-                  <TargetMenuItem
-                    key={item.id}
-                    item={item}
-                    menu={menu}
-                    expanded={this.state.expandedList === item.id}
-                    index={index}
-                    setActiveList={() => this.setActiveList(item.id)}
-                    onCategoryClick={folderId =>
-                      this.handleCategoryClick(item, folderId)
-                    }
-                    removeParent={removeParent}
-                    doNotShowDeleteConfirmation={
-                      this.props.doNotShowDeleteConfirmation
-                    }
-                    addFolder={addFolder}
-                    saveParent={this.props.saveParent}
-                    saveFolder={this.props.saveFolder}
-                    removeFolder={removeFolder}
-                    editTitle={this.props.editTitle}
-                    editFolderTitle={this.props.editFolderTitle}
-                    editFolderColor={this.props.editFolderColor}
-                    showDeleteConfirmation={this.props.showDeleteConfirmation}
-                  />
-                ))}
+                {this.applyColorFilter(this.applySearchFilter(sublist)).map(
+                  (item, index) => (
+                    <TargetMenuItem
+                      key={item.id}
+                      item={item}
+                      menu={menu}
+                      expanded={this.state.expandedList === item.id}
+                      index={index}
+                      setActiveList={() => this.setActiveList(item.id)}
+                      onCategoryClick={folderId =>
+                        this.handleCategoryClick(item, folderId)
+                      }
+                      removeParent={removeParent}
+                      doNotShowDeleteConfirmation={
+                        this.props.doNotShowDeleteConfirmation
+                      }
+                      addFolder={addFolder}
+                      saveParent={this.props.saveParent}
+                      saveFolder={this.props.saveFolder}
+                      removeFolder={removeFolder}
+                      editTitle={this.props.editTitle}
+                      editFolderTitle={this.props.editFolderTitle}
+                      editFolderColor={this.props.editFolderColor}
+                      showDeleteConfirmation={this.props.showDeleteConfirmation}
+                    />
+                  )
+                )}
               </div>
             )}
           </Droppable>
@@ -199,6 +211,7 @@ export default class TargetMenu extends React.PureComponent<Props> {
         <SmoothCollapse
           expanded={this.state.sublistExpanded}
           className={styles.menuItemNavList}
+          allowOverflowWhenOpen
         >
           <div className={styles.header}>
             <div id={styles.searchItemList}>

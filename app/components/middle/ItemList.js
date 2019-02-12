@@ -5,6 +5,7 @@ import sanitizeHtml from 'sanitize-html';
 import styles from '../css/ItemList.css';
 import SearchIcon from '../../assets/icons/Search';
 import InnerItemList from './InnerItemList';
+import ColorFilter from '../ColorFilter';
 
 type Props = {
   +openItemData: (id: string) => void,
@@ -12,9 +13,11 @@ type Props = {
   +addItem: () => void,
   +saveItem: (id: string) => void,
   +renameItem: (id: string, title: string) => void,
+  +editItemColor: (id: string, color: string) => void,
   +removeItem: (id: string) => void,
   +doNotShowDeleteConfirmation: () => void,
   +reorderItem: (fromIndex: number, toIndex: number) => void,
+  +toggleMainColor: (color: string) => void,
   +items: {
     +id: string,
     +title: string,
@@ -29,7 +32,8 @@ type Props = {
   checkboxState?: (itemId: string) => void,
   checkbox?: boolean,
   +main: {
-    id: string | undefined
+    id: string | undefined,
+    colors: string[] | undefined
   },
   +showDeleteConfirmation: boolean
 };
@@ -47,7 +51,7 @@ class ItemList extends React.PureComponent<Props> {
     this.props.search(e.target.value.toLowerCase());
   };
 
-  applyFilter = items => {
+  applySearchFilter = items => {
     const { filter } = this.state;
 
     if (filter !== '') {
@@ -64,6 +68,16 @@ class ItemList extends React.PureComponent<Props> {
                 p.content.toLowerCase().includes(filter)
             ))
       );
+    }
+
+    return items;
+  };
+
+  applyColorFilter = items => {
+    const { colors } = this.props.main;
+
+    if (colors !== undefined && colors.length !== 0) {
+      return items.filter(item => colors.includes(item.color));
     }
 
     return items;
@@ -94,10 +108,11 @@ class ItemList extends React.PureComponent<Props> {
                 openItem={this.onItemClick}
                 renameItem={this.props.renameItem}
                 removeItem={this.props.removeItem}
+                editColor={this.props.editItemColor}
                 doNotShowDeleteConfirmation={
                   this.props.doNotShowDeleteConfirmation
                 }
-                items={this.applyFilter(items)}
+                items={this.applyColorFilter(this.applySearchFilter(items))}
                 checkboxState={checkboxState}
                 checkbox={checkbox}
                 selectedItem={main.id}
@@ -130,6 +145,10 @@ class ItemList extends React.PureComponent<Props> {
           >
             <span>New +</span>
           </div>
+          <ColorFilter
+            toggleColor={this.props.toggleMainColor}
+            colors={this.props.main.colors}
+          />
         </div>
         <div className={styles.itemListBody}>
           <ul>{itemList}</ul>

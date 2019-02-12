@@ -24,10 +24,12 @@ export const EDIT_TARGET_CHECKITEM_TITLE = 'EDIT_TARGET_CHECKITEM_TITLE';
 export const EDIT_TARGET_CHECKITEM_CONTENT = 'EDIT_TARGET_CHECKITEM_CONTENT';
 export const EDIT_TARGET_CHECKITEM_ORDER = 'EDIT_TARGET_CHECKITEM_ORDER';
 export const EDIT_TARGET_CHECKITEM_CHECKBOX = 'EDIT_TARGET_CHECKITEM_CHECKBOX';
+export const EDIT_TARGET_CHECKITEM_COLOR = 'EDIT_TARGET_CHECKITEM_COLOR';
 
 export const EDIT_TARGET_NOTE_TITLE = 'EDIT_TARGET_NOTE_TITLE';
 export const EDIT_TARGET_NOTE_CONTENT = 'EDIT_TARGET_NOTE_CONTENT';
 export const EDIT_TARGET_NOTE_ORDER = 'EDIT_TARGET_NOTE_ORDER';
+export const EDIT_TARGET_NOTE_COLOR = 'EDIT_TARGET_NOTE_COLOR';
 
 export const REMOVE_TARGET = 'REMOVE_TARGET';
 export const REMOVE_TARGET_FOLDER = 'REMOVE_TARGET_FOLDER';
@@ -257,6 +259,23 @@ export function editTargetCheckitemCheckbox(
   };
 }
 
+export function editTargetCheckitemColor(
+  id: string,
+  folderId: string,
+  itemId: string,
+  color: string
+) {
+  return {
+    type: EDIT_TARGET_CHECKITEM_COLOR,
+    payload: {
+      id,
+      folderId,
+      itemId,
+      color
+    }
+  };
+}
+
 export function editTargetNoteTitle(
   id: string,
   folderId: string,
@@ -304,6 +323,23 @@ export function editTargetNoteOrder(
       folderId,
       fromIndex,
       toIndex
+    }
+  };
+}
+
+export function editTargetNoteColor(
+  id: string,
+  folderId: string,
+  itemId: string,
+  color: string
+) {
+  return {
+    type: EDIT_TARGET_NOTE_COLOR,
+    payload: {
+      id,
+      folderId,
+      itemId,
+      color
     }
   };
 }

@@ -120,6 +120,7 @@ export default class LibraryMenuItem extends React.Component<Props> {
                   this.props.doNotShowDeleteConfirmation
                 }
                 targetId={item.id}
+                color={item.color}
                 folders={item.folders}
                 showDeleteConfirmation={this.props.showDeleteConfirmation}
               />

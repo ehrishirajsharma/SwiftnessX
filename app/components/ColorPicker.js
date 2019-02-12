@@ -6,7 +6,7 @@ import styles from './css/ColorPicker.css';
 
 type Props = {
   +editColor: (color: string) => void,
-  +color: string
+  +color: string | undefined
 };
 
 class ColorPicker extends React.PureComponent<Props> {

@@ -1,16 +1,24 @@
 .draggable-list .list {
+  display: flex;
+  justify-content: space-between;
   font-family: 'nunito-regular';
   font-size: 1.4rem;
   color: #4A4A4A;
   padding: 1.5rem 2rem 1.5rem 2rem;
   cursor: pointer;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+  justify-content: space-between;
 }
 
-.draggable-list .list span {
-  margin-left: 1px;
+.draggable-list .list .checkbox-text {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  height: 2.2rem;
+}
+
+.draggable-list .list .checkbox-text > span {
+  margin-left: 3rem;
+  vertical-align: middle;
 }
 
 .draggable-list .list.selected {
@@ -18,16 +26,13 @@
   background-color: #FFFFFF;
 }
 
-.draggable-list .list div {
-  float: left;
+.draggable-list .list > div {
   position: relative;
-  padding-left: 3rem;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
   cursor: pointer;
-  height: .1rem;
 }
 
 .draggable-list .list div input {
@@ -79,7 +84,6 @@
   left: 0;
   height: 2rem;
   width: 2rem;
-  margin-top: -.2rem;
   border-radius: 50%;
   border: .1rem solid #F97072;
   transition: .15s ease-out;

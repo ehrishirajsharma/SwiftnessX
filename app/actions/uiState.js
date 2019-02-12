@@ -15,6 +15,7 @@ export const CLOSE_ITEM_DATA = 'CLOSE_ITEM_DATA';
 export const SEARCH = 'SEARCH';
 
 export const TOGGLE_MENU_COLOR = 'TOGGLE_MENU_COLOR';
+export const TOGGLE_MAIN_COLOR = 'TOGGLE_MAIN_COLOR';
 
 export function openTarget(id: string, folderId: string) {
   return {
@@ -119,6 +120,15 @@ export function search(query: string) {
 export function toggleMenuColor(color: string) {
   return {
     type: TOGGLE_MENU_COLOR,
+    payload: {
+      color
+    }
+  };
+}
+
+export function toggleMainColor(color: string) {
+  return {
+    type: TOGGLE_MAIN_COLOR,
     payload: {
       color
     }

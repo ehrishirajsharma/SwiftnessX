@@ -5,12 +5,13 @@
 }
 
 .item-list .item-list-controls {
-  padding: 2.5rem 2rem 0 2rem;
+  padding: 2.5rem 0.5rem 0 1rem;
   width: 100%;
   height: auto;
   display: flex;
   margin-bottom: 4rem;
   box-sizing: border-box;
+  align-items: center;
 }
 
 .item-list .item-list-controls #search-item-list {
@@ -52,19 +53,20 @@
 
 .item-list .item-list-controls .new-item-list-button {
   height: 3.5rem;
-  width: 8rem;
+  width: 10rem;
   background-color: #F97072;
   border-radius: .6rem;
   padding: .85rem 1rem;
   font-family: 'nunito-regular';
   font-size: 1.3rem;
-  margin-left: 2rem;
+  margin-left: 1.5rem;
   box-sizing: border-box;
   float: right;
   cursor: pointer;
   overflow: hidden;
   white-space: nowrap;
   text-align: center;
+  margin-right: 0.5rem;
 }
 
 .item-list .item-list-controls .new-item-list-button:hover {
@@ -73,7 +75,7 @@
 }
 
 .item-list .item-list-body {
-  max-height: calc(100vh - 182px);
+  height: calc(100vh - 182px);
   overflow-y: auto;
 }
 
