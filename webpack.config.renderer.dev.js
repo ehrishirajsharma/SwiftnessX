@@ -229,11 +229,6 @@ export default merge.smart(baseConfig, {
       {
         test: /\.(?:ico|gif|png|jpg|jpeg|webp)$/,
         use: 'url-loader'
-      },
-      {
-        test: /\.js$/,
-        exclude: /node_modules(?!\/quill-image-drop-module|quill-image-resize-module)/,
-        loader: 'babel-loader'
       }
     ]
   },
