@@ -90,7 +90,18 @@ html {
 .ql-editor ul[data-checked] li{
   padding-top: 8px;
   padding-bottom: 8px;
+  display: flex;
+  align-items: center;
 }
+
+.ql-editor ul[data-checked] li > * {
+  margin-bottom: 4px;
+}
+
+.ql-editor ul[data-checked] span {
+  margin-bottom: 4px;
+}
+
 
 .ql-editor ul[data-checked] li::before{
   margin-right: 1.2rem;

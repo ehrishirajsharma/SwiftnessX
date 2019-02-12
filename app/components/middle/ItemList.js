@@ -65,7 +65,7 @@ class ItemList extends React.PureComponent<Props> {
             item.data.some(
               p =>
                 p.title.toLowerCase().includes(filter) ||
-                p.content.toLowerCase().includes(filter)
+                p.content.toUpperCase().includes(filter)
             ))
       );
     }
