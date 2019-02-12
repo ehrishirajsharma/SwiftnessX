@@ -125,7 +125,7 @@ class Editor extends React.Component<Props> {
 
   applySearch = () => {
     const { search } = this.props;
-    const text = this.quill.getText();
+    const text = this.quill.getText().toLowerCase();
 
     let index = 0;
 
