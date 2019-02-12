@@ -21,10 +21,14 @@ type Props = {
   +doNotShowDeleteConfirmation: () => void,
   +reorderCheckitem: (fromIndex: number, toIndex: number) => void,
   +reorderNote: (fromIndex: number, toIndex: number) => void,
+  +toggleMainColor: (color: string) => void,
+  +editCheckitemColor: (id: string, color: string) => void,
+  +editNoteColor: (id: string, color: string) => void,
   +checklist: checklistType[],
   +notes: noteType[],
   +main: {
-    id: string | undefined
+    id: string | undefined,
+    colors: string[] | undefined
   },
   +showDeleteConfirmation: boolean
 };
@@ -67,6 +71,8 @@ class TargetList extends React.PureComponent<Props> {
       saveNote,
       renameCheckitem,
       renameNote,
+      editCheckitemColor,
+      editNoteColor,
       checkitemCheckbox,
       removeCheckitem,
       removeNote,
@@ -102,6 +108,8 @@ class TargetList extends React.PureComponent<Props> {
               checkbox
               main={main}
               showDeleteConfirmation={this.props.showDeleteConfirmation}
+              toggleMainColor={this.props.toggleMainColor}
+              editItemColor={editCheckitemColor}
             />
             <ProgressBar
               value={checklist.filter(item => item.done).length}
@@ -121,6 +129,8 @@ class TargetList extends React.PureComponent<Props> {
             items={notes}
             main={main}
             showDeleteConfirmation={this.props.showDeleteConfirmation}
+            toggleMainColor={this.props.toggleMainColor}
+            editItemColor={editNoteColor}
           />
         )}
       </div>

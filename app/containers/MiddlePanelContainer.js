@@ -14,6 +14,7 @@ import {
   openTemplateData,
   openPayloadData,
   closeItemData,
+  toggleMainColor,
   search
 } from '../actions/uiState';
 import {
@@ -26,8 +27,10 @@ import {
   editTargetCheckitemTitle,
   editTargetCheckitemCheckbox,
   editTargetCheckitemOrder,
+  editTargetCheckitemColor,
   editTargetNoteTitle,
-  editTargetNoteOrder
+  editTargetNoteOrder,
+  editTargetNoteColor
 } from '../actions/targets';
 import {
   addLibraryItem,
@@ -75,6 +78,8 @@ type Props = {
   saveTemplateItem: (id: string) => void,
   savePayloadItem: (id: string) => void,
 
+  +toggleMainColor: (color: string) => void,
+
   removeTargetCheckitem: (id: string, folderId: string, itemId: string) => void,
   removeTargetNote: (id: string, folderId: string, itemId: string) => void,
   removeLibraryItem: (id: string, folderId: string, itemId: string) => void,
@@ -114,11 +119,23 @@ type Props = {
     fromIndex: number,
     toIndex: number
   ) => void,
+  editTargetCheckitemColor: (
+    id: string,
+    itemId: string,
+    folderId: string,
+    color: string
+  ) => void,
   editTargetNoteOrder: (
     id: string,
     folderId: string,
     fromIndex: number,
     toIndex: number
+  ) => void,
+  editTargetNoteColor: (
+    id: string,
+    itemId: string,
+    folderId: string,
+    color: string
   ) => void,
   editLibraryItemOrder: (
     id: string,
@@ -339,6 +356,12 @@ class MiddlePanelContainer extends React.PureComponent<Props> {
             renameNote={(itemId, title) =>
               this.props.editTargetNoteTitle(id, folderId, itemId, title)
             }
+            editCheckitemColor={(itemId, color) =>
+              this.props.editTargetCheckitemColor(id, folderId, itemId, color)
+            }
+            editNoteColor={(itemId, color) =>
+              this.props.editTargetNoteColor(id, folderId, itemId, color)
+            }
             checkitemCheckbox={this.editTargetCheckitemCheckbox}
             removeCheckitem={this.removeTargetCheckitem}
             removeNote={this.removeTargetNote}
@@ -349,6 +372,7 @@ class MiddlePanelContainer extends React.PureComponent<Props> {
             notes={this.getActiveNotes()}
             main={uiState.main}
             showDeleteConfirmation={this.props.messages.showDeleteConfirmation}
+            toggleMainColor={this.props.toggleMainColor}
           />
         )}
         {type === 'library' && (
@@ -423,6 +447,7 @@ function mapDispatchToProps(dispatch) {
       openTemplateData,
       openPayloadData,
       closeItemData,
+      toggleMainColor,
       search,
 
       addTargetCheckitem,
@@ -450,6 +475,9 @@ function mapDispatchToProps(dispatch) {
       editPayloadItemTitle,
 
       editTargetCheckitemCheckbox,
+
+      editTargetCheckitemColor,
+      editTargetNoteColor,
 
       editTargetCheckitemOrder,
       editTargetNoteOrder,

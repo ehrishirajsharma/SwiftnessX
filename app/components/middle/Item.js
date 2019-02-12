@@ -4,6 +4,7 @@ import { Draggable } from 'react-beautiful-dnd';
 import onClickOutside from 'react-onclickoutside';
 import className from 'classnames';
 import styles from '../css/Item.css';
+import ColorPicker from '../ColorPicker';
 import ContentEditable from '../tools/ContentEditableExpanded';
 
 const getItemStyle = (isSelected, isDragging, draggableStyle) => {
@@ -21,6 +22,7 @@ type Props = {
   +saveItem: (id: string) => void,
   +openItem: (id: string) => void,
   +renameItem: (id: string, title: string) => void,
+  +editColor: (id: string, color: string) => void,
   +removeItem: (id: string) => void,
   +doNotShowDeleteConfirmation: () => void,
   +item: {
@@ -38,8 +40,7 @@ type Props = {
 
 class Item extends React.PureComponent<Props> {
   state = {
-    disabled: true,
-    value: ''
+    disabled: true
   };
 
   componentDidMount = () => {
@@ -54,16 +55,6 @@ class Item extends React.PureComponent<Props> {
   };
 
   handleClickOutside = () => {
-    this.handleBlur();
-  };
-
-  handleBlur = () => {
-    if (this.props.item.title) {
-      this.setState({ value: this.props.item.title });
-    } else {
-      this.props.renameItem(this.props.item.id, this.state.value);
-    }
-
     this.setState({ disabled: true });
   };
 
@@ -120,7 +111,7 @@ class Item extends React.PureComponent<Props> {
   };
 
   renameItem = target => {
-    this.setState({ disabled: false, value: this.props.item.title });
+    this.setState({ disabled: false });
 
     setTimeout(() => {
       target.focus();
@@ -140,7 +131,14 @@ class Item extends React.PureComponent<Props> {
   };
 
   render() {
-    const { item, index, checkboxState, checkbox, isSelected } = this.props;
+    const {
+      item,
+      index,
+      checkboxState,
+      checkbox,
+      isSelected,
+      editColor
+    } = this.props;
 
     return (
       <div className={styles.draggableList}>
@@ -165,23 +163,28 @@ class Item extends React.PureComponent<Props> {
                 providedDrag.draggableProps.style
               )}
             >
-              {checkbox && (
-                <div>
-                  <input
-                    onClick={checkboxState(item.id)}
-                    type="checkbox"
-                    defaultChecked={item.done}
-                  />
-                  <span className={styles.checkmark} />
-                </div>
-              )}
-              <ContentEditable
-                id={item.id}
-                disabled={this.state.disabled}
-                tagName="span"
-                html={item.title}
-                onBlur={this.handleBlur}
-                onChange={e => this.props.renameItem(item.id, e.target.value)}
+              <div className={styles.checkboxText}>
+                {checkbox && (
+                  <div>
+                    <input
+                      onClick={checkboxState(item.id)}
+                      type="checkbox"
+                      defaultChecked={item.done}
+                    />
+                    <span className={styles.checkmark} />
+                  </div>
+                )}
+                <ContentEditable
+                  id={item.id}
+                  disabled={this.state.disabled}
+                  tagName="span"
+                  html={item.title}
+                  onChange={e => this.props.renameItem(item.id, e.target.value)}
+                />
+              </div>
+              <ColorPicker
+                editColor={selectedColor => editColor(item.id, selectedColor)}
+                color={item.color}
               />
             </li>
           )}

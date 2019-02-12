@@ -17,9 +17,11 @@ import {
   EDIT_TARGET_CHECKITEM_CONTENT,
   EDIT_TARGET_CHECKITEM_ORDER,
   EDIT_TARGET_CHECKITEM_CHECKBOX,
+  EDIT_TARGET_CHECKITEM_COLOR,
   EDIT_TARGET_NOTE_TITLE,
   EDIT_TARGET_NOTE_CONTENT,
   EDIT_TARGET_NOTE_ORDER,
+  EDIT_TARGET_NOTE_COLOR,
   REMOVE_TARGET,
   REMOVE_TARGET_FOLDER,
   REMOVE_TARGET_CHECKITEM,
@@ -32,14 +34,16 @@ export type checklistType = {
   +title: string,
   +content: string,
   +done?: boolean,
-  +isNew?: boolean
+  +isNew?: boolean,
+  +color?: string
 };
 
 export type noteType = {
   +id: string,
   +title: string,
   +content: string,
-  +isNew?: boolean
+  +isNew?: boolean,
+  +color?: string
 };
 
 export type targetType = {
@@ -130,9 +134,11 @@ export default function targets(state: targetType[] = [], action: actionType) {
     case EDIT_TARGET_CHECKITEM_CONTENT:
     case EDIT_TARGET_CHECKITEM_ORDER:
     case EDIT_TARGET_CHECKITEM_CHECKBOX:
+    case EDIT_TARGET_CHECKITEM_COLOR:
     case EDIT_TARGET_NOTE_TITLE:
     case EDIT_TARGET_NOTE_CONTENT:
     case EDIT_TARGET_NOTE_ORDER:
+    case EDIT_TARGET_NOTE_COLOR:
     case REMOVE_TARGET_FOLDER:
     case REMOVE_TARGET_CHECKITEM:
     case REMOVE_TARGET_NOTE: {
@@ -204,9 +210,11 @@ function editTarget(state = {}, action) {
     case EDIT_TARGET_CHECKITEM_CONTENT:
     case EDIT_TARGET_CHECKITEM_ORDER:
     case EDIT_TARGET_CHECKITEM_CHECKBOX:
+    case EDIT_TARGET_CHECKITEM_COLOR:
     case EDIT_TARGET_NOTE_TITLE:
     case EDIT_TARGET_NOTE_CONTENT:
     case EDIT_TARGET_NOTE_ORDER:
+    case EDIT_TARGET_NOTE_COLOR:
     case REMOVE_TARGET_CHECKITEM:
     case REMOVE_TARGET_NOTE: {
       const index = state.folders.findIndex(
@@ -309,7 +317,8 @@ function editTargetFolder(state = {}, action) {
     case SAVE_TARGET_CHECKITEM:
     case EDIT_TARGET_CHECKITEM_TITLE:
     case EDIT_TARGET_CHECKITEM_CONTENT:
-    case EDIT_TARGET_CHECKITEM_CHECKBOX: {
+    case EDIT_TARGET_CHECKITEM_CHECKBOX:
+    case EDIT_TARGET_CHECKITEM_COLOR: {
       const index = state.checklist.findIndex(
         f => f.id === action.payload.itemId
       );
@@ -321,7 +330,8 @@ function editTargetFolder(state = {}, action) {
     }
     case SAVE_TARGET_NOTE:
     case EDIT_TARGET_NOTE_TITLE:
-    case EDIT_TARGET_NOTE_CONTENT: {
+    case EDIT_TARGET_NOTE_CONTENT:
+    case EDIT_TARGET_NOTE_COLOR: {
       const index = state.notes.findIndex(f => f.id === action.payload.itemId);
 
       return {
@@ -358,6 +368,12 @@ function editTargetItem(state = {}, action) {
       return {
         ...state,
         done: action.payload.checked
+      };
+    case EDIT_TARGET_CHECKITEM_COLOR:
+    case EDIT_TARGET_NOTE_COLOR:
+      return {
+        ...state,
+        color: action.payload.color
       };
     default:
       return state;

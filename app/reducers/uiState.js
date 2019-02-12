@@ -12,7 +12,8 @@ import {
   CLOSE_LIST,
   CLOSE_ITEM_DATA,
   SEARCH,
-  TOGGLE_MENU_COLOR
+  TOGGLE_MENU_COLOR,
+  TOGGLE_MAIN_COLOR
 } from '../actions/uiState';
 
 type menuType = {
@@ -24,7 +25,8 @@ type menuType = {
 
 type mainType = {
   +type: string,
-  +id?: string
+  +id?: string,
+  +colors?: string[]
 };
 
 export type uiStateType = {
@@ -97,6 +99,12 @@ export default function uiState(
       return {
         ...state,
         menu: menu(state.menu, action)
+      };
+    }
+    case TOGGLE_MAIN_COLOR: {
+      return {
+        ...state,
+        main: main(state.main, action)
       };
     }
     case OPEN_CHECKLIST_DATA:
@@ -211,6 +219,30 @@ function main(state: mainType = {}, action: actionType) {
         type: 'payloadData',
         id: action.payload.id
       };
+    case TOGGLE_MAIN_COLOR: {
+      if (state.colors) {
+        return {
+          ...state,
+          colors: state.colors.includes(action.payload.color)
+            ? [
+                ...state.colors.slice(
+                  0,
+                  state.colors.findIndex(p => p === action.payload.color)
+                ),
+                ...state.colors.slice(
+                  state.colors.findIndex(p => p === action.payload.color) + 1,
+                  state.colors.length
+                )
+              ]
+            : [...state.colors, action.payload.color]
+        };
+      }
+
+      return {
+        ...state,
+        colors: [action.payload.color]
+      };
+    }
     default:
       return state;
   }

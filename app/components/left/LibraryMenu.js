@@ -165,6 +165,7 @@ export default class LibraryMenu extends React.PureComponent<Props> {
         <SmoothCollapse
           expanded={this.state.sublistExpanded}
           className={styles.menuItemNavList}
+          allowOverflowWhenOpen
         >
           {sublistList}
         </SmoothCollapse>

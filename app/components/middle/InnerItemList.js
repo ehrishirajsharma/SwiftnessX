@@ -5,6 +5,7 @@ type Props = {
   +saveItem: (id: string) => void,
   +openItem: (id: string) => void,
   +renameItem: (id: string, title: string) => void,
+  +editColor: (id: string, color: string) => void,
   +removeItem: (id: string) => void,
   +doNotShowDeleteConfirmation: () => void,
   +items: {
@@ -31,6 +32,7 @@ class InnerItemList extends React.PureComponent<Props> {
         key={item.id}
         item={item}
         index={index}
+        editColor={this.props.editColor}
         isSelected={item.id === selectedItem}
       />
     ));

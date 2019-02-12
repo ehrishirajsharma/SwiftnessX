@@ -36,6 +36,7 @@
   align-items: center;
   padding: 0.7rem;
   margin-top: 1.5rem;
+  margin-right: 1rem;
 }
 
 .menu-item-nav .menu-item-nav-list #search-item-list input {
@@ -84,5 +85,5 @@
   display: flex;
   align-items: baseline;
   justify-content: space-between;
-  padding: 0 2.5rem;
+  padding: 0 1rem 0 2.5rem;
 }
