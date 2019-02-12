@@ -70,7 +70,7 @@ export default class ItemData extends React.PureComponent<Props> {
             onClick={this.renameItem}
             onBlur={this.onBlur}
             onChange={e => editTitle(item.id, e.target.value)}
-            tagName="span"
+            tagName="p"
             html={item.title}
           />
           <CopyIcon content={item.content} sanitizeContent />

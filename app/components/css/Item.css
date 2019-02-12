@@ -9,6 +9,10 @@
   text-overflow: ellipsis;
 }
 
+.draggable-list .list span {
+  margin-left: 1px;
+}
+
 .draggable-list .list.selected {
   color: #000000;
   background-color: #FFFFFF;

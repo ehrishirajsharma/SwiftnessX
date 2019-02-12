@@ -156,7 +156,7 @@ class PayloadData extends React.PureComponent<Props> {
             onClick={this.renameItem}
             onBlur={this.onBlur}
             onChange={this.handleChange}
-            tagName="span"
+            tagName="p"
             html={payloadData.title}
           />
         </div>

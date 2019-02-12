@@ -10,6 +10,11 @@
   color: #000;
 }
 
+.payload-data .payload-data-header p {
+  margin: 0;
+  width: 100%;
+}
+
 .payload-data .payload-data-body {
   padding: 3.5rem 3rem;
   max-height: calc(100vh - 128px);

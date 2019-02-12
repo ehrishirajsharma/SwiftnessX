@@ -8,4 +8,11 @@
   cursor: pointer;
   overflow: hidden;
   color: #000;
+  display: flex;
+  justify-content: space-between;
+}
+
+.checklist-data .checklist-data-header p {
+  margin: 0;
+  width: 100%;
 }
