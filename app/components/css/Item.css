@@ -17,7 +17,6 @@
 }
 
 .draggable-list .list .checkbox-text > span {
-  margin-left: 3rem;
   vertical-align: middle;
 }
 
@@ -26,13 +25,16 @@
   background-color: #FFFFFF;
 }
 
-.draggable-list .list > div {
+.draggable-list .list .checkbox-text > div {
+  float: left;
   position: relative;
+  padding-left: 3rem;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
   cursor: pointer;
+  height: .1rem;
 }
 
 .draggable-list .list div input {
