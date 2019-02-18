@@ -145,22 +145,26 @@ function menu(state: menuType = {}, action: actionType) {
   switch (action.type) {
     case OPEN_TARGET:
       return {
+        ...state,
         type: 'target',
         id: action.payload.id,
         folderId: action.payload.folderId
       };
     case OPEN_LIBRARY:
       return {
+        ...state,
         type: 'library',
         id: action.payload.id,
         folderId: action.payload.folderId
       };
     case OPEN_TEMPLATE:
       return {
+        ...state,
         type: 'template'
       };
     case OPEN_PAYLOAD:
       return {
+        ...state,
         type: 'payload'
       };
     case TOGGLE_MENU_COLOR: {
@@ -196,26 +200,31 @@ function main(state: mainType = {}, action: actionType) {
   switch (action.type) {
     case OPEN_CHECKLIST_DATA:
       return {
+        ...state,
         type: 'checklistData',
         id: action.payload.id
       };
     case OPEN_NOTE_DATA:
       return {
+        ...state,
         type: 'noteData',
         id: action.payload.id
       };
     case OPEN_LIBRARY_DATA:
       return {
+        ...state,
         type: 'libraryData',
         id: action.payload.id
       };
     case OPEN_TEMPLATE_DATA:
       return {
+        ...state,
         type: 'templateData',
         id: action.payload.id
       };
     case OPEN_PAYLOAD_DATA:
       return {
+        ...state,
         type: 'payloadData',
         id: action.payload.id
       };
