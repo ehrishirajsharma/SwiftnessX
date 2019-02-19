@@ -7,6 +7,7 @@ export const SAVE_TEMPLATE_ITEM = 'SAVE_TEMPLATE_ITEM';
 export const EDIT_TEMPLATE_ITEM_TITLE = 'EDIT_TEMPLATE_ITEM_TITLE';
 export const EDIT_TEMPLATE_ITEM_CONTENT = 'EDIT_TEMPLATE_ITEM_CONTENT';
 export const EDIT_TEMPLATE_ITEM_ORDER = 'EDIT_TEMPLATE_ITEM_ORDER';
+export const EDIT_TEMPLATE_ITEM_COLOR = 'EDIT_TEMPLATE_ITEM_COLOR';
 export const REMOVE_TEMPLATE_ITEM = 'REMOVE_TEMPLATE_ITEM';
 
 export const IMPORT_TEMPLATES = 'IMPORT_TEMPLATES';
@@ -55,6 +56,16 @@ export function editTemplateItemOrder(fromIndex: number, toIndex: number) {
     payload: {
       fromIndex,
       toIndex
+    }
+  };
+}
+
+export function editTemplateItemColor(id: string, color: string) {
+  return {
+    type: EDIT_TEMPLATE_ITEM_COLOR,
+    payload: {
+      id,
+      color
     }
   };
 }

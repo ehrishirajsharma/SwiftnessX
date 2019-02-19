@@ -14,6 +14,7 @@ import {
   EDIT_LIBRARY_ITEM_TITLE,
   EDIT_LIBRARY_ITEM_CONTENT,
   EDIT_LIBRARY_ITEM_ORDER,
+  EDIT_LIBRARY_ITEM_COLOR,
   REMOVE_LIBRARY,
   REMOVE_LIBRARY_FOLDER,
   REMOVE_LIBRARY_ITEM,
@@ -24,6 +25,7 @@ export type checklistType = {
   +id: string,
   +title: string,
   +content: string,
+  +color?: string,
   +isNew?: boolean
 };
 
@@ -94,6 +96,7 @@ export default function libraries(
     case EDIT_LIBRARY_ITEM_TITLE:
     case EDIT_LIBRARY_ITEM_CONTENT:
     case EDIT_LIBRARY_ITEM_ORDER:
+    case EDIT_LIBRARY_ITEM_COLOR:
     case REMOVE_LIBRARY_FOLDER:
     case REMOVE_LIBRARY_ITEM: {
       const index = state.findIndex(l => l.id === action.payload.id);
@@ -165,6 +168,7 @@ function editLibrary(state = {}, action) {
     case EDIT_LIBRARY_ITEM_TITLE:
     case EDIT_LIBRARY_ITEM_CONTENT:
     case EDIT_LIBRARY_ITEM_ORDER:
+    case EDIT_LIBRARY_ITEM_COLOR:
     case REMOVE_LIBRARY_ITEM: {
       const index = state.folders.findIndex(
         f => f.id === action.payload.folderId
@@ -228,7 +232,8 @@ function editLibraryFolder(state = {}, action) {
     }
     case SAVE_LIBRARY_ITEM:
     case EDIT_LIBRARY_ITEM_TITLE:
-    case EDIT_LIBRARY_ITEM_CONTENT: {
+    case EDIT_LIBRARY_ITEM_CONTENT:
+    case EDIT_LIBRARY_ITEM_COLOR: {
       const index = state.checklist.findIndex(
         f => f.id === action.payload.itemId
       );
@@ -259,6 +264,11 @@ function editLibraryItem(state = {}, action) {
       return {
         ...state,
         content: action.payload.content
+      };
+    case EDIT_LIBRARY_ITEM_COLOR:
+      return {
+        ...state,
+        color: action.payload.color
       };
     default:
       return state;

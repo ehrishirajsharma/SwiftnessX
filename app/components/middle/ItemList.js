@@ -13,11 +13,11 @@ type Props = {
   +addItem: () => void,
   +saveItem: (id: string) => void,
   +renameItem: (id: string, title: string) => void,
-  +editItemColor: (id: string, color: string) => void,
+  editItemColor?: (id: string, color: string) => void,
   +removeItem: (id: string) => void,
   +doNotShowDeleteConfirmation: () => void,
   +reorderItem: (fromIndex: number, toIndex: number) => void,
-  +toggleMainColor: (color: string) => void,
+  toggleMainColor?: (color: string) => void,
   +items: {
     +id: string,
     +title: string,
@@ -145,10 +145,12 @@ class ItemList extends React.PureComponent<Props> {
           >
             <span>New +</span>
           </div>
-          <ColorFilter
-            toggleColor={this.props.toggleMainColor}
-            colors={this.props.main.colors}
-          />
+          {this.props.toggleMainColor !== undefined && (
+            <ColorFilter
+              toggleColor={this.props.toggleMainColor}
+              colors={this.props.main.colors}
+            />
+          )}
         </div>
         <div className={styles.itemListBody}>
           <ul>{itemList}</ul>
@@ -160,7 +162,9 @@ class ItemList extends React.PureComponent<Props> {
 
 ItemList.defaultProps = {
   checkboxState: () => {},
-  checkbox: false
+  checkbox: false,
+  editItemColor: undefined,
+  toggleMainColor: undefined
 };
 
 export default ItemList;

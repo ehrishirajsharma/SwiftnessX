@@ -22,7 +22,7 @@ type Props = {
   +saveItem: (id: string) => void,
   +openItem: (id: string) => void,
   +renameItem: (id: string, title: string) => void,
-  +editColor: (id: string, color: string) => void,
+  editColor?: (id: string, color: string) => void,
   +removeItem: (id: string) => void,
   +doNotShowDeleteConfirmation: () => void,
   +item: {
@@ -182,10 +182,12 @@ class Item extends React.PureComponent<Props> {
                   onChange={e => this.props.renameItem(item.id, e.target.value)}
                 />
               </div>
-              <ColorPicker
-                editColor={selectedColor => editColor(item.id, selectedColor)}
-                color={item.color}
-              />
+              {this.props.editColor !== undefined && (
+                <ColorPicker
+                  editColor={selectedColor => editColor(item.id, selectedColor)}
+                  color={item.color}
+                />
+              )}
             </li>
           )}
         </Draggable>
@@ -193,5 +195,9 @@ class Item extends React.PureComponent<Props> {
     );
   }
 }
+
+Item.defaultProps = {
+  editColor: undefined
+};
 
 export default onClickOutside(Item);

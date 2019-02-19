@@ -37,14 +37,16 @@ import {
   saveLibraryItem,
   removeLibraryItem,
   editLibraryItemTitle,
-  editLibraryItemOrder
+  editLibraryItemOrder,
+  editLibraryItemColor
 } from '../actions/libraries';
 import {
   addTemplateItem,
   saveTemplateItem,
   removeTemplateItem,
   editTemplateItemTitle,
-  editTemplateItemOrder
+  editTemplateItemOrder,
+  editTemplateItemColor
 } from '../actions/templates';
 import {
   addPayloadItem,
@@ -104,6 +106,12 @@ type Props = {
     itemId: string,
     title: string
   ) => void,
+  editLibraryItemColor: (
+    id: string,
+    folderId: string,
+    itemId: string,
+    color: string
+  ) => void,
   editTemplateItemTitle: (id: string, title: string) => void,
   editPayloadItemTitle: (id: string, title: string) => void,
 
@@ -144,6 +152,7 @@ type Props = {
     toIndex: number
   ) => void,
   editTemplateItemOrder: (fromIndex: number, toIndex: number) => void,
+  editTemplateItemColor: (id: string, color: string) => void,
   editPayloadItemOrder: (fromIndex: number, toIndex: number) => void,
 
   doNotShowDeleteConfirmation: () => void,
@@ -387,9 +396,13 @@ class MiddlePanelContainer extends React.PureComponent<Props> {
             removeItem={this.removeLibraryItem}
             doNotShowDeleteConfirmation={this.props.doNotShowDeleteConfirmation}
             reorderItem={this.editLibraryItemOrder}
+            editItemColor={(itemId, color) =>
+              this.props.editLibraryItemColor(id, folderId, itemId, color)
+            }
             items={this.getActiveLibrary()}
             main={uiState.main}
             showDeleteConfirmation={this.props.messages.showDeleteConfirmation}
+            toggleMainColor={this.props.toggleMainColor}
           />
         )}
         {type === 'template' && (
@@ -402,9 +415,11 @@ class MiddlePanelContainer extends React.PureComponent<Props> {
             removeItem={this.removeTemplateItem}
             doNotShowDeleteConfirmation={this.props.doNotShowDeleteConfirmation}
             reorderItem={this.props.editTemplateItemOrder}
+            editItemColor={this.props.editTemplateItemColor}
             items={templates}
             main={uiState.main}
             showDeleteConfirmation={this.props.messages.showDeleteConfirmation}
+            toggleMainColor={this.props.toggleMainColor}
           />
         )}
         {type === 'payload' && (
@@ -478,6 +493,8 @@ function mapDispatchToProps(dispatch) {
 
       editTargetCheckitemColor,
       editTargetNoteColor,
+      editLibraryItemColor,
+      editTemplateItemColor,
 
       editTargetCheckitemOrder,
       editTargetNoteOrder,
