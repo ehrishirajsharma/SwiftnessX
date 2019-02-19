@@ -21,11 +21,13 @@ class ColorPicker extends React.PureComponent<Props> {
     this.setState({ open: false });
   };
 
-  togglePopup = () => {
+  togglePopup = e => {
+    e.stopPropagation();
     this.setState(prevState => ({ open: !prevState.open }));
   };
 
-  editColor = (color: string) => {
+  editColor = (e, color: string) => {
+    e.stopPropagation();
     this.props.editColor(color);
     this.setState({ open: false });
   };
@@ -52,23 +54,23 @@ class ColorPicker extends React.PureComponent<Props> {
             <div className={styles.arrow} />
             <div className={styles.options}>
               <ColorItem
-                onClick={() => this.editColor('light-red')}
+                onClick={e => this.editColor(e, 'light-red')}
                 color="light-red"
               />
               <ColorItem
-                onClick={() => this.editColor('light-yellow')}
+                onClick={e => this.editColor(e, 'light-yellow')}
                 color="light-yellow"
               />
               <ColorItem
-                onClick={() => this.editColor('dark-red')}
+                onClick={e => this.editColor(e, 'dark-red')}
                 color="dark-red"
               />
               <ColorItem
-                onClick={() => this.editColor('light-green')}
+                onClick={e => this.editColor(e, 'light-green')}
                 color="light-green"
               />
               <ColorItem
-                onClick={() => this.editColor('dark-yellow')}
+                onClick={e => this.editColor(e, 'dark-yellow')}
                 color="dark-yellow"
               />
             </div>
