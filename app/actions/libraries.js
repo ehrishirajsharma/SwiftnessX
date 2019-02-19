@@ -20,6 +20,7 @@ export const EDIT_LIBRARY_FOLDER_ORDER = 'EDIT_LIBRARY_FOLDER_ORDER';
 export const EDIT_LIBRARY_ITEM_TITLE = 'EDIT_LIBRARY_ITEM_TITLE';
 export const EDIT_LIBRARY_ITEM_CONTENT = 'EDIT_LIBRARY_ITEM_CONTENT';
 export const EDIT_LIBRARY_ITEM_ORDER = 'EDIT_LIBRARY_ITEM_ORDER';
+export const EDIT_LIBRARY_ITEM_COLOR = 'EDIT_LIBRARY_ITEM_COLOR';
 
 export const REMOVE_LIBRARY = 'REMOVE_LIBRARY';
 export const REMOVE_LIBRARY_FOLDER = 'REMOVE_LIBRARY_FOLDER';
@@ -195,6 +196,23 @@ export function editLibraryItemOrder(
       folderId,
       fromIndex,
       toIndex
+    }
+  };
+}
+
+export function editLibraryItemColor(
+  id: string,
+  folderId: string,
+  itemId: string,
+  color: string
+) {
+  return {
+    type: EDIT_LIBRARY_ITEM_COLOR,
+    payload: {
+      id,
+      folderId,
+      itemId,
+      color
     }
   };
 }

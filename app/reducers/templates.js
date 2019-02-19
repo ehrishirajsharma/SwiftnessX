@@ -5,6 +5,7 @@ import {
   EDIT_TEMPLATE_ITEM_TITLE,
   EDIT_TEMPLATE_ITEM_CONTENT,
   EDIT_TEMPLATE_ITEM_ORDER,
+  EDIT_TEMPLATE_ITEM_COLOR,
   REMOVE_TEMPLATE_ITEM,
   IMPORT_TEMPLATES
 } from '../actions/templates';
@@ -13,7 +14,8 @@ export type templateType = {
   +id: string,
   +title: string,
   +content: string,
-  +isNew?: boolean
+  +isNew?: boolean,
+  +color?: string
 };
 
 type actionType = {
@@ -53,7 +55,8 @@ export default function templates(
     }
     case SAVE_TEMPLATE_ITEM:
     case EDIT_TEMPLATE_ITEM_TITLE:
-    case EDIT_TEMPLATE_ITEM_CONTENT: {
+    case EDIT_TEMPLATE_ITEM_CONTENT:
+    case EDIT_TEMPLATE_ITEM_COLOR: {
       const index = state.findIndex(item => item.id === action.payload.id);
 
       return [
@@ -83,6 +86,11 @@ function editItem(state = {}, action: actionType) {
       return {
         ...state,
         content: action.payload.content
+      };
+    case EDIT_TEMPLATE_ITEM_COLOR:
+      return {
+        ...state,
+        color: action.payload.color
       };
     default:
       return state;
