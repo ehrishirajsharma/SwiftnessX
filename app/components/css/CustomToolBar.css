@@ -1,0 +1,29 @@
+.add-table {
+  position: relative;
+  float: left;
+  width: 24px;
+}
+
+button {
+  outline: none;
+}
+
+.toolbar .font span[data-label="Sans Serif"]::before {
+  font-family: "Sans Serif";
+}
+
+.toolbar .font span[data-label="Inconsolata"]::before {
+  font-family: "Inconsolata";
+}
+
+.toolbar .font span[data-label="Roboto"]::before {
+  font-family: "Roboto";
+}
+
+.toolbar .font span[data-label="Mirza"]::before {
+  font-family: "Mirza";
+}
+
+.toolbar .font span[data-label="Arial"]::before {
+  font-family: "Arial";
+}

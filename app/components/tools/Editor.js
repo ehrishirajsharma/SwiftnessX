@@ -16,8 +16,6 @@ import ImageIcon from '../../assets/quill/image.png';
 import VideoIcon from '../../assets/quill/video.png';
 import ListOrderedIcon from '../../assets/quill/list_ordered.png';
 import LinkIcon from '../../assets/quill/link.png';
-import AddRowIcon from '../../assets/quill/add_row.svg';
-import AddColumnIcon from '../../assets/quill/add_column.svg';
 import Video from './quill-video-resize';
 import CustomToolbar from './CustomToolbar';
 
@@ -78,11 +76,6 @@ class Editor extends React.Component<Props> {
     icons.video = `<img src=${VideoIcon}>`;
     icons.list.ordered = `<img src=${ListOrderedIcon}>`;
     icons.link = `<img src=${LinkIcon}>`;
-
-    icons.table = {
-      'append-row': `<img src=${AddRowIcon}>`,
-      'append-col': `<img src=${AddColumnIcon}>`
-    };
   }
 
   state = {
@@ -190,6 +183,7 @@ class Editor extends React.Component<Props> {
         onKeyPress={this.handleLinkClick}
         role="textbox"
         tabIndex={0}
+        id="checklist-data-body"
       >
         <CustomToolbar />
         <ReactQuill
