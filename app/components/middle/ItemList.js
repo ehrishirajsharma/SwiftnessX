@@ -152,7 +152,7 @@ class ItemList extends React.PureComponent<Props> {
             />
           )}
         </div>
-        <div className={styles.itemListBody}>
+        <div className={styles.itemListBody} id="item-list-body">
           <ul>{itemList}</ul>
         </div>
       </div>

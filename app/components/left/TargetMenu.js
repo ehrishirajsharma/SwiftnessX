@@ -1,10 +1,12 @@
 // @flow
 import React from 'react';
+import className from 'classnames';
 import SmoothCollapse from 'react-smooth-collapse';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 import styles from '../css/TargetMenu.css';
 import SearchIcon from '../../assets/icons/Search';
 import { targetType } from '../../reducers/targets';
+import { libraryType } from '../../reducers/libraries';
 import TargetMenuItem from './TargetMenuItem';
 import ArrowUpIcon from '../../assets/icons/ArrowUpIcon';
 import AddIcon from '../../assets/icons/AddIcon';
@@ -44,7 +46,18 @@ export default class TargetMenu extends React.PureComponent<Props> {
     popupOpen: false,
     sublistExpanded: true,
     expandedList: undefined,
-    filter: ''
+    filter: '',
+    overflowAuto: false
+  };
+
+  componentDidMount = () => {
+    setTimeout(() => {
+      this.setOverflowAuto();
+    }, 0);
+  };
+
+  componentDidUpdate = () => {
+    this.setOverflowAuto();
   };
 
   onFilterChange = e => {
@@ -138,6 +151,17 @@ export default class TargetMenu extends React.PureComponent<Props> {
     }
   };
 
+  setOverflowAuto = () => {
+    const entireItemList = document.querySelector('#target-list');
+    const entireItemListBounds = entireItemList.getBoundingClientRect();
+
+    if (entireItemListBounds.height > 326) {
+      this.setState({ overflowAuto: true });
+    } else {
+      this.setState({ overflowAuto: false });
+    }
+  };
+
   render() {
     const {
       removeParent,
@@ -149,7 +173,7 @@ export default class TargetMenu extends React.PureComponent<Props> {
     } = this.props;
 
     const sublistList = (
-      <ul>
+      <ul id="target-list">
         <DragDropContext onDragEnd={this.onDragEnd}>
           <Droppable droppableId="droppable">
             {provided => (
@@ -178,6 +202,11 @@ export default class TargetMenu extends React.PureComponent<Props> {
                       editFolderTitle={this.props.editFolderTitle}
                       editFolderColor={this.props.editFolderColor}
                       showDeleteConfirmation={this.props.showDeleteConfirmation}
+                      rootContainerSelector={
+                        this.state.overflowAuto
+                          ? '#target-container'
+                          : undefined
+                      }
                     />
                   )
                 )}
@@ -189,7 +218,7 @@ export default class TargetMenu extends React.PureComponent<Props> {
     );
 
     return (
-      <div className={styles.menuItemNav}>
+      <div className={styles.menuItemNav} id="target-container">
         <div
           className={styles.menuItemNavHeader}
           onClick={this.handleHeaderClick}
@@ -210,7 +239,9 @@ export default class TargetMenu extends React.PureComponent<Props> {
 
         <SmoothCollapse
           expanded={this.state.sublistExpanded}
-          className={styles.menuItemNavList}
+          className={className(styles.menuItemNavList, {
+            [`${styles.overflowAuto}`]: this.state.overflowAuto
+          })}
           allowOverflowWhenOpen
         >
           <div className={styles.header}>

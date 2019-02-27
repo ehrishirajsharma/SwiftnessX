@@ -186,6 +186,7 @@ class Item extends React.PureComponent<Props> {
                 <ColorPicker
                   editColor={selectedColor => editColor(item.id, selectedColor)}
                   color={item.color}
+                  rootContainerSelector="#item-list-body"
                 />
               )}
             </li>
