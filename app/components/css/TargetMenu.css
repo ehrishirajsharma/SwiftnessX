@@ -14,13 +14,11 @@
   flex-grow: 20;
 }
 
-.menu-item-nav:nth-child(1) .menu-item-nav-list {
+.menu-item-nav .menu-item-nav-list {
   max-height: 375px;
-  overflow: auto !important;
 }
 
-.menu-item-nav:nth-child(2) .menu-item-nav-list {
-  max-height: 250px;
+.menu-item-nav .overflow-auto {
   overflow: auto !important;
 }
 
@@ -72,7 +70,7 @@
 }
 
 .menu-item-nav .menu-item-nav-list > div > ul {
-  padding: 0 2.5rem;
+  padding: 0 10px 0 2.5rem;
 }
 
 .menu-item-nav .menu-item-nav-list ul {

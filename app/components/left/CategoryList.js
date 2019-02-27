@@ -37,7 +37,8 @@ type Props = {
     +title: string,
     +isNew?: boolean
   }[],
-  +showDeleteConfirmation: boolean
+  +showDeleteConfirmation: boolean,
+  rootContainerSelector?: string
 };
 
 export default class CategoryList extends React.Component<Props> {
@@ -46,6 +47,7 @@ export default class CategoryList extends React.Component<Props> {
   shouldComponentUpdate = nextProps =>
     this.props.targetId !== nextProps.targetId ||
     this.props.activeFolderId !== nextProps.activeFolderId ||
+    this.props.rootContainerSelector !== nextProps.rootContainerSelector ||
     this.props.folders !== nextProps.folders;
 
   render() {
@@ -110,6 +112,9 @@ export default class CategoryList extends React.Component<Props> {
                             editFolderColor(targetId, folder.id, selectedColor)
                           }
                           color={folder.color}
+                          rootContainerSelector={
+                            this.props.rootContainerSelector
+                          }
                         />
                       )}
                     </li>
@@ -125,5 +130,6 @@ export default class CategoryList extends React.Component<Props> {
 }
 
 CategoryList.defaultProps = {
-  editFolderColor: undefined
+  editFolderColor: undefined,
+  rootContainerSelector: undefined
 };

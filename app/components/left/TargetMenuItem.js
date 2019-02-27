@@ -38,7 +38,8 @@ type Props = {
     folderId: string | undefined
   },
   +showDeleteConfirmation: boolean,
-  +index: number
+  +index: number,
+  rootContainerSelector?: string
 };
 
 export default class TargetMenuItem extends React.Component<Props> {
@@ -47,6 +48,7 @@ export default class TargetMenuItem extends React.Component<Props> {
   shouldComponentUpdate = nextProps =>
     this.props.expanded !== nextProps.expanded ||
     this.props.item !== nextProps.item ||
+    this.props.rootContainerSelector !== nextProps.rootContainerSelector ||
     this.props.menu !== nextProps.menu;
 
   handleListItemClick = () => {
@@ -129,6 +131,7 @@ export default class TargetMenuItem extends React.Component<Props> {
                 folders={item.folders}
                 showDeleteConfirmation={this.props.showDeleteConfirmation}
                 editFolderColor={editFolderColor}
+                rootContainerSelector={this.props.rootContainerSelector}
               />
             </SmoothCollapse>
           </li>
@@ -137,3 +140,7 @@ export default class TargetMenuItem extends React.Component<Props> {
     );
   }
 }
+
+TargetMenuItem.defaultProps = {
+  rootContainerSelector: undefined
+};

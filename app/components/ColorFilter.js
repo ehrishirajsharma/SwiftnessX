@@ -63,7 +63,7 @@ class ColorFilter extends React.PureComponent<Props> {
     );
 
     return (
-      <div className={styles.colorPicker} id="color-picker">
+      <div className={styles.colorPicker}>
         <ColorFilterButton onClick={this.togglePopup} />
         {this.state.open && (
           <div className={styles.colorPickerPopup}>

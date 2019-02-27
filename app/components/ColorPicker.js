@@ -6,14 +6,16 @@ import styles from './css/ColorPicker.css';
 
 type Props = {
   +editColor: (color: string) => void,
-  +color: string | undefined
+  +color: string | undefined,
+  rootContainerSelector?: string
 };
 
 class ColorPicker extends React.PureComponent<Props> {
   props: Props;
 
   state = {
-    open: false
+    open: false,
+    popupOver: false
   };
 
   handleClickOutside = e => {
@@ -23,7 +25,27 @@ class ColorPicker extends React.PureComponent<Props> {
 
   togglePopup = e => {
     e.stopPropagation();
+    if (this.props.rootContainerSelector !== undefined && !this.state.open) {
+      this.fixColorPickerPosition(e);
+    } else {
+      this.setState({ popupOver: false });
+    }
     this.setState(prevState => ({ open: !prevState.open }));
+  };
+
+  fixColorPickerPosition = e => {
+    const rootContainer = document.querySelector(
+      this.props.rootContainerSelector
+    );
+    const pickerContainer = e.currentTarget;
+    const rootBounds = rootContainer.getBoundingClientRect();
+    const pickerBounds = pickerContainer.getBoundingClientRect();
+
+    if (rootBounds.bottom < pickerBounds.bottom + 107) {
+      this.setState({ popupOver: true });
+    } else {
+      this.setState({ popupOver: false });
+    }
   };
 
   editColor = (e, color: string) => {
@@ -47,12 +69,26 @@ class ColorPicker extends React.PureComponent<Props> {
     );
 
     return (
-      <div className={styles.colorPicker} id="color-picker">
-        <ColorItem onClick={this.togglePopup} color={color} />
+      <div
+        className={styles.colorPicker}
+        onClick={this.togglePopup}
+        onKeyPress={this.togglePopup}
+        role="button"
+        tabIndex={0}
+      >
+        <ColorItem color={color} />
         {this.state.open && (
           <div className={styles.colorPickerPopup}>
-            <div className={styles.arrow} />
-            <div className={styles.options}>
+            <div
+              className={classnames(styles.arrow, {
+                [`${styles.arrowOver}`]: this.state.popupOver
+              })}
+            />
+            <div
+              className={classnames(styles.options, {
+                [`${styles.optionsOver}`]: this.state.popupOver
+              })}
+            >
               <ColorItem
                 onClick={e => this.editColor(e, 'light-red')}
                 color="light-red"
@@ -80,5 +116,9 @@ class ColorPicker extends React.PureComponent<Props> {
     );
   }
 }
+
+ColorPicker.defaultProps = {
+  rootContainerSelector: undefined
+};
 
 export default onClickOutside(ColorPicker);

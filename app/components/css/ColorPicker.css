@@ -63,6 +63,11 @@
   z-index: 2;
 }
 
+.color-picker-popup .arrow-over {
+  box-shadow: inset -2px -2px 2px -3px rgba(0, 0, 0, .2);
+  top: -17px;
+}
+
 .color-picker-popup .options {
   position: absolute;
   top: 32px;
@@ -72,4 +77,9 @@
   padding: 0.7rem 0.3rem;
   border-radius: 0.4rem;
   z-index: 1;
+}
+
+.color-picker-popup .options-over {
+  top: -125px;
+  box-shadow: 0px -1px 5px rgba(0, 0, 0, .2);
 }

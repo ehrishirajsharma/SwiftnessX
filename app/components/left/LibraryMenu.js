@@ -1,5 +1,6 @@
 // @flow
 import React from 'react';
+import className from 'classnames';
 import SmoothCollapse from 'react-smooth-collapse';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 import styles from '../css/LibraryMenu.css';
@@ -38,7 +39,18 @@ export default class LibraryMenu extends React.PureComponent<Props> {
 
   state = {
     sublistExpanded: true,
-    expandedList: undefined
+    expandedList: undefined,
+    overflowAuto: false
+  };
+
+  componentDidMount = () => {
+    setTimeout(() => {
+      this.setOverflowAuto();
+    }, 0);
+  };
+
+  componentDidUpdate = () => {
+    this.setOverflowAuto();
   };
 
   setActiveList = id => {
@@ -93,6 +105,17 @@ export default class LibraryMenu extends React.PureComponent<Props> {
     }
   };
 
+  setOverflowAuto = () => {
+    const entireItemList = document.querySelector('#library-list');
+    const entireItemListBounds = entireItemList.getBoundingClientRect();
+
+    if (entireItemListBounds.height > 250) {
+      this.setState({ overflowAuto: true });
+    } else {
+      this.setState({ overflowAuto: false });
+    }
+  };
+
   render() {
     const {
       removeParent,
@@ -105,7 +128,7 @@ export default class LibraryMenu extends React.PureComponent<Props> {
     } = this.props;
 
     const sublistList = (
-      <ul>
+      <ul id="library-list">
         <DragDropContext onDragEnd={this.onDragEnd}>
           <Droppable droppableId="droppable">
             {provided => (
@@ -138,6 +161,11 @@ export default class LibraryMenu extends React.PureComponent<Props> {
                         editColor(item.id, selectedColor)
                       }
                       color={item.color}
+                      rootContainerSelector={
+                        this.state.overflowAuto
+                          ? '#library-container'
+                          : undefined
+                      }
                     />
                   </div>
                 ))}
@@ -149,7 +177,7 @@ export default class LibraryMenu extends React.PureComponent<Props> {
     );
 
     return (
-      <div className={styles.menuItemNav}>
+      <div className={styles.menuItemNav} id="library-container">
         <div
           className={styles.menuItemNavHeader}
           onClick={this.handleHeaderClick}
@@ -164,7 +192,9 @@ export default class LibraryMenu extends React.PureComponent<Props> {
 
         <SmoothCollapse
           expanded={this.state.sublistExpanded}
-          className={styles.menuItemNavList}
+          className={className(styles.menuItemNavList, {
+            [`${styles.overflowAuto}`]: this.state.overflowAuto
+          })}
           allowOverflowWhenOpen
         >
           {sublistList}
