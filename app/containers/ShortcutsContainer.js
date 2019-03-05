@@ -79,7 +79,7 @@ class ShortcutsContainer extends React.PureComponent<Props> {
       document.querySelector('.ql-link').click();
     });
 
-    Mousetrap.bind(['command+m', 'ctrl+l'], () => {
+    Mousetrap.bind(['command+l', 'ctrl+l'], () => {
       document.querySelector('.ql-list[value="check"]').click();
     });
   }
