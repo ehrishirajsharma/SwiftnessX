@@ -9,7 +9,7 @@ export default class AboutDialog extends React.PureComponent {
       <div className={styles.aboutWrapper}>
         <div className={styles.aboutBox}>
           <div className={styles.aboutIntro}>
-            <p>v0.1 Windows</p>
+            <p>v0.2 Windows</p>
             <p>Swiftness Electron</p>
             <p>
               Swiftness is an open-source project aimed to intensify penetration
@@ -20,9 +20,9 @@ export default class AboutDialog extends React.PureComponent {
             <div className={styles.aboutLogo}>
               <img src={Logo} alt="logo" />
             </div>
-            <a href="#">swiftness.org</a>
-            <a href="#">Contribute</a>
-            <a href="#">Acknowledgments</a>
+            <a href="https://swiftness.org">swiftness.org</a>
+            <a href="https://github.com/ehrishirajsharma/SwiftnessX/issues">Contribute</a>
+            <a href="https://github.com/ehrishirajsharma/SwiftnessX/graphs/contributors">Acknowledgments</a>
           </div>
         </div>
       </div>
