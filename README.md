@@ -15,101 +15,137 @@
 
 <p align="center">A cross-platform note-taking & target-tracking app for penetration testers built on ElectronJS.</p>
 
-![swiftnessX](https://image.ibb.co/hJPgxf/checklist-view.png)
+![swiftnessX](https://github.com/ehrishirajsharma/pe-master-data/raw/master/screely-1554748350208-min.png)
+
+<h3 align="center">Download</h3>
+<p align="center"><a href="https://github.com/ehrishirajsharma/SwiftnessX/releases/download/v0.2.0/swiftness-0.2.0-x86_64.AppImage" target="_blank">
+ <img src="https://github.com/ehrishirajsharma/swiftness-static/blob/master/Assets/ubuntu-download.png" width="120px"/><a href="https://github.com/ehrishirajsharma/SwiftnessX/releases/download/v0.2.0/swiftness-setup-02.0.exe" target="_blank">
+ <img src="https://github.com/ehrishirajsharma/swiftness-static/raw/master/Assets/windows-download.png" width="120px"/></p>
 
 
 
-## Downloads
+## Contents
 
-- **Windows:** [Download](https://github.com/ehrishirajsharma/SwiftnessX/releases/download/v0.1.1/swiftness-setup-0.1.1.exe)
-- **Linux:** [Download](https://github.com/ehrishirajsharma/SwiftnessX/releases/download/v0.1.1/swiftness-0.1.1-x86_64.AppImage)
+- <a href="https://github.com/ehrishirajsharma/swiftnessx/releases">Releases</a>
+- <a href="https://https://www.youtube.com/watch?v=s227q_rTVkw">Usage</a>
+- <a href="#Run-from-source">Run from source</a>
+- <a href="#report">Report</a>
+    - <a href="#bug-reporting">Report a bug</a>
+    - <a href="#security-vulnerability">Report a security vulnerability</a>
+- [Upcomings](#upcomings)
+  - <a href="#upcomings">Current Goals</a>
+  - <a href="#upcomings">How to contribute?</a>
+- <a href="#credits">Credits</a>
 
-Check [Releases](https://github.com/ehrishirajsharma/SwiftnessX/releases) for support on different Operating Systems. 
+<a href="https://www.buymeacoffee.com/ehrishiraj" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/black_img.png" alt="Buy Me A Coffee" style="height: auto !important;width: auto !important;" ></a>
 
-*App supports auto-updating system when new release gets available.*
+## Run from source
 
-Check our [upcoming](https://github.com/ehrishirajsharma/SwiftnessX/wiki/Upcomings) releases and we also need security-folks interested in contributing to checklist-libraries ([get in touch here](https://goo.gl/forms/YoM31FUQ0at3b51i2)). 
+#### Using Yarn (Recommended)
+<details>
+<summary>View Steps</summary>
+<br>
+To install yarn, please refer to <a href="https://yarnpkg.com/lang/en/docs/install/">this link.</a>
+<br>
+<br>
 
-It’s pretty straightforward to use SwiftnessX, I’ve created a small video on how to use Targets with checklist: https://www.youtube.com/watch?v=s227q_rTVkw
+```php
+> git clone https://github.com/ehrishirajsharma/swiftnessx.git //clone the repository
+> sudo yarn //install dependencies within the repo folder
+> sudo yarn dev //run the package
+```
 
-## Installation
-
-The current version is specially designed for Windows users therefore, installation process is pretty straightforward - just use the installer and it will be installed under the applications section.
-
-For Linux users (it's a bit complex and we will try to fix it very soon), you will need to give permission to the app; just `chmod +x swiftness-0.1.0.AppImage` for installer file and then open it (in first attempt, it will try to install) and then it will be ready to use. (Make sure you're extracting the app in a dedicated folder)
-
-If you want to use the portable version, extract the folder and give same permission to Swiftness executable file and utilise in the same manner.
-
-
-## Setup Electron (if you want to run dev-environment)
+To update just use `git pull` or if dependencies are updated than first install them by `yarn`
+</details>
 
 
-1. First install [Node.JS](https://nodejs.org/en/download/) on your system
-2. now run `sudo npm install electron -g --unsafe-perm=true --allow-root`
-3. Download or Clone this repository
-4. Within its folder run `sudo npm install --unsafe-perm=true --allow-root` to install dependencies
-5. And to run use `npm run dev`
+
+#### Using Npm
+<details>
+<summary>View Steps</summary>
+<br>
+To install npm, please refer to <a href="https://nodejs.org/en">this link.</a>
+<br>
+<br>
+
+```php
+> sudo npm install electron -g --unsafe-perm=true --allow-root //install electron globally in system
+> git clone https://github.com/ehrishirajsharma/swiftnessx.git //clone the repository
+> sudo npm install --unsafe-perm=true --allow-root //install dependencies
+> sudo npm run dev //run the package
+```
 
 To update just use `git pull` or if dependencies are updated than first install them by `npm install`
+</details>
 
 
-## Discuss
+## Report
 
+<strong id="bug-reporting"> :bug: Reporting a bug?</strong>
 
-:seedling: **Feature Request / Changes:** This is a very early version of SwiftnessX with a completely new flow and architecture from macOS build and it's likely that some features & flow may not be perfect. We encourage you to tell us if a flow or feature is not fitting in, we will discuss with you and along with other users’ on possible way to improve or change that. 
+This is very early days of this project, therefore unexpected bugs, UI glitches and data-corruptions related issues may occur. I’d personally and strongly recommend to keep taking backups daily to not to loose any data if something bad happens.
 
-----
+Before reporting a bug or glitch, please confirm if it is not previously reported. Give most possible information about the issue: reproduction steps, OS/environments specifics and any possible suggestions to fix it.
 
-:rotating_light: **Security:** Electron projects are often dependent upon too many 3rd party libraries and in result it has more chances of being vulnerable to security-vulnerabilities compared to native-apps.
+You can use [this link](https://github.com/ehrishirajsharma/SwiftnessX/issues/new) to create and file an issue.
 
+----------------------------------
 
-We tried our best to not make app’s modules too dependent upon the 3rd party packages however, we still recommend you to understand the basics of ElectronJS and let us know if you observe any security vulnerabilities.
+<strong id="security-vulnerability"> :rotating_light: Reporting a security vulnerability?</strong>
 
+Swiftness project was initially started to combat my day-to-day personal issues related to managing findings and checklist and was never built in mind for cross-platform support. However, to fulfill the gap for other OS, I decided to switch the project to ElectronJS. With the better flexibility, it came with a drawback of having too much dependencies on 3rd party libraries, ultimately, more concerns related to its security. 
 
-To understand the basics of Electron Security & NodeJS Packages:
+<strong>What measures we’ve been taking:</strong>
+<details>
+  <summary>View</summary>
+ 
+ <br>
 
+- Kept the 3rd party dependencies lower, and built most of the modules from scratch.
+- Tested injection related vulnerabilities.
+- Regular check-up on 0-day vulnerabilities of the dependencies. 
+
+</details>
+
+<strong>Where to report?</strong>
+<details>
+  <summary>View</summary>
+  <br>
+You can send an email to security@swiftness.org, please provide as much as possible information on reproducing and fixing the vulnerabilities. We’re already aware of a few security vulnerabilities and working on to fix it.
+</details>
+
+<strong>References related to Electron security</strong>
+
+Please refer to the below guide on understanding the basics and security of Electron: 
 
   - https://electronjs.org/docs/tutorial/security
   - https://www.blackhat.com/docs/us-17/thursday/us-17-Carettoni-Electronegativity-A-Study-Of-Electron-Security-wp.pdf
   - https://www.youtube.com/watch?v=QSMbk2nLTBk
 
-
-You can find the packages under package.json, check them:
-
-
-  - You can check how packages are integrated and can manually check the process by debugging the app in dev-environment. (explained above)
-  - Use Chromium Developer Tools to check each functionality and their dependent JS files.
+Also check the [package.json](https://github.com/ehrishirajsharma/SwiftnessX/raw/package.json) to see this project dependencies.
 
 
-Directly ask us on Issues Section or Email (security@swiftness.org) to understand how a specific package is integrated. 
+## Upcomings
 
+We aim to release a major new update every 3 months, hoping to short this cycle however, testing and fixing the glitches for all the platforms take a bit time. Moreover, this project is maintained on weekends so you may see some slow replies on emails or issues.
 
-To report a security-vulnerability within the app, please send us an email directly to security@swiftness.org
+- Dark Theme
+- Support for Dropbox and Google Drive Sync
+- Performance Refactors
+- Reporting tools inspired by Frans Rosen (@fransr): https://github.com/fransr/template-generator 
+- Better Text Editor: Enhanced Table features, export options, highlighting customisations, etc
 
+<strong id="contribute">How to contribute?</strong>
 
-If issues are derived from a 3rd-party module, also report to the person or team maintaining the module. 
+You can contribute and keep this project alive by, finding bugs or security issues, suggesting new features, grammatical mistakes / document writing or by creating pull request for pending bugs or feature.
 
-----
-  
-:bug: **Bugs:**
-
-When opening a new issue in the `ehrishirajsharma/SwifnessX` issue tracker, users will be presented with a template that should be filled in.
-
-
-The two most important pieces of information needed to evaluate the report are a description of the bug and a simple test case to recreate it. It easier to fix a bug if it can be reproduced.
-
-See [How to create a Minimal, Complete, and Verifiable example](https://stackoverflow.com/help/mcve).
-  
-**Reference & Inspired from:** https://github.com/electron/electron/blob/master/docs/development/issues.md
-
-----
+You can also contact me at [Twitter](https://twitter.com/ehrishiraj) (my DM is open), or write me an email to rishiraj@swiftness.org to discuss anything related to the current goals, project’s future or any possible collaborations.
 
 
 ## Credits
 
-Special thanks to the below contributors - It would not be possible without their contributions:
+Special thanks to Tomas Baskys and Pankaj Prajapat for their huge contributions on this project. :clap:
 
-
-- Tomas Baskys
-- Pankaj Prajapat
-- Sahil Ahamad
+- @InitRoot
+- @ehsahil
+- @SolomonSklash
