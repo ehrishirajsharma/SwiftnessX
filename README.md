@@ -21,8 +21,8 @@
 
 ## Downloads
 
-- **Windows:** [Download](https://github.com/ehrishirajsharma/SwiftnessX/releases/download/v0.1.0/swiftness-setup-0.1.0.exe)
-- **Linux:** [Download](https://github.com/ehrishirajsharma/SwiftnessX/releases/download/v0.1.0/swiftness-0.1.0-x86_64.AppImage)
+- **Windows:** [Download](https://github.com/ehrishirajsharma/SwiftnessX/releases/download/v0.1.1/swiftness-setup-0.1.1.exe)
+- **Linux:** [Download](https://github.com/ehrishirajsharma/SwiftnessX/releases/download/v0.1.1/swiftness-0.1.1-x86_64.AppImage)
 
 Check [Releases](https://github.com/ehrishirajsharma/SwiftnessX/releases) for support on different Operating Systems. 
 
