@@ -15,7 +15,7 @@
 
 <p align="center">A cross-platform note-taking & target-tracking app for penetration testers built on ElectronJS.</p>
 
-![swiftnessX](https://github.com/ehrishirajsharma/pe-master-data/raw/master/screely-1554748350208-min.png)
+![swiftnessX](https://github.com/ehrishirajsharma/swiftness-static/raw/master/Assets/main-view.png)
 
 <h3 align="center">Download</h3>
 <p align="center"><a href="https://github.com/ehrishirajsharma/SwiftnessX/releases/download/v0.2.0/swiftness-0.2.0-x86_64.AppImage" target="_blank">
