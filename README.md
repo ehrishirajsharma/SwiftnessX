@@ -20,7 +20,7 @@
 <h3 align="center">Download</h3>
 <p align="center"><a href="https://github.com/ehrishirajsharma/SwiftnessX/releases/download/v0.2.0/swiftness-0.2.0-x86_64.AppImage" target="_blank">
  <img src="https://github.com/ehrishirajsharma/swiftness-static/blob/master/Assets/ubuntu-download.png" width="120px"/><a href="https://github.com/ehrishirajsharma/SwiftnessX/releases/download/v0.2.0/swiftness-setup-0.2.0.exe" target="_blank">
- <img src="https://github.com/ehrishirajsharma/swiftness-static/raw/master/Assets/windows-download.png" width="120px"/><a href="https://github.com/ehrishirajsharma/SwiftnessX/releases/download/v0.2.0/SwiftnessX.zip" target="_blank">
+ <img src="https://github.com/ehrishirajsharma/swiftness-static/raw/master/Assets/windows-download.png" width="120px"/><a href="https://github.com/ehrishirajsharma/SwiftnessX/releases/download/v0.2.0/SwiftnessX-mac.zip" target="_blank">
  <img src="https://github.com/ehrishirajsharma/swiftness-static/raw/master/Assets/macos-download-button.png" width="120px"/></p>
 
 
