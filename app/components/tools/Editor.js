@@ -1,6 +1,7 @@
 // @flow
 import { shell } from 'electron';
 import React from 'react';
+import sanitizeHtml from 'sanitize-html';
 import './highlight';
 import ReactQuill, { Quill } from 'react-quill';
 import QuillTable from 'quill-table';
@@ -30,6 +31,21 @@ type Props = {
 
 class Editor extends React.Component<Props> {
   props: Props;
+
+  static sanitize(content) {
+    return sanitizeHtml(content, {
+      allowedTags: false,
+      allowedAttributes: false,
+      allowedIframeHostnames: [
+        'youtube.com',
+        'www.youtube.com',
+        'embed.ted.com',
+        'www.embed.ted.com',
+        'vimeo.com',
+        'www.vimeo.com'
+      ]
+    });
+  }
 
   constructor(props) {
     super(props);
@@ -91,7 +107,7 @@ class Editor extends React.Component<Props> {
     ) {
       return {
         id: nextProps.item.id,
-        content: nextProps.item.content,
+        content: Editor.sanitize(nextProps.item.content),
         prevSearch: nextProps.search
       };
     }
@@ -102,11 +118,25 @@ class Editor extends React.Component<Props> {
   componentDidMount() {
     this.attachQuillRefs();
     this.applySearch();
+
+    const videoTooltip = document.querySelector('div.ql-tooltip input');
+    videoTooltip.oninput = this.checkVideoHostname;
   }
 
   componentDidUpdate() {
     this.applySearch();
   }
+
+  checkVideoHostname = e => {
+    const expression = /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/gi;
+    const regex = new RegExp(expression);
+
+    if (e.target.value.match(regex)) {
+      e.target.parentElement.classList.remove('invalid');
+    } else {
+      e.target.parentElement.classList.add('invalid');
+    }
+  };
 
   attachQuillRefs = () => {
     if (typeof this.reactQuill.getEditor !== 'function') return;

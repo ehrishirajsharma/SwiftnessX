@@ -231,3 +231,13 @@ html {
 .ql-toolbar.ql-snow {
   border: none;
 }
+
+.ql-snow .ql-tooltip.invalid input[type=text] {
+  border: 2px solid red;
+}
+
+.ql-snow .ql-tooltip.invalid a {
+  pointer-events: none;
+  cursor: default;
+  color: #444;
+}
