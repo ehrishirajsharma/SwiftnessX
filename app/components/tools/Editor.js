@@ -128,10 +128,15 @@ class Editor extends React.Component<Props> {
   }
 
   checkVideoHostname = e => {
-    const expression = /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/gi;
-    const regex = new RegExp(expression);
+    const urlExpression = /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/gi;
+    const unsafeExpression = /[#%^"{}|<>`~\\\][]/g;
+    const urlRegex = new RegExp(urlExpression);
+    const unsafeCharsRegex = new RegExp(unsafeExpression);
 
-    if (e.target.value.match(regex)) {
+    if (
+      e.target.value.match(urlRegex) &&
+      !e.target.value.match(unsafeCharsRegex)
+    ) {
       e.target.parentElement.classList.remove('invalid');
     } else {
       e.target.parentElement.classList.add('invalid');
