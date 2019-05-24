@@ -28,7 +28,7 @@
 ## Contents
 
 - <a href="https://github.com/ehrishirajsharma/swiftnessx/releases">Releases</a>
-- <a href="https://https://www.youtube.com/watch?v=s227q_rTVkw">Usage</a>
+- <a href="https://www.youtube.com/watch?v=s227q_rTVkw">Usage</a>
 - <a href="#Run-from-source">Run from source</a>
 - <a href="#report">Report</a>
     - <a href="#bug-reporting">Report a bug</a>
