@@ -36,6 +36,9 @@ class Editor extends React.Component<Props> {
     return sanitizeHtml(content, {
       allowedTags: false,
       allowedAttributes: false,
+      allowedSchemesByTag: {
+        img: ['data']
+      },
       allowedIframeHostnames: [
         'youtube.com',
         'www.youtube.com',
