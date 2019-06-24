@@ -2,7 +2,7 @@
   <br>
   <img src="https://s15.postimg.cc/omhc6tcrv/256px_2x.png" alt="Swiftness" width="100"></a>
   <br>
-  SwiftnessX
+  SwiftnessX v0.2
   <br>
 </h1>
 
@@ -23,11 +23,10 @@
  <img src="https://github.com/ehrishirajsharma/swiftness-static/raw/master/Assets/windows-download.png" width="120px"/><a href="https://github.com/ehrishirajsharma/SwiftnessX/releases/download/v0.2.2/Swiftness-0.2.2.dmg" target="_blank">
  <img src="https://github.com/ehrishirajsharma/swiftness-static/raw/master/Assets/macos-download-button.png" width="120px"/></p>
 
-
-
 ## Contents
 
 - <a href="https://github.com/ehrishirajsharma/swiftnessx/releases">Releases</a>
+- <a href="#checklists">Checklists</a>
 - <a href="https://www.youtube.com/watch?v=s227q_rTVkw">Usage</a>
 - <a href="#Run-from-source">Run from source</a>
 - <a href="#report">Report</a>
@@ -37,6 +36,27 @@
   - <a href="#upcomings">Current Goals</a>
   - <a href="#upcomings">How to contribute?</a>
 - <a href="#credits">Credits</a>
+
+
+## Checklists
+
+We’re aiming to release a number of checklists with `v0.3` release. Please send the [request here](https://forms.gle/7W4SQJJjwuNLPESV6) to join in private-repo to collaborate with other researchers on its development. In meantime, you can download the below checklists to import in your libraries: 
+
+- **OWASP-Testing-Checklist** from [@Ice3man543](https://github.com/Ice3man543): [Download](https://github.com/ehrishirajsharma/swiftness-static/raw/master/Checklist/OWASP-Testing-Checklist.json) (_Inspired by @tanprathan work_)
+
+You can also download [the code](https://github.com/ehrishirajsharma/swiftness-static/blob/master/Checklist/generate-owasp-testing-checklist.go) to generate this checklist whenever any updates are available in the [original repository.](https://github.com/tanprathan/OWASP-Testing-Checklist)
+
+------------------------
+
+- **OSCP Methodology** from [@InitRoot](https://github.com/InitRoot): The checklist aim to assist OSCP students with a baseline methodology for the labs and exam environments. (Coming Soon)
+
+------------------------
+
+**To Import**: After downloading the `.json` file:
+
+1. Open SwiftnessX app
+2. Click on import/export button (right next to the Logo)
+3. Select Import and select the downloaded `.json` file
 
 
 ## Run from source
@@ -129,11 +149,11 @@ Also check the [package.json](https://github.com/ehrishirajsharma/SwiftnessX/raw
 
 We aim to release a major new update every 3 months, hoping to short this cycle however, testing and fixing the glitches for all the platforms take a bit time. Moreover, this project is maintained on weekends so you may see some slow replies on emails or issues.
 
-- Dark Theme
-- Support for Dropbox and Google Drive Sync
-- Performance Refactors
-- Reporting tools inspired by Frans Rosen (@fransr): https://github.com/fransr/template-generator 
-- Better Text Editor: Enhanced Table features, export options, highlighting customisations, etc
+- [ ] Dark Theme
+- [ ] Support for Dropbox and Google Drive Sync
+- [ ] Performance Refactors
+- [ ] Reporting tools inspired by Frans Rosen (@fransr): https://github.com/fransr/template-generator 
+- [ ] Better Text Editor: Enhanced Table features, export options, highlighting customisations, etc
 
 <strong id="contribute">How to contribute?</strong>
 
