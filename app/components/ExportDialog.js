@@ -114,7 +114,9 @@ class ExportDialog extends React.PureComponent<Props> {
       fileName => {
         try {
           if (fileName !== undefined) {
-            fs.writeFile(fileName, JSON.stringify(this.state));
+            fs.writeFile(fileName, JSON.stringify(this.state), function (err, result) {
+       if (err) console.log('error', err);
+});
 
             dialog.showMessageBox(
               {
