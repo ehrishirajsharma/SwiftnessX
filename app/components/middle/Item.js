@@ -28,6 +28,7 @@ type Props = {
   +item: {
     +id: string,
     +title: string,
+    +color: string,
     +done?: boolean,
     +isNew?: boolean
   },

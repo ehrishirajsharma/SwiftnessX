@@ -161,7 +161,7 @@ class Editor extends React.Component<Props> {
     let index = 0;
 
     if (search.length > 0) {
-      while (true) {
+      for (;;) {
         index = text.indexOf(search, index);
 
         if (index !== -1) {
