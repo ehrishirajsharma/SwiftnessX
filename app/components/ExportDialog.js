@@ -114,9 +114,9 @@ class ExportDialog extends React.PureComponent<Props> {
       fileName => {
         try {
           if (fileName !== undefined) {
-            fs.writeFile(fileName, JSON.stringify(this.state), function (err, result) {
-       if (err) console.log('error', err);
-});
+            fs.writeFile(fileName, JSON.stringify(this.state), err => {
+              if (err) console.log('error', err);
+            });
 
             dialog.showMessageBox(
               {
@@ -184,7 +184,8 @@ class ExportDialog extends React.PureComponent<Props> {
               onClick={this.handleSelectAll(type, items)}
             />
             <span className={styles.checkmark} />
-          </div>Select All
+          </div>
+          Select All
         </div>
       </div>
     );
@@ -245,4 +246,7 @@ function mapDispatchToProps(dispatch) {
   );
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ExportDialog);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ExportDialog);
