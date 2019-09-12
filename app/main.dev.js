@@ -121,7 +121,8 @@ autoUpdater.on('update-downloaded', () => {
 });
 
 app.on('ready', () => {
-  autoUpdater.checkForUpdates();
+  if (process.platform === 'darwin' || process.platform === 'win32')
+    autoUpdater.checkForUpdates();
 
   ipcMain.on('openExportWindow', () => {
     const win = new BrowserWindow({
