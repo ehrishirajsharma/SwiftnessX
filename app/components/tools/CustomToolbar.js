@@ -46,6 +46,7 @@ class CustomToolbar extends React.Component {
         <button className="ql-bold" />
         <button className="ql-italic" />
         <button className="ql-underline" />
+        <select className="ql-color" defaultValue="" />
         <select className="ql-background" defaultValue="">
           <option value="" />
           <option value="yellow" />
