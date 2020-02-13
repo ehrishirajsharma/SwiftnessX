@@ -67,10 +67,14 @@ class Editor extends React.Component<Props> {
       'inconsolata',
       'roboto',
       'mirza',
-      'arial'
+      'arial',
+      'martel-sans'
     ];
 
-    SizeStyle.whitelist = ['10px', '13px', '18px', '32px'];
+    SizeStyle.whitelist = ['10px', '12px', '14px', '16px', '18px', 
+                           '20px', '22px', '24px', '26px', '28px', 
+                           '30px', '32px', '34px', '36px', '48px', 
+                           '72px'];
 
     Quill.register(QuillTable.TableCell);
     Quill.register(QuillTable.TableRow);

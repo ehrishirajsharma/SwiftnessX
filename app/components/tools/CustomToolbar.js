@@ -30,6 +30,7 @@ class CustomToolbar extends React.Component {
       <div id="toolbar" className={styles.toolbar}>
         <select className={className('ql-font', styles.font)} defaultValue="">
           <option value="open-sans">Open Sans</option>
+          <option value="martel-sans">Martel Sans</option>
           <option value="sans-serif">Sans Serif</option>
           <option value="verdana">Verdana</option>
           <option value="inconsolata">Inconsolata</option>
@@ -38,11 +39,29 @@ class CustomToolbar extends React.Component {
           <option value="arial">Arial</option>
         </select>
         <select className="ql-size" defaultValue="">
-          <option value="10px">Small</option>
-          <option value="13px">Normal</option>
-          <option value="18px">Large</option>
-          <option value="32px">Huge</option>
+          <option value="10px">10px</option>
+          <option value="12px">12px</option>
+          <option value="14px">14px</option>
+          <option value="16px">16px</option>
+          <option value="18px">18px</option>
+          <option value="20px">20px</option>
+          <option value="22px">22px</option>
+          <option value="24px">24px</option>
+          <option value="26px">26px</option>
+          <option value="28px">28px</option>
+          <option value="30px">30px</option>
+          <option value="32px">32px</option>
+          <option value="34px">34px</option>
+          <option value="36px">36px</option>
+          <option value="48px">48px</option>
+          <option value="72px">72px</option>
         </select>
+        <div class="ql-formats">
+          <button class="ql-align" value=""></button>
+          <button class="ql-align" value="center"></button>
+          <button class="ql-align" value="right"></button>
+          <button class="ql-align" value="justify"></button>
+        </div>
         <button className="ql-bold" />
         <button className="ql-italic" />
         <button className="ql-underline" />
@@ -55,6 +74,7 @@ class CustomToolbar extends React.Component {
         <button className="ql-image" />
         <button className="ql-video" />
         <button className="ql-list" value="ordered" />
+        <button className="ql-list" value="bullet" />
         <button className="ql-list" value="check" />
         <button className="ql-link" />
         <div
