@@ -21,8 +21,12 @@ export default class AboutDialog extends React.PureComponent {
               <img src={Logo} alt="logo" />
             </div>
             <a href="https://swiftness.org">swiftness.org</a>
-            <a href="https://github.com/ehrishirajsharma/SwiftnessX/issues">Contribute</a>
-            <a href="https://github.com/ehrishirajsharma/SwiftnessX/graphs/contributors">Acknowledgments</a>
+            <a href="https://github.com/ehrishirajsharma/SwiftnessX/issues">
+              Contribute
+            </a>
+            <a href="https://github.com/ehrishirajsharma/SwiftnessX/graphs/contributors">
+              Acknowledgments
+            </a>
           </div>
         </div>
       </div>

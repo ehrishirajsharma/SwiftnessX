@@ -47,6 +47,7 @@ function mapDispatchToExportProps(dispatch) {
   return bindActionCreators(ExportActions, dispatch);
 }
 
-export default connect(mapStateToExportProps, mapDispatchToExportProps)(
-  ExportIcon
-);
+export default connect(
+  mapStateToExportProps,
+  mapDispatchToExportProps
+)(ExportIcon);

@@ -56,11 +56,11 @@ class CustomToolbar extends React.Component {
           <option value="48px">48px</option>
           <option value="72px">72px</option>
         </select>
-        <div class="ql-formats">
-          <button class="ql-align" value=""></button>
-          <button class="ql-align" value="center"></button>
-          <button class="ql-align" value="right"></button>
-          <button class="ql-align" value="justify"></button>
+        <div className="ql-formats">
+          <button className="ql-align" value="" />
+          <button className="ql-align" value="center" />
+          <button className="ql-align" value="right" />
+          <button className="ql-align" value="justify" />
         </div>
         <button className="ql-bold" />
         <button className="ql-italic" />
