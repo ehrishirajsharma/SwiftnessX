@@ -507,6 +507,7 @@ function mapDispatchToProps(dispatch) {
   );
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(
-  MiddlePanelContainer
-);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(MiddlePanelContainer);

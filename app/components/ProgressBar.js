@@ -44,7 +44,7 @@ class ProgressBar extends React.PureComponent<Props> {
     const { value, max } = this.props;
     const { showPercent } = this.state;
 
-    const percent = max !== 0 ? Math.floor(value / max * 100) : 0;
+    const percent = max !== 0 ? Math.floor((value / max) * 100) : 0;
 
     return (
       <div

@@ -3,6 +3,10 @@
   src: url("./assets/fonts/nunito-light.ttf");
 }
 @font-face {
+  font-family: 'martel-sans';
+  src: url("./assets/fonts/MartelSans-Regular.ttf");
+}
+@font-face {
   font-family: 'nunito-regular';
   src: url("./assets/fonts/nunito-regular.ttf");
 }
@@ -59,6 +63,10 @@ html {
 
 .ql-font-inconsolata {
   font-family: "Inconsolata";
+}
+
+.ql-font-martel-sans {
+  font-family: 'Martel Sans';
 }
 
 .ql-font-roboto {
