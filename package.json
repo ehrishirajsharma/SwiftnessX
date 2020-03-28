@@ -214,7 +214,7 @@
     "electron-debug": "^2.1.0",
     "electron-json-storage": "^4.1.6",
     "electron-redux": "^1.4.0",
-    "electron-updater": "^4.0.6",
+    "electron-updater": "^4.2.2",
     "font-awesome": "^4.7.0",
     "highlight.js": "^9.13.1",
     "history": "^4.9.0",
