@@ -30,7 +30,9 @@
     "test": "cross-env NODE_ENV=test BABEL_DISABLE_CACHE=1 node --trace-warnings -r babel-register ./internals/scripts/RunTests.js",
     "test-all": "npm run lint && npm run flow && npm run build && npm run test && npm run test-e2e",
     "test-e2e": "cross-env NODE_ENV=test BABEL_DISABLE_CACHE=1 node --trace-warnings -r babel-register ./internals/scripts/RunTests.js e2e",
-    "test-watch": "npm test -- --watch"
+    "test-watch": "npm test -- --watch",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "browserslist": "electron 1.6",
   "lint-staged": {
@@ -242,11 +244,13 @@
     "sanitize-html": "^1.18.4",
     "source-map-support": "^0.5.6",
     "uuid": "^3.3.2",
-    "why-did-you-update": "^0.1.1"
+    "why-did-you-update": "^0.1.1",
+    "snyk": "^1.316.1"
   },
   "devEngines": {
     "node": ">=7.x",
     "npm": ">=4.x",
     "yarn": ">=0.21.3"
-  }
+  },
+  "snyk": true
 }
