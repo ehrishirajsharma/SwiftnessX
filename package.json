@@ -187,7 +187,7 @@
     "jest": "^24.7.1",
     "lint-staged": "^8.1.5",
     "minimist": "^1.2.0",
-    "node-sass": "^4.12.0",
+    "node-sass": "^4.13.1",
     "npm-logical-tree": "^1.2.1",
     "prettier": "^1.17.0",
     "react-test-renderer": "^16.8.6",
