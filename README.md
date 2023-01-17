@@ -91,6 +91,7 @@ To install npm, please refer to <a href="https://nodejs.org/en">this link.</a>
 ```php
 > sudo npm install electron -g --unsafe-perm=true --allow-root //install electron globally in system
 > git clone https://github.com/ehrishirajsharma/swiftnessx.git //clone the repository
+> cd swiftnessx.git // cd inside the repo
 > sudo npm install --unsafe-perm=true --allow-root //install dependencies
 > sudo npm run dev //run the package
 ```
